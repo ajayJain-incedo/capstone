@@ -48,3 +48,4 @@ create table cart_item
  constraint cart_item_order_id_fk foreign key(order_id) references orders(oid),
  constraint cart_item_product_id_fk foreign key(product_id) references product(pid)
 );
+
