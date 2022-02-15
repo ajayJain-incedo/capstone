@@ -1,0 +1,24 @@
+
+.my-background{
+    background-color: #78909C;
+
+}
+
+.clip{
+    clip-path: polygon(0 0, 100% 0, 100% 88%, 69% 97%, 29% 86%, 0 90%);
+
+}
+
+.card-head{
+    background-color: #80CBC4;
+}
+
+.forget-password{
+    text-decoration: none;
+    transition: 0.3s;
+    color: #607D8B;
+}
+
+.forget-password:hover{
+    color: black;
+}
