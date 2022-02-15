@@ -17,7 +17,7 @@ create table users
 
 create table product
 (pid int(5) not null auto_increment,
- pname varchar(20),
+ pname varchar(80),
  pdesc varchar(200),
  price decimal(10,2),
  category varchar(20),
