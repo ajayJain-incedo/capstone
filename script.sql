@@ -7,9 +7,9 @@ create table users
  last_name varchar(20),
  email varchar(20),
  pass varchar(20),
- mobile int(10),
+ mobile numeric(10),
  address varchar(200),
- usertype char(1) check((usertype= 'A') or (usertype='C')),
+ usertype char(1) default 'C' check((usertype= 'A') or (usertype='C')),
  created_at timestamp default current_timestamp,
  constraint users_uid_pk primary key(uid)
 );
@@ -17,15 +17,15 @@ create table users
 
 create table product
 (pid int(5) not null auto_increment,
- pname varchar(20),
+ pname varchar(80),
  pdesc varchar(200),
  price decimal(10,2),
  category varchar(20),
- discount_percent decimal(5,2),
+ discount_percent decimal(5,2) default 0.00,
  pimage varbinary(8000),
- rating decimal(2,1),
+ rating decimal(2,1) default 0.0,
  available_quantity int,
- units_sold int,
+ units_sold int default 0,
  constraint product_pid_pk primary key(pid)
 );
 
@@ -48,4 +48,3 @@ create table cart_item
  constraint cart_item_order_id_fk foreign key(order_id) references orders(oid),
  constraint cart_item_product_id_fk foreign key(product_id) references product(pid)
 );
-
