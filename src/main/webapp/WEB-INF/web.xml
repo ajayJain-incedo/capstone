@@ -19,7 +19,6 @@
   </servlet-mapping>
 
   <welcome-file-list>
-    <welcome-file>views/admin/admin_welcome_page.jsp</welcome-file>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
 
