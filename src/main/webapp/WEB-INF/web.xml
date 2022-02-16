@@ -4,6 +4,7 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+
 <!--  Servlet declaration-->
   <servlet>
     <servlet-name>login servlet</servlet-name>
@@ -16,4 +17,10 @@
     <servlet-name>login servlet</servlet-name>
     <url-pattern>/LoginServlet</url-pattern>
   </servlet-mapping>
+
+  <welcome-file-list>
+    <welcome-file>views/admin/admin_welcome_page.jsp</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+
 </web-app>
