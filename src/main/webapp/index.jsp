@@ -19,22 +19,24 @@
                             <p>Login Here</p>
                         </div>
                         <div class="card-body">
-                            <form>
+                            <form action="LoginServlet" method="post">
                               <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Email address</label>
-                                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                <input name="email" required type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="example@gmail.com">
 
                               </div>
                               <div class="mb-3">
 
                                 <label for="exampleInputPassword1" class="form-label">Password</label>
-                                <input type="password" class="form-control" id="exampleInputPassword1">
+                                <input name="password" required type="password" class="form-control" id="exampleInputPassword1" >
                               </div>
                               <div class="mb-3 ">
                                 <a class="forget-password" href="#">Forget Password</a>
 
                               </div>
-                              <button type="submit" class="btn btn-dark">Submit</button>
+                                <div class="container text-center">
+                                    <button type="submit" class="btn btn-dark">Submit</button>
+                                </div>
                             </form>
                         </div>
                     </div>
