@@ -1,17 +1,19 @@
 create database shopping;
 use shopping;
 
+
 create table users
 (uid int(5) not null auto_increment,
  first_name varchar(20),
  last_name varchar(20),
- email varchar(20),
+ email varchar(50),
  pass varchar(20),
  mobile numeric(10),
  address varchar(200),
  usertype char(1) default 'C' check((usertype= 'A') or (usertype='C')),
  created_at timestamp default current_timestamp,
- constraint users_uid_pk primary key(uid)
+ constraint users_uid_pk primary key(uid),
+ constraint users_email_uk unique (email)
 );
 
 
@@ -41,10 +43,12 @@ create table orders
 
 
 create table cart_item
-(order_id int(5),
+(user_id int(5),
+ order_id int(5),
  product_id int(5),
  quantity int,
  amount decimal(10,2),
+ constraint cart_item_user_id_fk foreign key(user_id) references users(uid),
  constraint cart_item_order_id_fk foreign key(order_id) references orders(oid),
  constraint cart_item_product_id_fk foreign key(product_id) references product(pid)
 );
