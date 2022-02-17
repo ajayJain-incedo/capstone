@@ -29,5 +29,11 @@
         </div>
     </div>
 </div>
+<div>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+</div>
+<div class = "col text-center">
+<a href="../../index.jsp" class="btn btn-warning" >LOG OUT</a>
+</div>
 </body>
 </html>

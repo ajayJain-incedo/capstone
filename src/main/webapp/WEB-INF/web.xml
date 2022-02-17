@@ -11,6 +11,11 @@
     <servlet-class>com.servlets.LoginServlet</servlet-class>
   </servlet>
 
+  <servlet>
+    <servlet-name>add item servlet</servlet-name>
+    <servlet-class>com.servlets.AddItemServlet</servlet-class>
+  </servlet>
+
 <!--Servlet Mapping-->
 
   <servlet-mapping>
@@ -18,8 +23,10 @@
     <url-pattern>/LoginServlet</url-pattern>
   </servlet-mapping>
 
-  <welcome-file-list>
-    <welcome-file>index.jsp</welcome-file>
-  </welcome-file-list>
+  <servlet-mapping>
+    <servlet-name>add item servlet</servlet-name>
+    <url-pattern>/AddItemServlet</url-pattern>
+  </servlet-mapping>
+
 
 </web-app>
