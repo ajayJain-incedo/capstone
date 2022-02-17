@@ -30,7 +30,8 @@ public class LoginServlet extends HttpServlet {
             session.setAttribute("currentUser", user);
             if(user.getUserType() == 'C'){
             res.sendRedirect("views/demo.jsp");
-            }else{
+            }else
+            {
                 res.sendRedirect("views/admin/admin_welcome_page.jsp");
             }
         }

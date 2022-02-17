@@ -10,5 +10,16 @@
     <label> Enter Product Name:</label>
     <input type="text" name ="pname" placeholder ="Enter here" >
 </div>
+
+<div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Email address</label>
+    <input type="email"  id="exampleFormControlInput1" placeholder="name@example.com">
+</div>
+
+<div class="input-group flex-nowrap">
+    <span class="input-group-text" id="addon-wrapping">Enter Product Name</span>
+    <input type="text" class="form-control w-30" placeholder="Username" >
+</div>
+
 </body>
 </html>
