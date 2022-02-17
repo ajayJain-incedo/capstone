@@ -1,8 +1,9 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
     <link rel="stylesheet" href="">
-    <script src='https://kit.fontawesome.com/a076d05399.js' type=""></script>
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
     <title>Home</title>
 
 </head>
@@ -71,7 +72,7 @@
 </div>
 
 <div class="right-div">
-    <h3>Pay online </h3>
+    <h3>Pay online</h3>
 
     <h3 style="color: red">*If you select online Payment then enter you transaction ID here otherwise leave this blank</h3>
 </div>

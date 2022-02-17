@@ -4,8 +4,22 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+
+<!--  Servlet declaration-->
+  <servlet>
+    <servlet-name>login servlet</servlet-name>
+    <servlet-class>com.servlets.LoginServlet</servlet-class>
+  </servlet>
+
+<!--Servlet Mapping-->
+
+  <servlet-mapping>
+    <servlet-name>login servlet</servlet-name>
+    <url-pattern>/LoginServlet</url-pattern>
+  </servlet-mapping>
+
   <welcome-file-list>
-    <welcome-file>views/my_cart/addressPaymentForOrder.jsp</welcome-file>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
+
 </web-app>
