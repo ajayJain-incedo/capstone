@@ -1,18 +1,18 @@
 package com.servlets;
-
 import com.dao.UserDao;
 import com.model.User;
 import com.service.ConnectionProvider;
-
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 
 public class LoginServlet extends HttpServlet {
     public void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException {
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         PrintWriter out = res.getWriter();
         String userEmail = req.getParameter("email");
 
@@ -23,17 +23,20 @@ public class LoginServlet extends HttpServlet {
         if(user == null){
             //login failed
             out.println("Invalid details, try again.");
+
         }
         else{
+            // creating a cookie
+            Cookie cookie = new Cookie("userType", String.valueOf(user.getUserType()));
+            res.addCookie(cookie);
             // login success
-            HttpSession session = req.getSession();
-            session.setAttribute("currentUser", user);
             if(user.getUserType() == 'C'){
-            res.sendRedirect("views/demo.jsp");
-            }else
-            {
-                res.sendRedirect("views/admin/admin_welcome_page.jsp");
+            out.println("customer");
+            }else{
+                out.println("admin");
             }
+
         }
+
     }
 }
