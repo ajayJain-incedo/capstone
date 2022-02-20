@@ -3,11 +3,10 @@ background-color: red;
 }
 .my-background{
     background-color: #78909C;
-
 }
 
 .clip{
-    clip-path: polygon(0 0, 100% 0, 100% 88%, 69% 97%, 29% 86%, 0 90%);
+    clip-path: polygon(0 0, 100% 0, 100% 92%, 69% 100%, 27% 93%, 0 100%);
 
 }
 
@@ -20,7 +19,37 @@ background-color: red;
     transition: 0.3s;
     color: #607D8B;
 }
+.login-card{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 35%;
+    margin: 0% 35% 0% 32%;
+}
+.lc{
+min-width: 90%;
+margin-left: 10%;
 
+}
 .forget-password:hover{
     color: black;
 }
+.register{
+    float:right;
+}
+.loader{
+    justify-content: center;
+    text-align: center;
+    margin: auto;
+    display: none;
+
+}
+
+.register{
+    color: #607D8B;
+    transition: 0.3s;
+    text-decoration: none;
+}
+.register:hover{
+     color: black;
+ }

@@ -16,9 +16,9 @@
     </div>
     <div class="card " style = "width: 18rem;"><br>
         <img class="card-img-top" src="../../resources/static/images/update_item_img.jpg" alt="Update Card image cap">
-        <div class="card-body"><br>
-            <h5 class="card-title">UPDATE ITEM TO THE INVENTORY</h5>
-            <a href="update_item.jsp" class="btn btn-info">UPDATE ITEM</a>
+        <div class="card-body">&nbsp;
+            <h5 class="card-title">EDIT ITEM IN THE INVENTORY</h5>
+            <a href="update_item.jsp" class="btn btn-info">EDIT ITEM</a>
         </div>
     </div>
     <div class="card " style = "width: 18rem;"><br><br><br>
@@ -28,6 +28,9 @@
             <a href="remove_item.jsp" class="btn btn-danger">REMOVE ITEM</a>
         </div>
     </div>
+</div>
+<div>
+    &nbsp;&nbsp;&nbsp;&nbsp;
 </div>
 </body>
 </html>

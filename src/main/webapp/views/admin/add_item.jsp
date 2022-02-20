@@ -7,7 +7,6 @@
     .container
     {
     width: 30%;
-    border: 1px solid black;
     margin:auto;
     padding: 20px;
     }
@@ -16,50 +15,67 @@
 <body>
 <h2 style = "text-align: center"> <b><u> ADD ITEM PAGE </u></b></h2>
 <div class = "container">
-    <h1>  DETAILS</h1>
-    <hr>
-    <form action = " " method = "post">
-        <table>
-            <tr>
-                <td>Enter Product Name:</td>
-                <td><Input type = "text" name ="pname" placeholder ="Enter here"/></td>
-            </tr>
-            <tr>
-                <td>Enter Description:</td>
-                <td><Input type = "text" name ="pdesc" placeholder ="Enter here"/></td>
-            </tr>
-            <tr>
-                <td>Enter Price:</td>
-                <td><Input type = "text" name ="price" placeholder ="Enter here"/></td>
-            </tr>
-            <tr>
-                <td>Enter Category:</td>
-                <td><Input type = "text" name ="category" placeholder ="Enter here"/></td>
-            </tr>
-            <tr>
-                <td>Enter Discount Percent:</td>
-                <td><Input type = "number" name ="discount_percent" placeholder ="Enter here" min="0" max="100" /></td>
-            </tr>
+    <form action = "../../AddItemServlet" method = "post">
+        <div class="card">
+        <div class="card text-center">
+            <div class="card-header">DETAILS
+            </div>
+            <div class="card-body">
+                <table>
+                    <tr>
+                        <td>Enter Product Name:</td>
+                        <td><Input type = "text" name ="pname" placeholder ="Enter here" required/></td>
+                    </tr>
+                    <tr>
+                        <td>Enter Description:</td>
+                        <td><Input type = "text" name ="pdesc" placeholder ="Enter here" /></td>
+                    </tr>
+                    <tr>
+                        <td>Enter Price:</td>
+                        <td><Input type = "number" name ="price" placeholder ="Enter here"/></td>
+                    </tr>
 
-            <tr>
-                <td>Enter Quantity:</td>
-                <td><Input type = "number" name ="available_quantity" placeholder ="Enter here"/></td>
-            </tr>
-            <tr>
-                <td>Enter Image:</td>
-                <td><Input type = "image" name ="pimage" placeholder ="Enter here"/></td>
-            </tr>
-            <tr>
-                <td>
-                </td>
+                    <tr>
+                        <td>Enter Category:</td>
+                        <td><Input type = "text" name ="category" placeholder ="Enter here"/></td>
+                    </tr>
+                    <tr>
+                        <td>Enter Discount Percent:</td>
+                        <td><Input type = "number" name ="discount_percent" placeholder ="Enter here" min="0" max="100" /></td>
+                    </tr>
 
-                <td>
-                    <button type="button" class="btn btn-success">SUBMIT</button>
-                    <button type = "reset" class = "btn btn-warning"> Reset </button>
+                    <tr>
+                        <td>Enter Quantity:</td>
+                        <td><Input type = "number" name ="available_quantity" placeholder ="Enter here"/></td>
+                    </tr>
+                    <!--<tr>
+                        <td>Enter Image:</td>
+                        <td><Input type = "image" name ="pimage" /></td>
+                    </tr>-->
+                    <tr>
+                        <td>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                        </td>
+                    </tr>
 
-        </table>
+                    <tr>
+                        <td>
+                            <button type = "submit" class="btn btn-success">SUBMIT</button>
+                            <button type = "reset" class = "btn btn-warning"> Reset </button>
+                        </td>
 
-
+                    </tr>
+                </table>
+            </div>
+        </div>
+        </div>
     </form>
 </div>
 </body>
