@@ -2,6 +2,8 @@ package com.servlets;
 import com.dao.UserDao;
 import com.model.User;
 import com.service.ConnectionProvider;
+import com.service.StoreUser;
+
 import javax.servlet.http.*;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -33,6 +35,8 @@ public class LoginServlet extends HttpServlet {
             res.addCookie(cookie);
             // login success
             if(user.getUserType() == 'C'){
+                StoreUser store = new StoreUser();
+                store.storeUser(user);
             out.println("customer");
             }else{
                 out.println("admin");
