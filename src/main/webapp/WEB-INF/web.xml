@@ -17,6 +17,11 @@
   </servlet>
 
   <servlet>
+    <servlet-name>update item</servlet-name>
+    <servlet-class>com.servlets.UpdateItemServlet</servlet-class>
+  </servlet>
+
+  <servlet>
     <servlet-name>add item servlet</servlet-name>
     <servlet-class>com.servlets.AddItemServlet</servlet-class>
   </servlet>
@@ -36,6 +41,10 @@
   <servlet-mapping>
     <servlet-name>register servlet</servlet-name>
     <url-pattern>/RegisterServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>update item</servlet-name>
+    <url-pattern>/UpdateItemServlet</url-pattern>
   </servlet-mapping>
 
 
