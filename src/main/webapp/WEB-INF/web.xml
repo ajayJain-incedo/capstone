@@ -16,6 +16,16 @@
     <servlet-class>com.servlets.AddItemServlet</servlet-class>
   </servlet>
 
+  <servlet>
+    <servlet-name>remove item servlet</servlet-name>
+    <servlet-class>com.servlets.RemoveItemServlet</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>update item servlet</servlet-name>
+    <servlet-class>com.servlets.UpdateItemServlet</servlet-class>
+  </servlet>
+
 <!--Servlet Mapping-->
 
   <servlet-mapping>
@@ -26,6 +36,16 @@
   <servlet-mapping>
     <servlet-name>add item servlet</servlet-name>
     <url-pattern>/AddItemServlet</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>remove item servlet</servlet-name>
+    <url-pattern>/RemoveItemServlet</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>update item servlet</servlet-name>
+    <url-pattern>/UpdateItemServlet</url-pattern>
   </servlet-mapping>
 
 
