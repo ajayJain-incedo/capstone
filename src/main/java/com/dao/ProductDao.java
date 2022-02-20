@@ -1,6 +1,5 @@
 package com.dao;
 import com.model.Product;
-
 import java.sql.*;
 
 public class ProductDao
@@ -32,5 +31,83 @@ public class ProductDao
             e.printStackTrace();
         }
         return isQueryExecuted;
+    }
+
+    //Method to remove item from the database
+    public boolean RemoveItem(Product product)
+    {
+        boolean isQuery = false;
+        try
+        {
+            String query = "delete from product where pname = ?";
+            PreparedStatement st = this.con.prepareStatement(query);
+            System.out.println(product.getPname());
+            st.setString(1,product.getPname());
+
+            st.executeUpdate();
+            System.out.println("QUERY EXECUTED!!");
+
+            isQuery=true;
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+        return isQuery;
+    }
+
+    public boolean UpdateItem(Product product)
+    {
+        boolean isQuery = false;
+        try
+        {
+            String query = "Update product set pname=?,pdesc=?,price=?,category=?,discount_percent=?,available_quantity=? where pid="+ product.getId();
+            PreparedStatement st = this.con.prepareStatement(query);
+            st.setString(1, product.getPname());
+            st.setString(2, product.getPdesc());
+            st.setDouble(3, product.getPrice());
+            st.setString(4, product.getCategory());
+            st.setDouble(5, product.getDiscount_percent());
+            st.setDouble(6, product.getAvailable_quantity());
+
+            st.executeUpdate();
+            isQuery=true;
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+        return isQuery;
+    }
+
+    //Method to get product details item from the database using only Product Name
+    public Product getProductDetailByName( String productName)
+    {
+        Product p =  new Product();
+        try
+        {
+            String query = "Select * from product where pname = ?";
+            PreparedStatement st = this.con.prepareStatement(query);
+            st.setString(1, productName);
+            ResultSet rs = st.executeQuery();
+            rs.next();
+            p.setId(rs.getInt("pid"));
+            p.setPname(rs.getString("pname"));
+            p.setPdesc(rs.getString("pdesc"));
+            p.setPrice(rs.getDouble("price"));
+            p.setCategory(rs.getString("category"));
+            p.setDiscount_percent(rs.getDouble("discount_percent"));
+            p.setAvailable_quantity(rs.getDouble("available_quantity"));
+        }
+        catch (SQLException s)
+        {
+            System.out.println(s.getMessage());
+            return null;
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        return p;
     }
 }

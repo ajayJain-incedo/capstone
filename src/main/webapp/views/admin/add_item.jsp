@@ -16,7 +16,7 @@
 <h2 style = "text-align: center"> <b><u> ADD ITEM PAGE </u></b></h2>
 <div class = "container">
     <form action = "../../AddItemServlet" method = "post">
-        <div class="card w-150">
+        <div class="card">
         <div class="card text-center">
             <div class="card-header">DETAILS
             </div>
@@ -67,7 +67,7 @@
 
                     <tr>
                         <td>
-                            <button type= "submit" class="btn btn-success">SUBMIT</button>
+                            <button type = "submit" class="btn btn-success">SUBMIT</button>
                             <button type = "reset" class = "btn btn-warning"> Reset </button>
                         </td>
 
