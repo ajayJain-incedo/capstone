@@ -36,7 +36,7 @@ create table orders
 (oid int(5) not null auto_increment,
  user_id int(5),
  total_amount decimal(10,2),
- payment_status char(7) check((payment_status= 'Done') or (payment_status='Pending')),
+ payment_status char(7) default 'Pending' check((payment_status= 'Done') or (payment_status='Pending')),
  constraint order_oid_pk primary key(oid),
  constraint order_user_id_fk foreign key(user_id) references users(uid)
 );
@@ -44,11 +44,22 @@ create table orders
 
 create table cart_item
 (user_id int(5),
- order_id int(5),
  product_id int(5),
  quantity int,
  amount decimal(10,2),
- constraint cart_item_user_id_fk foreign key(user_id) references users(uid),
+ order_id int(5),
  constraint cart_item_order_id_fk foreign key(order_id) references orders(oid),
+ constraint cart_item_user_id_fk foreign key(user_id) references users(uid),
  constraint cart_item_product_id_fk foreign key(product_id) references product(pid)
+);
+
+
+create table order_history
+(user_id int(5),
+ order_id int(5),
+ product_id int(5),
+ amount decimal(10,2),
+ constraint order_history_user_id_fk foreign key(user_id) references users(uid),
+ constraint order_history_order_id_fk foreign key(order_id) references orders(oid),
+ constraint order_history_product_id_fk foreign key(product_id) references product(pid)
 );
