@@ -1,20 +1,22 @@
 package com.dao;
 import com.model.User;
+import com.mysql.cj.jdbc.exceptions.MysqlDataTruncation;
 
 import java.sql.*;
 
 public class UserDao {
-    private Connection con;
+    private final Connection con;
 
     public UserDao(Connection con) {
         this.con = con;
     }
 
     // Method to insert the details of user to the db
-    public String insertUser(User user){
+    public String insertUser(User user, String password2){
+        if(!user.getPassword().equals(password2))
+            return "passwordNotMatching";
 
         try{
-
             String query = "insert into users(first_name, last_name, email, pass, mobile, address) values(?, ?, ?, ?, ?, ?)";
             PreparedStatement ps = this.con.prepareStatement(query);
             ps.setString(1, user.getFirstName());
@@ -27,6 +29,14 @@ public class UserDao {
 
         }catch (NumberFormatException ne){
             return "wrongMobile";
+        }
+        catch (SQLIntegrityConstraintViolationException si){
+            System.out.println(si.getMessage());
+            return "emailDuplicate";
+        }
+        catch (MysqlDataTruncation e){
+            System.out.println(e.getMessage());
+            return "tooLong";
         }
         catch (Exception e){
             e.printStackTrace();
