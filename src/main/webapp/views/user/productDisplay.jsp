@@ -27,7 +27,7 @@
                 <h5 class='card-title' > <%= p.getCategory() %> </h5 >
                 <h5 class='card-title' > <%= p.getPrice() %> </h5 >
                 <p class='card-text' > <%= p.getPdesc() %> </p >
-                <a class="btn btn-primary" href="AddToCart?pid=<%= p.getId() %>" >Add to Cart</a >
+                <a class="btn btn-primary" href="AddToCart?pid=<%= p.getId() %>&price=<%= p.getPrice() %>" >Add to Cart</a >
 <!--                ../my_cart/myCart.jsp?pid=<%= p.getId() %>-->
                 </div >
             </div >
