@@ -10,10 +10,11 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashSet;
 
 public class CategoryProductServlet extends HttpServlet {
     SearchProducts search = new SearchProducts();
-    ArrayList<Product> products = new ArrayList<>();
+    HashSet<Product> products = new HashSet<>();
     @Override
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 

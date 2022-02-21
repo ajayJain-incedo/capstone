@@ -8,9 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashSet;
 
 public class DisplayProductsServlet extends HttpServlet {
 
@@ -19,7 +19,7 @@ public class DisplayProductsServlet extends HttpServlet {
         try {
             SearchProducts search = new SearchProducts();
 
-            ArrayList<Product> products = search.searchAllProducts();
+            HashSet<Product> products = search.searchAllProducts();
 //            PrintWriter
 //            out.println(products);
 
