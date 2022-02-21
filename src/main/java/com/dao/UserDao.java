@@ -73,4 +73,32 @@ public class UserDao {
         }
         return user;
     }
+    public User getUserByEmail(String email){
+        User user = null;
+        try{
+            String query = "select * from users where email =?";
+            PreparedStatement ps = this.con.prepareStatement(query);
+            ps.setString(1, email);
+            ResultSet result = ps.executeQuery();
+            if(result.next()){
+                user = new User();
+                String firstName = result.getString("first_name"); // getting data from db
+                user.setFirstName(firstName); // setting data to user object
+                String lastName = result.getString("last_name");
+                user.setLastName(lastName);
+                user.setId(result.getInt("uid"));
+                user.setEmail(result.getString("email"));
+                user.setPassword(result.getString("pass"));
+                user.setMobile(result.getString("mobile"));
+                user.setUserType(result.getString("usertype").charAt(0));
+                user.setAddress(result.getString("address"));
+                user.setCreatedAt(result.getTimestamp("created_at"));
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return user;
+
+    }
+
 }

@@ -13,10 +13,10 @@
 <main class="my-background clip" style="height: 100vh;">
     <div class="container my-background clip">
         <div class="col-md-6 offset-md-3 p-5">
-        <form>
+        <form action="/capstone/ForgotPassword" method="post">
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Enter your email:</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="example@email.com">
+            <input name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="example@email.com">
         </div>
             <div class="text-center">
 
