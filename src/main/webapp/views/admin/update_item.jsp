@@ -20,35 +20,38 @@
 <body>
 <h2 style = "text-align: center"> <b><u> UPDATE ITEM PAGE </u></b></h2>
 
-<div class = "container">
-    <form action = "update.jsp" method = "post" >
+<div class="row">
+    <div class="col-sm-6" style = "margin:auto">
+        <form action = "update.jsp" method = "post" >
+        <div style = "text-align: center" class="card">
+            <div class="card-body">
+
+                <h5 class="card-title">ENTER PRODUCT NAME</h5>
+                <div class = "mb-3 row">
+                <div class = "col-sm-19">
+                    <input type="text"  name = "pname" placeholder ="Enter here" >
+                </div>
+                </div>
+                <button type = "submit" class="btn btn-dark">UPDATE</button>
+        </div>
+        </div>
+        </form>
+    </div>
+    <div class="col-sm-6">
+        <form action = "../../RemoveItemServlet" method = "post" >
         <div style = "text-align: center" class="card">
             <div class="card-body">
                 <h5 class="card-title">ENTER PRODUCT NAME</h5>
                 <div class="mb-3 row">
                     <div class="col-sm-19" >
-                        <input type="text"  name = "pname" placeholder ="Enter here" >
-                    </div>
-                </div>
-                <button type = "submit" class="btn btn-dark">UPDATE</button>
-            </div>
-        </div>
-    </form>
-</div>
-<div class = "container">
-<form action = "../../RemoveItemServlet" method = "post" >
-    <div style = "text-align: center" class="card">
-        <div class="card-body">
-            <h5 class="card-title">ENTER PRODUCT NAME</h5>
-            <div class="mb-3 row">
-                <div class="col-sm-19" >
                     <input type="text"  name ="pname" placeholder ="Enter here" >
                 </div>
+                </div>
+                <button type ="submit" class="btn btn-danger">REMOVE</button>
             </div>
-            <button type ="submit" class="btn btn-danger">REMOVE</button>
         </div>
+        </form>
     </div>
-</form>
 </div>
 
 
