@@ -1,3 +1,6 @@
+body{
+background-color: red;
+}
 .clip-path{
     clip-path: polygon(50% 0%, 100% 0, 100% 93%, 66% 100%, 26% 94%, 0 100%, 0 0);
 }

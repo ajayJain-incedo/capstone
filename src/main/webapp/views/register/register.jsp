@@ -38,12 +38,12 @@
 
                             <div class="mb-3">
                                 <label for="mobile" class="form-label">Mobile number</label>
-                                <input maxlength="10" minlength="10" name="mobile" required type="text"  class="form-control" id="mobile" aria-describedby="emailHelp" placeholder="Enter mobile number*">
+                                <input maxlength="10" minlength="10" name="mobile" required type="text"  class="form-control" id="mobile" aria-describedby="emailHelp" placeholder="Enter mobile number*" onkeypress="return isNumberKey(event)">
                             </div>
 
                             <div class="mb-3">
                                 <label for="address" class="form-label">Address</label>
-                                <input minlength="10" name="address" required type="text" class="form-control" id="address" aria-describedby="emailHelp" placeholder="Enter address*">
+                                <textarea rows="3" minlength="10" name="address" required type="text" class="form-control" id="address" aria-describedby="emailHelp" placeholder="Enter address*"></textarea>
                             </div>
 
                             <div class="mb-3">
@@ -77,7 +77,15 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <script>
+    function isNumberKey(evt) {
+        var charCode = (evt.which) ? evt.which : event.keyCode;
+        if ((charCode < 48 || charCode > 57))
+            return false;
+
+        return true;
+    }
     $(document).ready(function(){
+
        $("#register-form").on("submit", function(e){
              $("#failuremessage").html("")
             e.preventDefault();
