@@ -1,4 +1,4 @@
-
+<%@ page import="java.net.HttpURLConnection, java.net.URL" %>
 <html>
 <head>
     <title>Login</title>
@@ -19,7 +19,7 @@
                 if(userType=='A'){
                     response.sendRedirect("views/admin/admin_welcome_page.jsp");
                 }else{
-                    response.sendRedirect("views/demo.jsp");
+                    response.sendRedirect("DisplayProduct");
                 }
             }
         }
@@ -95,7 +95,7 @@
                         $("#failuremessage").html("Invalid credentials, try again...");
                     }else{
                         if(data.trim() === "customer"){
-                            window.location.href = 'views/demo.jsp';
+                            window.location.href = 'DisplayProduct';
                         }else{
                             window.location.href = 'views/admin/admin_welcome_page.jsp';
                         }
