@@ -18,6 +18,9 @@
     </style>
 </head>
 <body>
+<a href="admin_welcome_page.jsp">
+    <img border="0" alt="HomePage Icon" src="../../resources/static/images/admin_home_page.jpg" width="100" height="100">
+</a>
 <h2 style = "text-align: center"> <b><u> UPDATE ITEM PAGE </u></b></h2>
 
 <div class="row">
@@ -67,7 +70,7 @@ try{
     Statement statement = null;
     ResultSet rs = null;
     Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-    connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/shopping", "root", "root");
+    connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/shopping", "root", "admin@1234");
     statement = connection.createStatement();
     String QueryString = "Select pid, pname, pdesc, price, category, discount_percent, available_quantity, pid, pid from product";
     rs = statement.executeQuery(QueryString);

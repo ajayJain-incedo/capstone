@@ -13,6 +13,9 @@
     </style>
 </head>
 <body>
+<a href="admin_welcome_page.jsp">
+    <img border="0" alt="HomePage Icon" src="../../resources/static/images/admin_home_page.jpg" width="100" height="100">
+</a>
 <h2 style = "text-align: center"> <b><u> ADD ITEM PAGE </u></b></h2>
 <div class = "container">
     <form action = "../../AddItemServlet" method = "post">
