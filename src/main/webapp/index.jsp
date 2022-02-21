@@ -1,9 +1,4 @@
-<%@ page import="com.service.ConnectionProvider"%>
-<%@ page import="com.service.StoreUser"%>
-<%@ page import="com.dao.UserDao"%>
-<%@ page import="com.model.User"%>
-<%@ page import="java.sql.*"%>
-
+<%@ page import="java.net.HttpURLConnection, java.net.URL" %>
 <html>
 <head>
     <title>Login</title>
@@ -16,18 +11,7 @@
     <%
     Cookie[] cookies = request.getCookies();
     Character userType;
-    String userEmail;
     if(cookies!=null){
-    for(Cookie c: cookies){
-        String cookieName = c.getName();
-        if(cookieName.equals("userEmail")){
-            userEmail=c.getValue();
-            Connection con = ConnectionProvider.getConnection();
-            UserDao dao = new UserDao(con);
-            User user =  dao.getUserByEmail(userEmail);
-            StoreUser.storeUser(user);
-        }
-    }
         for(Cookie c: cookies){
             String cookieName = c.getName();
             if(cookieName.equals("userType")){
@@ -35,7 +19,7 @@
                 if(userType=='A'){
                     response.sendRedirect("views/admin/admin_welcome_page.jsp");
                 }else{
-                    response.sendRedirect("views/my_cart/myCart.jsp");
+                    response.sendRedirect("DisplayProduct");
                 }
             }
         }
@@ -111,7 +95,7 @@
                         $("#failuremessage").html("Invalid credentials, try again...");
                     }else{
                         if(data.trim() === "customer"){
-                            window.location.href = 'views/my_cart/myCart.jsp';
+                            window.location.href = 'DisplayProduct';
                         }else{
                             window.location.href = 'views/admin/admin_welcome_page.jsp';
                         }
