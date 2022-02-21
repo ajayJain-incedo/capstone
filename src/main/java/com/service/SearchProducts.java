@@ -6,6 +6,7 @@ import com.dao.ProductDao;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashSet;
 
 public class SearchProducts {
 
@@ -15,19 +16,19 @@ public class SearchProducts {
 
     public SearchProducts(){}
 
-    public ArrayList<Product> searchAllProducts() throws SQLException {
+    public HashSet<Product> searchAllProducts() throws SQLException {
         return dao.getAllProduct(query);
     }
 
-    public ArrayList<Product> searchProductsByCategory(String category) throws SQLException {
+    public HashSet<Product> searchProductsByCategory(String category) throws SQLException {
         String categoryQuery= query + " where product.category='" + category +"'";
-        ArrayList<Product> products = dao.getAllProduct(categoryQuery);
+        HashSet<Product> products = dao.getAllProduct(categoryQuery);
         return products;
     }
 
-    public ArrayList<Product> searchProductsByInput(String search) throws SQLException {
+    public HashSet<Product> searchProductsByInput(String search) throws SQLException {
         String nameQuery = query + " where product.pname like '%" + search + "%'";
-        ArrayList<Product> products = dao.getAllProduct(nameQuery);
+        HashSet<Product> products = dao.getAllProduct(nameQuery);
 
         String descQuery = query + " where product.pdesc like '%" + search + "%'";
         products.addAll(dao.getAllProduct(descQuery));

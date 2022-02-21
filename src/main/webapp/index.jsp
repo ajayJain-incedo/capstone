@@ -56,7 +56,7 @@
                                 <input name="password" required type="password" class="form-control" id="exampleInputPassword1" >
                               </div>
                               <div class="mb-3 ">
-                                <a class="forget-password " href="#">Forgot Password?</a> <span ><a class="register" href="views/register/register.jsp">Sign Up </a></span>
+                                <a class="forget-password " href="views/register/forgot_password.jsp">Forgot Password?</a> <span ><a class="register" href="views/register/register.jsp">Sign Up </a></span>
 
                               </div>
                                 <div class="container text-center">
