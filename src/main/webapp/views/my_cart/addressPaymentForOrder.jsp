@@ -42,7 +42,7 @@
 </table>
 
 <hr style="width: 100%">
-<form action="addressPaymentForOrderAction.jsp" method="post">
+<form action="addressPaymentForOrderNew.jsp" method="post">
     <div class="left-div">
         <h3>Enter Address</h3>
         <input class ="input-style" type="text" name="address" value="" placeholder="Enter Address" required>

@@ -1,87 +1,58 @@
-<!--
-Sample JSP code for Payment Pages
-Calculating the x_fp_hash with SHA-1
-Tested on Tomcat5/Mac OS X 10.5
--->
+<!DOCTYPE html>
+<%@ page import="com.service.ConnectionProvider" %>
+<%@page import="java.sql.*,java.util.*, com.model.User, com.service.StoreUser"%>
+
 <html>
-<head>
-    <title>Sample JSP Payment Form with SHA-1</title>
-    <style type="text/css">
-   label {
-      display: block;
-      margin: 5px 0px;
-      color: #AAA;
-   }
-   input {
-      display: block;
-   }
-   input[type=submit] {
-      margin-top: 20px;
-   }
 
- </style>
-
-</head>
-<body>
-
-<%@ page import="java.util.Random" %>
-<%@ page import="javax.crypto.Mac" %>
-<%@ page import="javax.crypto.SecretKey" %>
-<%@ page import="javax.crypto.spec.SecretKeySpec" %>
-
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<body style = "background-color: #78909C;">
+<br>
+<br>
 <%
-// x_login and transactionKey should be taken from Payment Page settings
-String x_login        = "###-###-##-##"; // aka Payment Page ID
-String transactionKey = "#############"; // aka Transaction Key
-String x_amount       = "19.99";
+    Connection con = ConnectionProvider.getConnection();
+    StoreUser store = new StoreUser();
+    User user = store.getUser();
 
-// Generate a random sequence number
-Random generator = new Random();
-int x_fp_sequence = generator.nextInt(1000);
-
-// Generate the timestamp
-// Make sure this will be in UTC
-long x_fp_timestamp = System.currentTimeMillis()/1000;
-
-// Use Java Cryptography functions to generate the x_fp_hash value
-// generate secret key for HMAC-SHA1 using the transaction key
-SecretKey key = new SecretKeySpec(transactionKey.getBytes(), "HmacSHA1");
-
-// Get instance of Mac object implementing HMAC-SHA1, and
-// Initialize it with the above secret key
-Mac mac = Mac.getInstance("HmacSHA1");
-mac.init(key);
-
-// process the input string
-String inputstring = x_login + "^" + x_fp_sequence + "^" +
-x_fp_timestamp + "^" + x_amount + "^";
-byte[] result = mac.doFinal(inputstring.getBytes());
-
-// convert the result from byte[] to hexadecimal format
-StringBuffer strbuf = new StringBuffer(result.length * 2);
-for(int i=0; i< result.length; i++)
-{
-if(((int) result[i] & 0xff) < 0x10)
-strbuf.append("0");
-strbuf.append(Long.toString((int) result[i] & 0xff, 16));
-}
-String x_fp_hash = strbuf.toString();
 %>
-<form action="https://checkout.globalgatewaye4.firstdata.com/payment" method="post">
 
-    <label>x_login</label>
-    <input name="x_login" value="<%= x_login %>" />
-    <label>x_fp_sequence</label>
-    <input name="x_fp_sequence" value="<%= x_fp_sequence %>" />
-    <label>x_fp_timestamp</label>
-    <input name="x_fp_timestamp" value="<%= x_fp_timestamp %>" />
-    <label>x_amount</label>
-    <input name="x_amount" value="<%= x_amount %>" />
-    <label>x_fp_hash (with SHA-1)</label>
-    <input name="x_fp_hash" value="<%= x_fp_hash %>" size="40"/>
-    <input name="x_show_form" value="PAYMENT_FORM" type="hidden" />
-    <input type="submit" value="Checkout" />
-</form>
+<div class="card-group">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title"><u><b>USER DETAILS</b></u></h5>
+            <p>First Name: <%=user.getFirstName()%> </p>
+            <p>Last Name: <%=user.getLastName()%></p>
+            <p>Mobile: <%=user.getMobile()%></p>
+            <p>Email: <%=user.getEmail()%></p>
+            <p> Address: <%=user.getAddress()%></p>
+
+        </div>
+
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title"><u><b>Product Details</b></u></h5>
+            <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+        </div>
+
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title"><u><b>PAYMENT DETAILS</b></u></h5>
+            <p><a href="PaymentSuccesfull.jsp" style = "text-decoration:none;">UPI: &nbsp;
+            <img src = "../../resources/static/images/upi.png"  alt = "upi_image" width = "40" height = "50">  </a></p>
+            <p><a href="PaymentSuccesfull.jsp " style = "text-decoration:none;" > Credit Card: &nbsp;
+                <img src = "../../resources/static/images/credit_card.png"  alt = "creditcard_image" width = "40" height = "50">  </a></p>
+            <p><a href="PaymentSuccesfull.jsp" style = "text-decoration:none;">Debit Card: &nbsp;
+                <img src = "../../resources/static/images/debit_card.jpg"  alt = "debitcard_image" width = "40" height = "50">  </a></p>
+            <p><a href="PaymentSuccesfull.jsp" style = "text-decoration:none;" >Cash On Delivery: &nbsp;
+                <img src = "../../resources/static/images/cash_on_delivery.jpg"  alt = "cashOnDelivery_image" width = "40" height = "50">  </a></p>
+        </div>
+
+    </div>
+</div>
+
+
+
 
 </body>
 </html>
