@@ -41,6 +41,11 @@
     <servlet-class>com.servlets.CategoryProductServlet</servlet-class>
   </servlet>
 
+  <servlet>
+    <servlet-name>ForgotPassword</servlet-name>
+    <servlet-class>com.servlets.ForgotPassword</servlet-class>
+  </servlet>
+
 <!--Servlet Mapping-->
 
   <servlet-mapping>
@@ -75,6 +80,11 @@
   <servlet-mapping>
     <servlet-name>CategoryProduct</servlet-name>
     <url-pattern>/CategoryProduct</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>ForgotPassword</servlet-name>
+    <url-pattern>/ForgotPassword</url-pattern>
   </servlet-mapping>
 
 
