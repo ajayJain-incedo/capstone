@@ -14,7 +14,7 @@
                 <div class="content">
                     <h1>Payment Success !</h1>
                     <p> Thank You For Choosing Our Service !!</p>
-                    <a href="myCart.jsp">Go to Home</a>
+                    <a href="/Capstone/DisplayProduct">Go to Home</a>
                 </div>
 
             </div>

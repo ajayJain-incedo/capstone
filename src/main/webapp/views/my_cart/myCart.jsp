@@ -46,12 +46,15 @@ if("removed".equals(msg))
 <table>
     <thead>
     <%
+    StoreUser store = new StoreUser();
+    User user = store.getUser();
     int total=0;
     int sno=0;
     try
     {
     Connection con = ConnectionProvider.getConnection();
-    java.sql.PreparedStatement st = con.prepareStatement("select * from cart_item where user_id=1002");
+    java.sql.PreparedStatement st = con.prepareStatement("select * from cart_item where user_id=?");
+    st.setInt(1, user.getId());
     ResultSet rs1=st.executeQuery();
     while(rs1.next())
     {
@@ -60,7 +63,7 @@ if("removed".equals(msg))
     %>
     <tr>
         <th scope="col" style="background-color: yellow;">Total: <i class="fa fa-inr"></i> <%out.println(total); %></th>
-        <%if(total>0){ %><th scope="col"><a href="addressPaymentForOrder.jsp">Proceed to order</a></th><%} %>
+        <%if(total>0){ %><th scope="col"><a href="addressPaymentForOrderNew.jsp">Proceed to order</a></th><%} %>
     </tr>
     </thead>
     <thead>
@@ -77,12 +80,13 @@ if("removed".equals(msg))
     <tbody>
     <%
 
-    StoreUser store = new StoreUser();
-    User current_user = store.getUser();
 
-    System.out.println(current_user.getId());
-    String query ="select pname, category, round(amount/quantity) as price, quantity, amount from cart_item, product where user_id = 1002 and cart_item.product_id = product.pid";
+
+    System.out.println(user.getId());
+    String query ="select pname, category, round(amount/quantity) as price, quantity, amount from cart_item, product where user_id = ? and cart_item.product_id = product.pid";
+
     PreparedStatement pstmt =con.prepareStatement(query);
+    pstmt.setInt(1, user.getId());
    // pstmt.setString(1, String.valueOf(current_user.getId()));
     ResultSet rs=pstmt.executeQuery();
     while(rs.next())

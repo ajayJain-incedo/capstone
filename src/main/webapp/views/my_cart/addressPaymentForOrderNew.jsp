@@ -28,13 +28,7 @@
         </div>
 
     </div>
-    <div class="card">
-        <div class="card-body">
-            <h5 class="card-title"><u><b>Product Details</b></u></h5>
-            <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-        </div>
-
-    </div>
+    
     <div class="card">
         <div class="card-body">
             <h5 class="card-title"><u><b>PAYMENT DETAILS</b></u></h5>
