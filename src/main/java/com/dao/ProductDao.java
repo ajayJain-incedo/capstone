@@ -1,6 +1,7 @@
 package com.dao;
 import com.model.Product;
 import java.sql.*;
+import java.util.ArrayList;
 
 public class ProductDao
 {
@@ -109,5 +110,28 @@ public class ProductDao
             e.printStackTrace();
         }
         return p;
+    }
+
+    public ArrayList<Product> getAllProduct(String query){
+        ArrayList<Product> products = new ArrayList<>();
+        try
+        {
+            PreparedStatement st = this.con.prepareStatement(query);
+            ResultSet rs = st.executeQuery();
+            while(rs.next()) {
+                Product p = new Product();
+                p.setId(rs.getInt("pid"));
+                p.setPdesc(rs.getString("pdesc"));
+                p.setPrice(rs.getDouble("price"));
+                p.setPname(rs.getString("pname"));
+                p.setDiscount_percent(rs.getDouble("discount_percent"));
+                p.setCategory(rs.getString("category"));
+                p.setAvailable_quantity(rs.getInt("available_quantity"));
+                products.add(p);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return products;
     }
 }
