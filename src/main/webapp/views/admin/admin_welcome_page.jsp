@@ -14,7 +14,8 @@
 </head>
 <body>
 <h2> <b><u>WELCOME TO THE ADMIN PAGE</u></b></h2>
-<div class = "container">
+<div class="d-flex">
+<div class = "container ">
 <div class="card-group" >
     <div class="card " style = "width: 18rem;" >
         <img class="card-img-top" src="../../resources/static/images/add_item_img.jpg" class="img-fluid" alt="Add Item image cap">
@@ -38,6 +39,7 @@
 </div>
 <div>
     &nbsp;
+</div>
 </div>
 </body>
 </html>
