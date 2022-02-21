@@ -3,6 +3,7 @@
     <title>Add Item</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link href="../../resources/css/add_item.css" rel="stylesheet">
+    <link href="../../resources/css/user.css" rel="stylesheet">
     <style>
     .container
     {
@@ -13,8 +14,11 @@
     </style>
 </head>
 <body>
+<a href="admin_welcome_page.jsp">
+    <img style="height: 40px; width: 40px" border="0" alt="HomePage Icon" src="../../resources/static/images/admin_home_page.jpg" width="100" height="100">
+</a>
 <h2 style = "text-align: center"> <b><u> ADD ITEM PAGE </u></b></h2>
-<div class = "container">
+<div class = "container d-flex inline-padding">
     <form action = "../../AddItemServlet" method = "post">
         <div class="card">
         <div class="card text-center">
@@ -67,8 +71,10 @@
 
                     <tr>
                         <td>
-                            <button type = "submit" class="btn btn-success">SUBMIT</button>
+                            <div class="d-flex">
+                            <button type = "submit" class="btn btn-success " style="margin-right: 10px">SUBMIT</button>
                             <button type = "reset" class = "btn btn-warning"> Reset </button>
+                            </div>
                         </td>
 
                     </tr>
