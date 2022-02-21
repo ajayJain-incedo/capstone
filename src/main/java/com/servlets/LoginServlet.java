@@ -32,7 +32,9 @@ public class LoginServlet extends HttpServlet {
         else{
             // creating a cookie
             Cookie cookie = new Cookie("userType", String.valueOf(user.getUserType()));
+            Cookie cookie1 = new Cookie("userEmail", user.getEmail());
             res.addCookie(cookie);
+            res.addCookie(cookie1);
             // login success
             if(user.getUserType() == 'C'){
                 StoreUser store = new StoreUser();
