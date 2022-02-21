@@ -1,5 +1,7 @@
 package com.model;
 
+import java.util.Objects;
+
 public class Product
 {
     //Data Member
@@ -88,5 +90,18 @@ public class Product
 
     public void setAvailable_quantity(double available_quantity) {
         this.available_quantity = available_quantity;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Product product = (Product) o;
+        return id == product.id && Double.compare(product.price, price) == 0 && Double.compare(product.discount_percent, discount_percent) == 0 && Double.compare(product.available_quantity, available_quantity) == 0 && Objects.equals(pname, product.pname) && Objects.equals(pdesc, product.pdesc) && Objects.equals(category, product.category);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, pname, pdesc, price, category, discount_percent, available_quantity);
     }
 }

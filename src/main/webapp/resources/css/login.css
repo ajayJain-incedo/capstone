@@ -1,4 +1,6 @@
-
+body{
+background-color: red;
+}
 .my-background{
     background-color: #78909C;
 }

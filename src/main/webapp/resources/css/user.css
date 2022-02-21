@@ -1,0 +1,31 @@
+.inline-list{
+    display: inline-flex;
+    flex-wrap: wrap;
+}
+
+.inline-list-padding{
+    padding-inline: 10px;
+    margin-inline: 10px;
+}
+
+.inline-margin-start{
+    margin-inline-start: 42px;
+}
+
+.inline-margin{
+    margin-inline: 42px;
+}
+
+.block-margin{
+    margin-block: 42px;
+}
+
+.inline-wrap{
+    flex-wrap: wrap;
+}
+
+.inline-align-stretch{
+    align-items: stretch;
+}
+
+

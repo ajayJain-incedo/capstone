@@ -2,9 +2,12 @@ package com.servlets;
 import com.dao.UserDao;
 import com.model.User;
 import com.service.ConnectionProvider;
+import com.service.StoreUser;
+
 import javax.servlet.http.*;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Base64;
 
 public class LoginServlet extends HttpServlet {
     public void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException {
@@ -17,7 +20,8 @@ public class LoginServlet extends HttpServlet {
         String userEmail = req.getParameter("email");
 
         String userPassword = req.getParameter("password");
-
+        Base64.Encoder encoder = Base64.getEncoder();
+        userPassword = encoder.encodeToString(userPassword.getBytes());
         UserDao dao = new UserDao(ConnectionProvider.getConnection());
         User user = dao.getUserByEmailAndPassword(userEmail, userPassword);
         if(user == null){
@@ -31,6 +35,8 @@ public class LoginServlet extends HttpServlet {
             res.addCookie(cookie);
             // login success
             if(user.getUserType() == 'C'){
+                StoreUser store = new StoreUser();
+                store.storeUser(user);
             out.println("customer");
             }else{
                 out.println("admin");

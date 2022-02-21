@@ -43,17 +43,17 @@
 
                             <div class="mb-3">
                                 <label for="address" class="form-label">Address</label>
-                                <input name="address" required type="text" class="form-control" id="address" aria-describedby="emailHelp" placeholder="Enter address*">
+                                <input minlength="10" name="address" required type="text" class="form-control" id="address" aria-describedby="emailHelp" placeholder="Enter address*">
                             </div>
 
                             <div class="mb-3">
                                 <label for="password1" class="form-label">Set new password</label>
-                                <input name="password1" minlength="10" required type="password" class="form-control" id="password1" placeholder="Enter new password*">
+                                <input name="password1" minlength="8" required type="password" class="form-control" id="password1" placeholder="Enter new password*">
                             </div>
 
                             <div class="mb-3">
                                 <label for="password2" class="form-label">Enter password again</label>
-                                <input name="password2" minlength="10" required type="password" class="form-control" id="password2" placeholder="Re-enter your password*">
+                                <input name="password2" minlength="8" required type="password" class="form-control" id="password2" placeholder="Re-enter your password*">
                             </div>
                             <div class="text-center">
                             <button type="submit" class="btn btn-dark">Submit</button>
@@ -91,25 +91,29 @@
                     $(".loader").css("display", "none");
                     if(data.trim()==="done"){
                     var mob=$("#mobile").val();
-                        if($.isNumeric(mob)==false){
-                            $("#failuremessage").html("Please enter correct mobile number...");
-                        }
-                        else if($("#password1").val() != $("#password2").val()){
-                            $("#failuremessage").html("Sorry, passwords didn't match.");
-                        }else{
-
                         $("#failuremessage").css("color", "green");
-                        $("#failuremessage").html("Successfully Registered, Redirecting to login page...");
+                        $("#failuremessage").html("Successfully Registered, Redirecting to login page in ");
+                        var seconds=5;
+                        setInterval(function() {
+                            $("#failuremessage").html("Successfully Registered, Redirecting to login page in "+seconds);
+                            seconds-=1;
+                        }, 1000);
+
                         setTimeout(function(){
                             window.location.href = '../../index.jsp';
-                        }, 6000);
+                        }, 5000);
 
-                        }
                     }else if(data.trim()==="mobileError"){
                          $("#failuremessage").html("Please enter correct mobile number...");
+                    }else if(data.trim()==="emailDuplicate"){
+                        $("#failuremessage").html("Email already exist");
+                    }else if(data.trim()==="passwordNotMatching"){
+                        $("#failuremessage").html("Passwords didn't match.");
+                    }else if(data.trim()==="tooLong"){
+                        $("#failuremessage").html("Maximum character limit exceeded!");
                     }
                     else{
-                        $("#failuremessage").html("Email already exist");
+                        $("#failuremessage").html("Sorry, something went wrong");
                     }
                 },
                 error: function(jqXHR, textStatus, errorThrown){
