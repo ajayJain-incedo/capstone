@@ -2,6 +2,7 @@ package com.dao;
 import com.model.Product;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 
 public class ProductDao
 {
@@ -112,8 +113,8 @@ public class ProductDao
         return p;
     }
 
-    public ArrayList<Product> getAllProduct(String query){
-        ArrayList<Product> products = new ArrayList<>();
+    public HashSet<Product> getAllProduct(String query){
+        HashSet<Product> products = new HashSet<>();
         try
         {
             PreparedStatement st = this.con.prepareStatement(query);

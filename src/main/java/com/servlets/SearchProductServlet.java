@@ -9,11 +9,12 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashSet;
 
 public class SearchProductServlet extends HttpServlet
 {
     SearchProducts search = new SearchProducts();
-    ArrayList<Product> products = new ArrayList<>();
+    HashSet<Product> products = new HashSet<>();
     @Override
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
