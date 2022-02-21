@@ -1,6 +1,6 @@
 <!doctype html>
 <%@ page import="com.dao.ProductDao, com.model.Product, com.service.SearchProducts" %>
-<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.HashSet" %>
 <%@ page import="java.sql.*" %>
 
 
@@ -18,7 +18,7 @@
 </head>
 <body>
     <%
-        ArrayList<Product> products = (ArrayList<Product>)request.getAttribute("list");
+        HashSet<Product> products = (HashSet<Product>)request.getAttribute("list");
         for(Product p : products){
         %>
         <div class='card' style='width: 18rem;'>
@@ -27,7 +27,7 @@
                 <h5 class='card-title' > <%= p.getCategory() %> </h5 >
                 <h5 class='card-title' > <%= p.getPrice() %> </h5 >
                 <p class='card-text' > <%= p.getPdesc() %> </p >
-                <a href = "#" class="btn btn-primary" >Add to Cart</a >
+                <a class="btn btn-primary" href="AddToCart?pid=<%= p.getId() %>&price=<%= p.getPrice() %>" >Add to Cart</a >
 <!--                ../my_cart/myCart.jsp?pid=<%= p.getId() %>-->
                 </div >
             </div >

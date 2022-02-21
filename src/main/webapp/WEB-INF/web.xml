@@ -46,6 +46,11 @@
     <servlet-class>com.servlets.ForgotPassword</servlet-class>
   </servlet>
 
+  <servlet>
+    <servlet-name>AddToCart</servlet-name>
+    <servlet-class>com.servlets.AddToCartServlet</servlet-class>
+  </servlet>
+
 <!--Servlet Mapping-->
 
   <servlet-mapping>
@@ -87,5 +92,9 @@
     <url-pattern>/ForgotPassword</url-pattern>
   </servlet-mapping>
 
+  <servlet-mapping>
+    <servlet-name>AddToCart</servlet-name>
+    <url-pattern>/AddToCart</url-pattern>
+  </servlet-mapping>
 
 </web-app>
