@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <%@ page import="com.service.ConnectionProvider" %>
-<%@page import="java.sql.*,java.util.*, com.model.User, com.service.StoreUser"%>
-
+<%@page import="java.sql.*,java.util.*, com.model.User, com.service.StoreUser, com.service.VerifySession"%>
+<%@ page errorPage="../error_pages/error_page1.jsp" %>
 <html>
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -9,6 +9,9 @@
 <br>
 <br>
 <%
+if(VerifySession.verifySession(request, response)){
+return;
+}
     Connection con = ConnectionProvider.getConnection();
     StoreUser store = new StoreUser();
     User user = store.getUser();

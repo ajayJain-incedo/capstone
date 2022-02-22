@@ -1,6 +1,7 @@
-<%@page import="com.service.ConnectionProvider"%>
+<%@page import="com.service.ConnectionProvider, com.service.VerifySession"%>
 <%@page import="java.sql.*"%>
 <%@include file="footer.jsp" %>
+<%@ page errorPage="../error_pages/error_page1.jsp" %>
 <html>
 <head>
     <link rel="stylesheet" href="css/addressPaymentForOrder-style.css">
@@ -15,6 +16,11 @@ if(window.history.forward(1) !=null)
 <table>
     <thead>
     <%
+
+    if(VerifySession.verifySession(request, response)){
+    return;
+    }
+
     //String email = session.getAttribute("email").toString();
     int total=0;
     int sno=0;

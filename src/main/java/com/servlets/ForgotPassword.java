@@ -1,7 +1,9 @@
 package com.servlets;
 
+import com.dao.UserDao;
+import com.model.User;
+import com.service.ConnectionProvider;
 import com.service.EmailUtility;
-
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -10,45 +12,42 @@ import java.io.PrintWriter;
 import javax.servlet.ServletContext;
 import java.util.Random;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpSession;
+
 
 public class ForgotPassword extends HttpServlet {
-    private String host;
-    private String port;
-    private String user;
-    private String pass;
 
-    public void init() {
-        // reads SMTP server setting from web.xml file
-        ServletContext context = getServletContext();
-        host = context.getInitParameter("host");
-        port = context.getInitParameter("port");
-        user = context.getInitParameter("user");
-        pass = context.getInitParameter("pass");
-    }
     @Override
     public void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
         PrintWriter out = res.getWriter();
         String email = req.getParameter("email");
+        UserDao dao = new UserDao(ConnectionProvider.getConnection());
+        User user=dao.getUserByEmail(email);
+        if(user==null){
+            out.println("invalid user");
+            return;
+        }
         Random random = new Random();
         int otp = random.nextInt(100000) +99999;
-        String recipient = email;
-        String subject = "OTP for password reset";
-        String content = "Your 6 digit OTP for password reset is "+otp;
 
-        String resultMessage = "";
+        EmailUtility eu = new EmailUtility();
+
 
         try {
-            EmailUtility.sendEmail(host, port, user, pass, recipient, subject,
-                    content);
-            resultMessage = "The e-mail was sent successfully";
+            boolean tst = eu.sendMail(email, otp);
+            if (tst){
+                HttpSession session = req.getSession();
+                session.setAttribute("otp", otp);
+                session.setAttribute("email", email);
+                out.println("done");
+
+            }else {
+                out.println("error");
+
+            }
         } catch (Exception ex) {
             ex.printStackTrace();
-            resultMessage = "There were an error: " + ex.getMessage();
-        } finally {
-            req.setAttribute("Message", resultMessage);
-            getServletContext().getRequestDispatcher("/Result.jsp").forward(
-                    req, res);
+
         }
 
 

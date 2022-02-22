@@ -1,7 +1,6 @@
 package com.dao;
 import com.model.Product;
 import java.sql.*;
-import java.util.ArrayList;
 import java.util.HashSet;
 
 public class ProductDao
@@ -41,6 +40,10 @@ public class ProductDao
         boolean isQuery = false;
         try
         {
+            String query2="delete from cart_item where product_id=?";
+            PreparedStatement pstmt = this.con.prepareStatement(query2);
+            pstmt.setInt(1, product.getId());
+            pstmt.executeUpdate();
             String query = "delete from product where pname = ?";
             PreparedStatement st = this.con.prepareStatement(query);
             System.out.println(product.getPname());
@@ -114,6 +117,7 @@ public class ProductDao
     }
 
     public HashSet<Product> getAllProduct(String query){
+
         HashSet<Product> products = new HashSet<>();
         try
         {

@@ -1,5 +1,7 @@
 <%@ page import = "java.sql.*" %>
 <%@ page import = "java.io.*" %>
+<%@ page import="com.service.VerifySession" %>
+<%@ page errorPage="../error_pages/error_page1.jsp" %>
 <html xmlns="http://www.w3.org/1999/html">
 <head>
     <title>Index</title>
@@ -16,6 +18,11 @@
     </style>
 </head>
 <body>
+<%
+if(VerifySession.verifySessionForAdmin(request, response)){
+return;
+}
+%>
 <h2 style = "text-align: center"> <b><u> REMOVE ITEM PAGE </u></b></h2>
 <div class = "container">
 <form action = "../../RemoveItemServlet" method = "post" >
@@ -44,7 +51,7 @@ try{
     Statement statement = null;
     ResultSet rs = null;
     Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-    connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/shopping", "root", "root");
+    connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/shopping", "root", "admin@1234");
     statement = connection.createStatement();
     String QueryString = "Select pid, pname, pdesc, price, category, discount_percent, available_quantity, pid from product";
     rs = statement.executeQuery(QueryString);

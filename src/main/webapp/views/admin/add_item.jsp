@@ -1,3 +1,5 @@
+<%@ page import="com.service.VerifySession" %>
+<%@ page errorPage="../error_pages/error_page1.jsp" %>
 <html>
 <head>
     <title>Add Item</title>
@@ -14,6 +16,11 @@
     </style>
 </head>
 <body>
+<%
+if(VerifySession.verifySessionForAdmin(request, response)){
+return;
+}
+%>
 <a href="admin_welcome_page.jsp">
     <img style="height: 40px; width: 40px" border="0" alt="HomePage Icon" src="../../resources/static/images/admin_home_page.jpg" width="100" height="100">
 </a>
@@ -41,7 +48,19 @@
 
                     <tr>
                         <td>Enter Category:</td>
-                        <td><Input type = "text" name ="category" placeholder ="Enter here"/></td>
+                        <td><select name = "category" >
+                                <option value = "Mobiles"> Mobiles</option>
+                                <option value = "Electronics"> Electronics</option>
+                                <option value = "Appliances"> Appliances</option>
+                                <option value = "Home"> Home</option>
+                                <option value = "Fashion"> Fashion</option>
+                                <option value = "Kids"> Kids</option>
+                                <option value = "Health & Beauty"> Health & Beauty</option>
+                                <option value = "Books"> Books</option>
+                                <option value = "Sports"> Sports</option>
+                                <option value = "More"> More</option>
+                            </select>
+                        </td>
                     </tr>
                     <tr>
                         <td>Enter Discount Percent:</td>
