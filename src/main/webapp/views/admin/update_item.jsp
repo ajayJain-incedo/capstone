@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ page import = "java.sql.*" %>
 <%@ page import = "java.io.*" %>
-<%@page import = "com.service.ConnectionProvider"%>
+<%@ page import = "com.service.ConnectionProvider" %>
+<%@ include file  = "admin_header.jsp" %>
 <html xmlns="http://www.w3.org/1999/html">
 <head>
     <title>EDIT PRODUCT</title>
@@ -70,7 +71,7 @@ try{
     Statement statement = null;
     ResultSet rs = null;
     Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-    connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/shopping", "root", "root");
+    connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/shopping", "root", "admin@1234");
     statement = connection.createStatement();
     String QueryString = "Select pid, pname, pdesc, price, category, discount_percent, available_quantity, pid, pid from product";
     rs = statement.executeQuery(QueryString);

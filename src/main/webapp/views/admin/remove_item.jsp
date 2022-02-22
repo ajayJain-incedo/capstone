@@ -44,7 +44,7 @@ try{
     Statement statement = null;
     ResultSet rs = null;
     Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-    connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/shopping", "root", "root");
+    connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/shopping", "root", "admin@1234");
     statement = connection.createStatement();
     String QueryString = "Select pid, pname, pdesc, price, category, discount_percent, available_quantity, pid from product";
     rs = statement.executeQuery(QueryString);
