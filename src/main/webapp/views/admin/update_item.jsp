@@ -2,7 +2,8 @@
 <%@ page import = "java.sql.*" %>
 <%@ page import = "java.io.*" %>
 <%@ page import = "com.service.ConnectionProvider" %>
-<%@ include file  = "admin_header.jsp" %>
+<%@ include file  = "adminHeaderNav.jsp" %>
+<%@ include file = "../user/categoryBar.jsp" %>
 <html xmlns="http://www.w3.org/1999/html">
 <head>
     <title>EDIT PRODUCT</title>
