@@ -6,6 +6,7 @@ import com.model.Product;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.HashSet;
 
 public class CartDao {
     private Connection con;
@@ -30,4 +31,6 @@ public class CartDao {
         }
         return isQueryExecuted;
     }
+
+
 }
