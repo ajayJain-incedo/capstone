@@ -3,6 +3,7 @@ import com.model.User;
 import com.mysql.cj.jdbc.exceptions.MysqlDataTruncation;
 
 import java.sql.*;
+import java.util.Base64;
 
 public class UserDao {
     private final Connection con;
@@ -100,5 +101,24 @@ public class UserDao {
         return user;
 
     }
+    public boolean updatePasswordByEmail(String email, String password){
+        boolean test = false;
+        Base64.Encoder encoder = Base64.getEncoder();
+        password = encoder.encodeToString(password.getBytes());
+        try{
+            String query="update users set pass=? where email=?";
+            PreparedStatement ps = this.con.prepareStatement(query);
+            ps.setString(1, password);
+            ps.setString(2, email);
+            ps.executeUpdate();
+            test=true;
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+
+        return test;
+    }
+
 
 }

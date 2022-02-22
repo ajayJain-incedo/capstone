@@ -1,6 +1,10 @@
 <%@page import="com.service.ConnectionProvider"%>
-<%@page import="java.sql.*"%>
+<%@page import="java.sql.*, com.service.VerifySession"%>
+<%@ page errorPage="../error_pages/error_page1.jsp" %>
 <%
+if(VerifySession.verifySession(request, response)){
+return;
+}
 String email=session.getAttribute("email").toString();
 String id=request.getParameter("id");
 String incdec = request.getParameter("quantity');

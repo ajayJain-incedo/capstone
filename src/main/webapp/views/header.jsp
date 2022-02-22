@@ -1,4 +1,6 @@
 <!doctype html>
+<%@ page import="com.service.VerifySession" %>
+<%@ page errorPage="../error_pages/error_page1.jsp" %>
 <%@ page import="com.dao.UserDao, com.model.User, com.service.StoreUser" %>
 <%@ page import="java.util.*" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -13,6 +15,10 @@
     <title>CapStone</title>
 </head>
 <body>
+<%
+if(VerifySession.verifySession(request, response)){
+return;
+}%>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand inline-margin-start" href="DisplayProduct">CapStone</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

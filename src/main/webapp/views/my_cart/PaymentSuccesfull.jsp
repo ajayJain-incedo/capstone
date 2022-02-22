@@ -1,7 +1,11 @@
 <!DOCTYPE html>
+<%@page import="com.service.VerifySession"%>
+<%@ page errorPage="../error_pages/error_page1.jsp" %>
 <html>
 <body style = "background-color: #78909C;">
-
+<%if(VerifySession.verifySession(request, response)){
+return;
+}%>
 
 
 <div class="container">
@@ -14,7 +18,7 @@
                 <div class="content">
                     <h1>Payment Success !</h1>
                     <p> Thank You For Choosing Our Service !!</p>
-                    <a href="/Capstone/DisplayProduct">Go to Home</a>
+                    <a href="/capstone/DisplayProduct">Go to Home</a>
                 </div>
 
             </div>

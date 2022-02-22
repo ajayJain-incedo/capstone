@@ -1,4 +1,5 @@
 <!doctype html>
+<%@ page errorPage="../error_pages/error_page1.jsp" %>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -13,7 +14,7 @@
 <main class="my-background clip" style="height: 100vh;">
     <div class="container my-background clip">
         <div class="col-md-6 offset-md-3 p-5">
-        <form action="/capstone/ForgotPassword" method="post">
+        <form action="/capstone/ForgotPassword" method="post" id="email-form">
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Enter your email:</label>
             <input name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="example@email.com">
@@ -21,10 +22,57 @@
             <div class="text-center">
 
         <button type="submit" class="btn btn-dark">Submit</button>
+                <p id="message"></p>
             </div>
         </form>
         </div>
     </div>
 </main>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script>
+    $(document).ready(function(){
+
+        $("#message").html("");
+       $("#email-form").on("submit", function(e){
+
+            e.preventDefault();
+            var f=$(this).serialize();
+            $.ajax({
+                url: "/capstone/ForgotPassword",
+                data: f,
+                type: "POST",
+                success: function(data, textStatus, jqXHR){
+
+                    if(data.trim()==="done"){
+
+                            $("#message").css("color", "green");
+                        $("#message").html("Otp sent successfully enter otp in  ")
+                        var seconds=3;
+                        setInterval(function() {
+                            $("#redirect-message").html("Otp sent successfully enter otp in "+seconds);
+                            seconds-=1;
+                        }, 1000);
+
+                        setTimeout(function(){
+                            window.location.href = 'reset_password.jsp';
+                        }, 3000);
+
+                    }else if(data.trim()==="invalid user"){
+                    $("#message").css("color", "red");
+                    $("#message").html("This email id is not registered, please sign up.");}
+                    else{
+                    $("#message").css("color", "red");
+                        $("#message").html("Sorry! Something went wrong.");
+                    }
+                },
+                error: function(jqXHR, textStatus, errorThrown){
+                    $("#message").css("color", "red");
+                    $("#message").html("Sorry! Something went wrong.");
+
+                }
+            })
+       })
+       })
+</script>
 </body>
 </html>
