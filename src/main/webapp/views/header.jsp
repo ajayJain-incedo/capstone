@@ -1,5 +1,8 @@
 <!doctype html>
-<html lang="en">
+<%@ page import="com.dao.UserDao, com.model.User, com.service.StoreUser" %>
+<%@ page import="java.util.*" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<html lang="en" xmlns:c="http://www.w3.org/1999/XSL/Transform">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -22,9 +25,23 @@
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
     </div>
-    <div>
+    <% StoreUser store= new StoreUser();
+        User user = store.getUser();
+        System.out.println(user.getId());
+        char type= 'A';
+    //user.getUserType();
+        System.out.println(type);
 
-    </div>
+    pageContext.setAttribute("type", type);
+    %>
+        <c:if test="${type == 'A'}">
+            <%         System.out.println("admi");%>
+            <%@ include file="admin/adminHeaderNav.jsp" %>
+        </c:if>
+        <c:if test="${type == 'C'}">
+            <%         System.out.println("usr");%>
+            <%@ include file="user/userHeaderNav.jsp" %>
+        </c:if>
 
 </nav>
 </body>

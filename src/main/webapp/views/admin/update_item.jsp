@@ -2,7 +2,6 @@
 <%@ page import = "java.sql.*" %>
 <%@ page import = "java.io.*" %>
 <%@ page import = "com.service.ConnectionProvider" %>
-<%@ include file  = "admin_header.jsp" %>
 <html xmlns="http://www.w3.org/1999/html">
 <head>
     <title>EDIT PRODUCT</title>
@@ -19,7 +18,8 @@
     </style>
 </head>
 <body>
-
+<%@ include file  = "../header.jsp" %>
+<%@ include file  = "../categoryBar.jsp" %>
 <h2 style = "text-align: center"> <b><u> UPDATE ITEM PAGE </u></b></h2>
 <a href="admin_welcome_page.jsp" >
     <img style="height: 40px; width: 40px" border="0" alt="HomePage Icon" src="../../resources/static/images/admin_home_page.jpg" width="100" height="100">

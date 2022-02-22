@@ -11,10 +11,10 @@
 </head>
 <body>
     <%@page contentType="text/html" pageEncoding="UTF-8"%>
-    <%@ include file="header.jsp" %>
-    <%@ include file="categoryBar.jsp" %>
+    <%@ include file='../header.jsp' %>
+    <%@ include file='../categoryBar.jsp' %>
     <div class="inline-list inline-wrap block-margin inline-margin">
-    <%@ include file="productDisplay.jsp" %>
+    <%@ include file="../productDisplay.jsp" %>
     </div>
 
 </body>
