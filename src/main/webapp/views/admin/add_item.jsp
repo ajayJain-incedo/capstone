@@ -41,7 +41,19 @@
 
                     <tr>
                         <td>Enter Category:</td>
-                        <td><Input type = "text" name ="category" placeholder ="Enter here"/></td>
+                        <td><select name = "category" >
+                                <option value = "Mobiles"> Mobiles</option>
+                                <option value = "Electronics"> Electronics</option>
+                                <option value = "Appliances"> Appliances</option>
+                                <option value = "Home"> Home</option>
+                                <option value = "Fashion"> Fashion</option>
+                                <option value = "Kids"> Kids</option>
+                                <option value = "Health & Beauty"> Health & Beauty</option>
+                                <option value = "Books"> Books</option>
+                                <option value = "Sports"> Sports</option>
+                                <option value = "More"> More</option>
+                            </select>
+                        </td>
                     </tr>
                     <tr>
                         <td>Enter Discount Percent:</td>
