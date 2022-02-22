@@ -1,12 +1,9 @@
 <!doctype html>
 <%@ page import="com.dao.ProductDao, com.model.Product, com.service.SearchProducts" %>
 <%@ page import="java.util.HashSet" %>
-<%@ page import="java.sql.*" %>
+<%@ page import="java.sql.*, com.service.VerifySession" %>
+<%@ page errorPage="../error_pages/error_page1.jsp" %>
 
-
-
-
-<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -18,6 +15,9 @@
 </head>
 <body>
     <%
+    if(VerifySession.verifySession(request, response)){
+    return;
+    }
         HashSet<Product> products = (HashSet<Product>)request.getAttribute("list");
         for(Product p : products){
         %>

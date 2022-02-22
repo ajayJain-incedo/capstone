@@ -1,9 +1,10 @@
-<%@page import="com.service.ConnectionProvider"%>
+<%@page import="com.service.ConnectionProvider, com.service.VerifySession"%>
 <%@page import="java.sql.*"%>
 <%@ page import="com.service.StoreUser" %>
 <%@page import = "com.model.User" %>
 <%@include file ="header.jsp" %>
 <%@include file="footer.jsp" %>
+<%@ page errorPage="../error_pages/error_page1.jsp" %>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -19,6 +20,9 @@ h3
 <body>
 <div style="color: white; text-align: center; font-size: 30px;">My Cart <i class='fas fa-cart-arrow-down'></i></div>
 <%
+if(VerifySession.verifySession(request, response)){
+return;
+}
 String msg=request.getParameter("msg");
 if("notPossible".equals(msg))
 {
@@ -91,7 +95,7 @@ if("removed".equals(msg))
     ResultSet rs=pstmt.executeQuery();
     while(rs.next())
     {
-    System.out.println(rs);
+
     %>
     <tr>
         <%sno=sno+1; %>

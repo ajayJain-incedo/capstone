@@ -1,4 +1,6 @@
 <!doctype html>
+<%@ page import="com.service.VerifySession" %>
+<%@ page errorPage="../error_pages/error_page1.jsp" %>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -10,6 +12,10 @@
     <title>CapStone</title>
 </head>
 <body>
+<%
+if(VerifySession.verifySession(request, response)){
+return;
+}%>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand inline-margin-start" href="DisplayProduct">CapStone</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -29,7 +35,7 @@
                 <a class="nav-link" href="views/my_cart/myCart.jsp">Go to Cart</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Logout</a>
+                <a class="nav-link" href="Logout" >Logout</a>
             </li>
         </ul>
     </div>

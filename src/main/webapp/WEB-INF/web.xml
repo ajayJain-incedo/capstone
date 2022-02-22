@@ -1,9 +1,15 @@
-<!DOCTYPE web-app PUBLIC
- "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
- "http://java.sun.com/dtd/web-app_2_3.dtd" >
+<?xml version="1.0" encoding="UTF-8"?>
 
-<web-app>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+         version="2.5"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
   <display-name>Archetype Created Web Application</display-name>
+
+  <error-page>
+    <error-code>404</error-code>
+    <location>/views/error_pages/error_page2.jsp</location>
+  </error-page>
 
 <!--  Servlet declaration-->
   <servlet>
@@ -51,6 +57,25 @@
     <servlet-class>com.servlets.AddToCartServlet</servlet-class>
   </servlet>
 
+  <servlet>
+    <servlet-name>remove item</servlet-name>
+    <servlet-class>com.servlets.RemoveItemServlet</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>logout</servlet-name>
+    <servlet-class>com.servlets.Logout</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>verify otp</servlet-name>
+    <servlet-class>com.servlets.VerifyOtp</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>reset password</servlet-name>
+    <servlet-class>com.servlets.ResetPassword</servlet-class>
+  </servlet>
+
 <!--Servlet Mapping-->
 
   <servlet-mapping>
@@ -96,5 +121,26 @@
     <servlet-name>AddToCart</servlet-name>
     <url-pattern>/AddToCart</url-pattern>
   </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>remove item</servlet-name>
+    <url-pattern>/RemoveItemServlet</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>logout</servlet-name>
+    <url-pattern>/Logout</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>verify otp</servlet-name>
+    <url-pattern>/VerifyOtp</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>reset password</servlet-name>
+    <url-pattern>/ResetPassword</url-pattern>
+  </servlet-mapping>
+
 
 </web-app>

@@ -1,4 +1,5 @@
 <!doctype html>
+<%@ page errorPage="../error_pages/error_page1.jsp" %>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
