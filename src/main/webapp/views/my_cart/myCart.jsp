@@ -1,6 +1,8 @@
 <%@page import="com.service.ConnectionProvider"%>
+<%@ page import="com.dao.ProductDao, com.model.Product, com.service.SearchProducts" %>
+<%@ page import="java.util.HashSet" %>
 <%@page import="java.sql.*"%>
-<%@ page import="com.service.StoreUser" %>
+<%@ page import="com.service.StoreUser,com.dao.CartDao" %>
 <%@page import = "com.model.User" %>
 <%@include file ="header.jsp" %>
 <%@include file="footer.jsp" %>
@@ -52,14 +54,14 @@ if("removed".equals(msg))
     int sno=0;
     try
     {
-    Connection con = ConnectionProvider.getConnection();
-    java.sql.PreparedStatement st = con.prepareStatement("select * from cart_item where user_id=?");
-    st.setInt(1, user.getId());
-    ResultSet rs1=st.executeQuery();
-    while(rs1.next())
-    {
-    total +=rs1.getInt("amount");
-    }
+        Connection con = ConnectionProvider.getConnection();
+        java.sql.PreparedStatement st = con.prepareStatement("select * from cart_item where user_id=?");
+        st.setInt(1, user.getId());
+        ResultSet rs1=st.executeQuery();
+        while(rs1.next())
+        {
+        total +=rs1.getInt("amount");
+        }
     %>
     <tr>
         <th scope="col" style="background-color: yellow;">Total: <i class="fa fa-inr"></i> <%out.println(total); %></th>
@@ -79,35 +81,30 @@ if("removed".equals(msg))
     </thead>
     <tbody>
     <%
-
-
-
     System.out.println(user.getId());
-    String query ="select pname, category, round(amount/quantity) as price, quantity, amount from cart_item, product where user_id = ? and cart_item.product_id = product.pid";
-
-    PreparedStatement pstmt =con.prepareStatement(query);
-    pstmt.setInt(1, user.getId());
-   // pstmt.setString(1, String.valueOf(current_user.getId()));
-    ResultSet rs=pstmt.executeQuery();
-    while(rs.next())
+    SearchProducts search = new SearchProducts();
+    HashSet<Product> product = search.searchAllProductInCart(user.getId());
+        double amount=0;
+    for(Product p: product)
     {
-    System.out.println(rs);
+        amount +=p.getPrice();
     %>
     <tr>
         <%sno=sno+1; %>
         <td><%=sno %></td>
-        <td><%=rs.getString(1) %></td>
-        <td><%=rs.getString(2) %></td>
-        <td><i class="fa fa-inr"></i> <%=rs.getString(3) %></td>
-        <td><a href="incDecQuantityAction.jsp?id=<%=rs.getString(1)%>&quantity=inc"><i class='fas fa-plus-circle'></i></a> <%=rs.getInt(4) %> <a href="incDecQuantityAction.jsp?id=<%=rs.getString(1)%>&quantity=dec"><i class='fas fa-minus-circle'></i></a></td>
-        <td><i class="fa fa-inr"></i> <%=rs.getInt(5) %> </td>
-        <td><a href="removeFromCart.jsp?id<%=rs.getString(1)%>">Remove <i class='fas fa-trash-alt'></i></a></td>
+        <td><%=p.getPname() %></td>
+        <td><%=p.getCategory() %></td>
+        <td><i class="fa fa-inr"></i> <%=p.getPrice() %></td>
+
+        <td><i class="fa fa-inr"></i>  </td>
+
     </tr>
     <%
     }
     }
     catch(Exception e)
-    {}
+    {
+        }
     %>
     </tbody>
 </table>
