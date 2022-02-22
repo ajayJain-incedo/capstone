@@ -21,18 +21,11 @@
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="pname">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
-        <ul class="navbar-nav mr-auto inline-list-padding">
-            <li class="nav-item">
-                <a class="nav-link" href="#">My Profile</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="views/my_cart/myCart.jsp">Go to Cart</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Logout</a>
-            </li>
-        </ul>
     </div>
+    <div>
+
+    </div>
+
 </nav>
 </body>
 </html>

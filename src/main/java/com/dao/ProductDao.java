@@ -114,6 +114,7 @@ public class ProductDao
     }
 
     public HashSet<Product> getAllProduct(String query){
+
         HashSet<Product> products = new HashSet<>();
         try
         {
