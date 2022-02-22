@@ -2,8 +2,10 @@ package com.servlets;
 
 import com.model.Product;
 import com.service.SearchProducts;
+import com.service.VerifySession;
 
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,6 +19,10 @@ public class DisplayProductsServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
+            if(VerifySession.verifySession(req, resp)){
+                System.out.println("Condition true");
+                return;
+            }
             SearchProducts search = new SearchProducts();
 
             HashSet<Product> products = search.searchAllProducts();

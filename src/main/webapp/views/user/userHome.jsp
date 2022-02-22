@@ -1,4 +1,6 @@
 <!doctype html>
+<%@ page import="com.service.VerifySession" %>
+<%@ page errorPage="../error_pages/error_page1.jsp" %>
 <html lang="en" xmlns:jsp="http://www.w3.org/1999/XSL/Transform">
 <head>
     <meta charset="UTF-8">
@@ -10,6 +12,10 @@
     <title>Document</title>
 </head>
 <body>
+<%
+if(VerifySession.verifySession(request, response)){
+return;
+}%>
     <%@page contentType="text/html" pageEncoding="UTF-8"%>
     <%@ include file="header.jsp" %>
     <%@ include file="categoryBar.jsp" %>

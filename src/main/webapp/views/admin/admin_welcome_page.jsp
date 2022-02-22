@@ -1,3 +1,5 @@
+<%@ page import="com.service.VerifySession" %>
+<%@ page errorPage="../error_pages/error_page1.jsp" %>
 <html>
 <head>
     <title>ADMIN PAGE</title>
@@ -14,6 +16,11 @@
     </style>
 </head>
 <body>
+<%
+if(VerifySession.verifySessionForAdmin(request, response)){
+return;
+}
+%>
 <h2> <b><u>WELCOME TO THE ADMIN PAGE</u></b></h2>
 <div class="d-flex" style="margin: 50px 100px">
 <div class = "container " >

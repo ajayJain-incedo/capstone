@@ -1,6 +1,11 @@
 <%@page import="project.ConnectionProvider"%>
+<%@page import="com.service.VerifySession"%>
 <%@page import="java.sql.*"%>
+<%@ page errorPage="../error_pages/error_page1.jsp" %>
 <%
+if(VerifySession.verifySession(request, response)){
+return;
+}
 String email=session.getAttribute("email").toString();
 String product_id=request.getParameter("id");
 try
