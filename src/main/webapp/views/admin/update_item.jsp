@@ -4,6 +4,8 @@
 <%@page import = "com.service.ConnectionProvider"%>
 <%@ page import="com.service.VerifySession" %>
 <%@ page errorPage="../error_pages/error_page1.jsp" %>
+<%@ page import = "com.service.ConnectionProvider" %>
+<%@ include file  = "admin_header.jsp" %>
 <html xmlns="http://www.w3.org/1999/html">
 <head>
     <title>EDIT PRODUCT</title>
