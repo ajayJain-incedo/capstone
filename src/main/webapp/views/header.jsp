@@ -43,7 +43,7 @@ return;
 
        <%@ include file="user/userHeaderNav.jsp" %>
 
-    |${type}|
+
 
 </nav>
 </body>

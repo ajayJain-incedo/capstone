@@ -16,23 +16,21 @@ double total=0;
 int quantity=0;
 int final_total=0;
 try{
-Connection con = ConnectionProvider.getConnection();
-
-
-String query="select user_id, category, round(amount/quantity, 1) as price, quantity, amount from cart_item, product where user_id ="+id+" and cart_item.product_id ="+pid;
-PreparedStatement st = con.prepareStatement(query);
-ResultSet rs = st.executeQuery();
-if(rs.next()){
-System.out.println(rs.getString(2));
+    Connection con = ConnectionProvider.getConnection();
+    String query="select user_id, category, round(amount/quantity, 1) as price, quantity, amount from cart_item, product where user_id ="+id+" and cart_item.product_id ="+pid;
+    PreparedStatement st = con.prepareStatement(query);
+    ResultSet rs = st.executeQuery();
+    if(rs.next()){
+        System.out.println(rs.getString(2));
 }
 while(rs.next()){
-price=rs.getDouble("price");
-total=rs.getDouble("amount");
-quantity=rs.getInt("quantity");
-System.out.println("Quantity is "+quantity);
+    price=rs.getDouble("price");
+    total=rs.getDouble("amount");
+    quantity=rs.getInt("quantity");
+    System.out.println("Quantity is "+quantity);
 }
 if(quantity==1 && incdec.equals("dec")){
-response.sendRedirect("myCart.jsp?msg=notPossible");
+    response.sendRedirect("myCart.jsp?msg=notPossible");
 }
 else if(quantity !=1 && incdec.equals("dec"))
 {

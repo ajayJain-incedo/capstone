@@ -104,7 +104,7 @@ if("removed".equals(msg))
         <td><i class="fa fa-inr"></i> <%=rs.getString(3) %></td>
         <td><a href='incDecQuantityAction.jsp?id=<%=user.getId()%>&quantity=inc&pid=<%=rs.getInt(4) %>'><i class='fas fa-plus-circle'></i></a> <%=rs.getInt(5) %> <a href='incDecQuantityAction.jsp?id=<%=user.getId()%>&quantity=dec&pid=<%=rs.getInt(6) %>'><i class='fas fa-minus-circle'></i></a></td>
         <td><i class="fa fa-inr"></i> <%=rs.getInt(7) %> </td>
-        <td><a href="removeFromCart.jsp?id<%=rs.getString(8)%>">Remove <i class='fas fa-trash-alt'></i></a></td>
+        <td><a href="removeFromCart.jsp?id=<%=user.getId()%>&pid=<%=rs.getInt(4) %>">Remove <i class='fas fa-trash-alt'></i></a></td>
     </tr>
     <%
     }
