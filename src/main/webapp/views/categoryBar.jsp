@@ -24,7 +24,7 @@
             <a class="nav-item nav-link" href="CategoryProduct?category=Home">Home</a>
             <a class="nav-item nav-link" href="CategoryProduct?category=Fashion">Fashion</a>
             <a class="nav-item nav-link" href="CategoryProduct?category=Kids">Kids</a>
-            <a class="nav-item nav-link" href="CategoryProduct?category=Health & Beauty">Health & Beauty</a>
+            <a class="nav-item nav-link" href="CategoryProduct?category=Health&Beauty">Health & Beauty</a>
             <a class="nav-item nav-link" href="CategoryProduct?category=Books">Books</a>
             <a class="nav-item nav-link" href="CategoryProduct?category=Sports">Sports</a>
             <a class="nav-item nav-link" href="CategoryProduct?category=More">More</a>

@@ -29,6 +29,8 @@ if(VerifySession.verifySessionForAdmin(request, response)){
 return;
 }
 %>
+
+<h2 style = "text-align: center"> <b><u> UPDATE ITEM PAGE </u></b></h2>
 <%@ include file= "AdminHeader.jsp" %>
 
 

@@ -20,17 +20,19 @@
     }
         HashSet<Product> products = (HashSet<Product>)request.getAttribute("list");
         for(Product p : products){
+            String path = "resources/static/product_images/" +p.getPimage()+".jpg";
+            System.out.println(path);
         %>
         <div class='card' style='width: 18rem;'>
             <div class='card-body' >
-                <h5 class='card-title' > <%= p.getPname() %> </h5 >
+                <img class="card-img-top "style="width:200px; height:200px; object-fit:contain;" src=<%=path%> alt=<%=p.getPimage()%>>
+                <h5 class='card-title' style="margin-top:10px;"> <%= p.getPname() %> </h5 >
                 <h5 class='card-title' > <%= p.getCategory() %> </h5 >
-                <h5 class='card-title' > <%= p.getPrice() %> </h5 >
+                <h5 class='card-title' > &#8377;<%= p.getPrice() %> </h5 >
                 <p class='card-text' > <%= p.getPdesc() %> </p >
                 <a class="btn btn-primary" href="AddToCart?pid=<%= p.getId() %>&price=<%= p.getPrice() %>" >Add to Cart</a >
-<!--                ../my_cart/myCart.jsp?pid=<%= p.getId() %>-->
-                </div >
             </div >
+        </div >
         <% } %>
 
 </body>

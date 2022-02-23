@@ -3,8 +3,7 @@
 <%@ page errorPage="../error_pages/error_page1.jsp" %>
 <%@ page import="com.dao.UserDao, com.model.User, com.service.StoreUser" %>
 <%@ page import="java.util.*" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<html lang="en" xmlns:c="http://www.w3.org/1999/XSL/Transform">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -13,6 +12,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="resources/css/user.css">
     <title>CapStone</title>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 </head>
 <body>
 <%
@@ -31,8 +32,16 @@ return;
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
     </div>
+    <% StoreUser store= new StoreUser();
+        User user = store.getUser();
+        System.out.println(user.getId());
+        char type=user.getUserType();
+        System.out.println(type);
 
-    <%@ include file="user/userHeaderNav.jsp" %>
+    pageContext.setAttribute("type", type);
+    %>
+
+       <%@ include file="user/userHeaderNav.jsp" %>
 
 
 

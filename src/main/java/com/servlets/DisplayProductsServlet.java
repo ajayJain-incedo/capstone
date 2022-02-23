@@ -1,9 +1,14 @@
 package com.servlets;
 
+import com.dao.UserDao;
 import com.model.Product;
+import com.model.User;
+import com.service.ConnectionProvider;
 import com.service.SearchProducts;
+import com.service.StoreUser;
 import com.service.VerifySession;
 
+import javax.mail.Store;
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
@@ -14,24 +19,25 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashSet;
 
+import static java.lang.System.out;
+
 public class DisplayProductsServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
             if(VerifySession.verifySession(req, resp)){
-                System.out.println("Condition true");
+                out.println("Condition true");
+
                 return;
             }
             SearchProducts search = new SearchProducts();
 
             HashSet<Product> products = search.searchAllProducts();
-//            PrintWriter
-//            out.println(products);
 
             req.setAttribute("list", products);
             req.getRequestDispatcher("views/user/userHome.jsp").forward(req, resp);
-//            resp.sendRedirect("views/user/userHome.jsp");
+            resp.sendRedirect("views/user/userHome.jsp");
         } catch (SQLException ex) {
             ex.printStackTrace();
         }

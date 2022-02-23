@@ -20,7 +20,7 @@ public class Logout extends HttpServlet {
         if(cookies!=null){
             for(Cookie cookie: cookies){
                 cookie.setValue("");
-                cookie.setPath("/capstone");
+                cookie.setPath("/Capstone");
                 cookie.setMaxAge(0);
                 response.addCookie(cookie);
             }
@@ -28,7 +28,7 @@ public class Logout extends HttpServlet {
         }
         HttpSession session = request.getSession();
         session.invalidate();
-        response.sendRedirect("/capstone");
+        response.sendRedirect("/Capstone");
 
     }
 }
