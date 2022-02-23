@@ -1,7 +1,8 @@
-<%@page import="com.service.ConnectionProvider"%>
+<%@page import="com.service.ConnectionProvider, com.service.VerifySession"%>
 <%@page import="java.sql.*"%>
 <%@include file="header.jsp" %>
 <%@include file="footer.jsp" %>
+<%@ page errorPage="../error_pages/error_page1.jsp" %>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -27,6 +28,9 @@
     </thead>
     <tbody>
     <%
+    if(VerifySession.verifySession(request, response)){
+    return;
+    }
     int sno=0;
     try
     {

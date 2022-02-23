@@ -5,6 +5,8 @@
 <%@page import = "com.dao.ProductDao"%>
 <%@page import = "com.model.Product "%>
 <%@page import = "com.service.ConnectionProvider"%>
+<%@ page import="com.service.VerifySession" %>
+<%@ page errorPage="../error_pages/error_page1.jsp" %>
 
 <html xmlns="http://www.w3.org/1999/html">
 <title>UPDATE ITEM DETAILS</title>
@@ -32,7 +34,11 @@
             }
 %>
 <body>
-
+<%
+if(VerifySession.verifySessionForAdmin(request, response)){
+return;
+}
+%>
 <div class = "container">
     <div class="card" style = "text-align: center">
         <div class="card-body">

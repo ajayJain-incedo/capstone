@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ page import = "java.sql.*" %>
 <%@ page import = "java.io.*" %>
+<%@page import = "com.service.ConnectionProvider"%>
+<%@ page import="com.service.VerifySession" %>
+<%@ page errorPage="../error_pages/error_page1.jsp" %>
 <%@ page import = "com.service.ConnectionProvider" %>
-<%@ include file  = "adminHeaderNav.jsp" %>
-<%@ include file = "../user/categoryBar.jsp" %>
 <html xmlns="http://www.w3.org/1999/html">
 <head>
     <title>EDIT PRODUCT</title>
@@ -20,7 +21,13 @@
     </style>
 </head>
 <body>
-
+<%
+if(VerifySession.verifySessionForAdmin(request, response)){
+return;
+}
+%>
+<%@ include file  = "../header.jsp" %>
+<%@ include file  = "../categoryBar.jsp" %>
 <h2 style = "text-align: center"> <b><u> UPDATE ITEM PAGE </u></b></h2>
 <a href="admin_welcome_page.jsp" >
     <img style="height: 40px; width: 40px" border="0" alt="HomePage Icon" src="../../resources/static/images/admin_home_page.jpg" width="100" height="100">

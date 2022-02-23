@@ -1,5 +1,4 @@
-<%@ page import="java.net.HttpURLConnection, java.net.URL" %>
-<html>
+<%@ page errorPage="../error_pages/error_page1.jsp" %>
 <head>
     <title>Login</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -18,9 +17,10 @@
                 userType=c.getValue().charAt(0);
                 if(userType=='A'){
                     response.sendRedirect("views/admin/admin_welcome_page.jsp");
-                }else{
+                }else if(userType == 'C'){
                     response.sendRedirect("DisplayProduct");
                 }
+
             }
         }
     }
@@ -32,7 +32,7 @@
 
                 <div class="col-md-4 offset-md-4 lc">
                     <div class="card">
-                        <div class="card-header text-center">
+                        <div class="card-header text-center card-header-background{">
                             <i class="	fa fa-user-circle-o fa-2x "></i>
                             <p>Login Here</p>
                             <p id="failuremessage" style="color: red;"></p>
@@ -60,7 +60,7 @@
 
                               </div>
                                 <div class="container text-center">
-                                    <button type="submit" class="btn btn-dark">Submit</button>
+                                    <button type="submit" class="btn btn-dark" style="background-color:#34515e;">Submit</button>
                                 </div>
 
                             </form>

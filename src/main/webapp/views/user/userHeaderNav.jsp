@@ -1,6 +1,5 @@
 <!doctype html>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -10,13 +9,17 @@
     <title>Document</title>
 </head>
 <body>
-
-<nav class="navbar navbar-light bg-light">
-    <form class="form-inline" >
-        <a href="add_item.jsp" class="btn btn-success">ADD ITEM</a>
-        <button class="btn btn-sm btn-outline-secondary" type="button">LOG OUT</button>
-    </form>
-</nav>
-
+<ul class="navbar-nav mr-auto inline-list-padding">
+    <li class="nav-item">
+        <a class="nav-link" href="#">My Profile</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="views/my_cart/myCart.jsp">Go to Cart</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#">Logout</a>
+    </li>
+</ul>
 </body>
 </html>
+

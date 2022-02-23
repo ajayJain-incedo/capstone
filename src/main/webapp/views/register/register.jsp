@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@ page errorPage="../error_pages/error_page1.jsp" %>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -12,8 +13,8 @@
         <div class="container my-background clip" style="z-index:88;">
             <div class="col-md-6 offset-md-3">
                 <div class="card">
-                    <div class="card-header text-center">
-                        <span class="fa fa-3x fa-user-plus"></span>
+                    <div class="card-header text-center card-header-background">
+                        <span class="fa fa-2x fa-user-plus"></span>
                         <br>
                         <p>Register Here</p>
 
@@ -34,11 +35,13 @@
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Email address</label>
                                 <input name="email" required type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email address*">
+                                <p id="failuremessage-email" style="color:red;"></p>
                             </div>
 
                             <div class="mb-3">
                                 <label for="mobile" class="form-label">Mobile number</label>
                                 <input maxlength="10" minlength="10" name="mobile" required type="text"  class="form-control" id="mobile" aria-describedby="emailHelp" placeholder="Enter mobile number*" onkeypress="return isNumberKey(event)">
+                                <p id="failuremessage-mobile" style="color:red;"></p>
                             </div>
 
                             <div class="mb-3">
@@ -54,10 +57,11 @@
                             <div class="mb-3">
                                 <label for="password2" class="form-label">Enter password again</label>
                                 <input name="password2" minlength="8" required type="password" class="form-control" id="password2" placeholder="Re-enter your password*">
+                                <p id="failuremessage-password" style="color:red;"></p>
                             </div>
                             <div class="text-center">
-                            <button type="submit" class="btn btn-dark">Submit</button>
-                            <a href="../../index.jsp" class="btn btn-dark">Go to login</a>
+                            <button style="background-color:#34515e;" type="submit" class="btn btn-dark" id="submit-button">Submit</button>
+                            <a style="background-color:#34515e;" href="../../index.jsp" class="btn btn-dark" id="login-button">Go to login</a>
                                 <div class="loader mt-4" >
                                     <div class="d-flex align-items-center">
                                         <strong>Loading...</strong>
@@ -88,6 +92,9 @@
 
        $("#register-form").on("submit", function(e){
              $("#failuremessage").html("")
+             $("#failuremessage-mobile").html("");
+             $("#failuremessage-email").html("");
+             $("#failuremessage-password").html("");
             e.preventDefault();
             var f=$(this).serialize();
             $(".loader").css("display", "flex");
@@ -98,6 +105,8 @@
                 success: function(data, textStatus, jqXHR){
                     $(".loader").css("display", "none");
                     if(data.trim()==="done"){
+                    $("#submit-button").hide();
+                    $("#login-button").hide();
                     var mob=$("#mobile").val();
                         $("#failuremessage").css("color", "green");
                         $("#failuremessage").html("Successfully Registered, Redirecting to login page in ");
@@ -112,11 +121,11 @@
                         }, 5000);
 
                     }else if(data.trim()==="mobileError"){
-                         $("#failuremessage").html("Please enter correct mobile number...");
+                         $("#failuremessage-mobile").html("Please enter correct mobile number!");
                     }else if(data.trim()==="emailDuplicate"){
-                        $("#failuremessage").html("Email already exist");
+                        $("#failuremessage-email").html("Email already exist!");
                     }else if(data.trim()==="passwordNotMatching"){
-                        $("#failuremessage").html("Passwords didn't match.");
+                        $("#failuremessage-password").html("Passwords not matching!");
                     }else if(data.trim()==="tooLong"){
                         $("#failuremessage").html("Maximum character limit exceeded!");
                     }

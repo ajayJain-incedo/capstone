@@ -1,5 +1,10 @@
 <!doctype html>
-<html lang="en">
+<%@ page import="com.service.VerifySession" %>
+<%@ page errorPage="../error_pages/error_page1.jsp" %>
+<%@ page import="com.dao.UserDao, com.model.User, com.service.StoreUser" %>
+<%@ page import="java.util.*" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<html lang="en" xmlns:c="http://www.w3.org/1999/XSL/Transform">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -10,6 +15,10 @@
     <title>CapStone</title>
 </head>
 <body>
+<%
+if(VerifySession.verifySession(request, response)){
+return;
+}%>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand inline-margin-start" href="DisplayProduct">CapStone</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -21,18 +30,25 @@
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="pname">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
-        <ul class="navbar-nav mr-auto inline-list-padding">
-            <li class="nav-item">
-                <a class="nav-link" href="#">My Profile</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="views/my_cart/myCart.jsp">Go to Cart</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Logout</a>
-            </li>
-        </ul>
     </div>
+    <% StoreUser store= new StoreUser();
+        User user = store.getUser();
+        System.out.println(user.getId());
+        char type= 'A';
+    //user.getUserType();
+        System.out.println(type);
+
+    pageContext.setAttribute("type", type);
+    %>
+        <c:if test="${type == 'A'}">
+            <%         System.out.println("admi");%>
+            <%@ include file="admin/adminHeaderNav.jsp" %>
+        </c:if>
+        <c:if test="${type == 'C'}">
+            <%         System.out.println("usr");%>
+            <%@ include file="user/userHeaderNav.jsp" %>
+        </c:if>
+
 </nav>
 </body>
 </html>
