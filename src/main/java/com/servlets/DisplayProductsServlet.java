@@ -1,9 +1,14 @@
 package com.servlets;
 
+import com.dao.UserDao;
 import com.model.Product;
+import com.model.User;
+import com.service.ConnectionProvider;
 import com.service.SearchProducts;
+import com.service.StoreUser;
 import com.service.VerifySession;
 
+import javax.mail.Store;
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
@@ -23,12 +28,12 @@ public class DisplayProductsServlet extends HttpServlet {
         try {
             if(VerifySession.verifySession(req, resp)){
                 out.println("Condition true");
+
                 return;
             }
             SearchProducts search = new SearchProducts();
 
             HashSet<Product> products = search.searchAllProducts();
-//            PrintWriter
 
             req.setAttribute("list", products);
             req.getRequestDispatcher("views/user/userHome.jsp").forward(req, resp);

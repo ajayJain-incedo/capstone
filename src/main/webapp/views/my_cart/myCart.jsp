@@ -86,8 +86,8 @@ if("removed".equals(msg))
     </thead>
     <tbody>
     <%
-    System.out.println(user.getId());
-    String query ="select pname, category, round(amount/quantity) as price, quantity, amount from cart_item, product where user_id = ? and cart_item.product_id = product.pid";
+    //System.out.println(user.getId());
+    String query ="select pname, category, round(amount/quantity, 1) as price,  product_id, quantity, product_id ,amount,  product_id from cart_item, product where user_id = ? and cart_item.product_id = product.pid";
 
     PreparedStatement pstmt =con.prepareStatement(query);
     pstmt.setInt(1, user.getId());
@@ -95,7 +95,6 @@ if("removed".equals(msg))
     ResultSet rs=pstmt.executeQuery();
     while(rs.next())
     {
-    System.out.println(rs);
     %>
     <tr>
         <%sno=sno+1; %>
@@ -103,9 +102,9 @@ if("removed".equals(msg))
         <td><%=rs.getString(1) %></td>
         <td><%=rs.getString(2) %></td>
         <td><i class="fa fa-inr"></i> <%=rs.getString(3) %></td>
-        <td><a href="incDecQuantityAction.jsp?id=<%=rs.getString(1)%>&quantity=inc"><i class='fas fa-plus-circle'></i></a> <%=rs.getInt(4) %> <a href="incDecQuantityAction.jsp?id=<%=rs.getString(1)%>&quantity=dec"><i class='fas fa-minus-circle'></i></a></td>
-        <td><i class="fa fa-inr"></i> <%=rs.getInt(5) %> </td>
-        <td><a href="removeFromCart.jsp?id<%=rs.getString(1)%>">Remove <i class='fas fa-trash-alt'></i></a></td>
+        <td><a href='incDecQuantityAction.jsp?id=<%=user.getId()%>&quantity=inc&pid=<%=rs.getInt(4) %>'><i class='fas fa-plus-circle'></i></a> <%=rs.getInt(5) %> <a href='incDecQuantityAction.jsp?id=<%=user.getId()%>&quantity=dec&pid=<%=rs.getInt(6) %>'><i class='fas fa-minus-circle'></i></a></td>
+        <td><i class="fa fa-inr"></i> <%=rs.getInt(7) %> </td>
+        <td><a href="removeFromCart.jsp?id<%=rs.getString(8)%>">Remove <i class='fas fa-trash-alt'></i></a></td>
     </tr>
     <%
     }
