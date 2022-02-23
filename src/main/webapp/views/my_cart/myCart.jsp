@@ -87,22 +87,25 @@ if("removed".equals(msg))
     <tbody>
     <%
     System.out.println(user.getId());
-    SearchProducts search = new SearchProducts();
-    HashSet<Product> product = search.searchAllProductInCart(user.getId());
-        double amount=0;
-    for(Product p: product)
+    String query ="select pname, category, round(amount/quantity) as price, quantity, amount from cart_item, product where user_id = ? and cart_item.product_id = product.pid";
+
+    PreparedStatement pstmt =con.prepareStatement(query);
+    pstmt.setInt(1, user.getId());
+   // pstmt.setString(1, String.valueOf(current_user.getId()));
+    ResultSet rs=pstmt.executeQuery();
+    while(rs.next())
     {
-        amount +=p.getPrice();
+    System.out.println(rs);
     %>
     <tr>
         <%sno=sno+1; %>
         <td><%=sno %></td>
-        <td><%=p.getPname() %></td>
-        <td><%=p.getCategory() %></td>
-        <td><i class="fa fa-inr"></i> <%=p.getPrice() %></td>
-
-        <td><i class="fa fa-inr"></i>  </td>
-
+        <td><%=rs.getString(1) %></td>
+        <td><%=rs.getString(2) %></td>
+        <td><i class="fa fa-inr"></i> <%=rs.getString(3) %></td>
+        <td><a href="incDecQuantityAction.jsp?id=<%=rs.getString(1)%>&quantity=inc"><i class='fas fa-plus-circle'></i></a> <%=rs.getInt(4) %> <a href="incDecQuantityAction.jsp?id=<%=rs.getString(1)%>&quantity=dec"><i class='fas fa-minus-circle'></i></a></td>
+        <td><i class="fa fa-inr"></i> <%=rs.getInt(5) %> </td>
+        <td><a href="removeFromCart.jsp?id<%=rs.getString(1)%>">Remove <i class='fas fa-trash-alt'></i></a></td>
     </tr>
     <%
     }

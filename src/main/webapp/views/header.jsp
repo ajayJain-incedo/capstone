@@ -31,23 +31,10 @@ return;
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
     </div>
-    <% StoreUser store= new StoreUser();
-        User user = store.getUser();
-        System.out.println(user.getId());
-        char type= 'A';
-    //user.getUserType();
-        System.out.println(type);
 
-    pageContext.setAttribute("type", type);
-    %>
-        <c:if test="${type == 'A'}">
-            <%         System.out.println("admi");%>
-            <%@ include file="admin/adminHeaderNav.jsp" %>
-        </c:if>
-        <c:if test="${type == 'C'}">
-            <%         System.out.println("usr");%>
-            <%@ include file="user/userHeaderNav.jsp" %>
-        </c:if>
+    <%@ include file="user/userHeaderNav.jsp" %>
+
+
 
 </nav>
 </body>
