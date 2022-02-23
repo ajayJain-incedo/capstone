@@ -26,8 +26,7 @@ if(VerifySession.verifySessionForAdmin(request, response)){
 return;
 }
 %>
-<%@ include file  = "../header.jsp" %>
-<%@ include file  = "../categoryBar.jsp" %>
+
 <h2 style = "text-align: center"> <b><u> UPDATE ITEM PAGE </u></b></h2>
 <a href="admin_welcome_page.jsp" >
     <img style="height: 40px; width: 40px" border="0" alt="HomePage Icon" src="../../resources/static/images/admin_home_page.jpg" width="100" height="100">
@@ -155,7 +154,7 @@ try{
                 <tr>
             total records: <%= total%>
             <% for (int i =0; i<=total/recordCount; i++) {%>
-            <td><a href= "update_item.jsp?pgno=<%=i%>" class = "btn btn-info "> Page<%=i+1%> </a></td>
+            <td><a href= "update_item.jsp?pgno=<%=i%>" class = "btn btn-dark "> Page<%=i+1%> </a></td>
             <%}%>
                 </tr>
             </table>
@@ -170,6 +169,14 @@ try{
 $(document).ready(function() {
     console.log("page is ready...");
     $(".delete").click(function() {
+    let text = "Are you sure you want to delete the item? \n Either OK or Cancel.";
+  if (confirm(text) == false) {
+    text = "You pressed cancelled!";
+    console.log(text);
+  } else {
+    text = "You pressed okay!";
+    console.log(text);
+
     var id = +this.id;
     $.ajax({
     url: "delete_ajax.jsp",
@@ -178,10 +185,10 @@ $(document).ready(function() {
     id : id,
     },
         success : function(data){
-
         location.reload();
     }
     });
+    }
     });
     });
 </script>

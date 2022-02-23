@@ -53,7 +53,7 @@ return;
                 Price:
                 <p><input type="number" name="price" value="<%=p.getPrice() %>"></p>
                 Category:
-                <p><input type="text" name="category" value="<%=p.getCategory() %>"></p>
+                <p><input readonly type="text" name="category" value="<%=p.getCategory() %>"></p>
 
                 Discount Percentage:
                 <p><input type="number" name="discount_percent" value="<%=p.getDiscount_percent() %>" min="0" max="100"></p>
@@ -100,7 +100,7 @@ return;
             Price:
             <p><input type="number" name="price" value="<%=rs.getString(4) %>"></p>
             Category:
-            <p><input type="text" name="category" value="<%=rs.getString(5) %>"></p>
+            <p><input readonly type="text" name="category" placeholder="<%=rs.getString(5) %>"></p>
 
             Discount Percentage:
             <p><input type="number" name="discount_percent" value="<%=rs.getString(6) %>" min="0" max="100"></p>
