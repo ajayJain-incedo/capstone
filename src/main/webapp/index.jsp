@@ -32,7 +32,7 @@
 
                 <div class="col-md-4 offset-md-4 lc">
                     <div class="card">
-                        <div class="card-header text-center">
+                        <div class="card-header text-center card-header-background{">
                             <i class="	fa fa-user-circle-o fa-2x "></i>
                             <p>Login Here</p>
                             <p id="failuremessage" style="color: red;"></p>
@@ -60,7 +60,7 @@
 
                               </div>
                                 <div class="container text-center">
-                                    <button type="submit" class="btn btn-dark">Submit</button>
+                                    <button type="submit" class="btn btn-dark" style="background-color:#34515e;">Submit</button>
                                 </div>
 
                             </form>

@@ -1,6 +1,6 @@
 <!doctype html>
 <%@ page import="com.service.VerifySession" %>
-<%--<%@ page errorPage="../error_pages/error_page1.jsp" %>--%>
+<%@ page errorPage="../error_pages/error_page1.jsp" %>
 <%@ page import="com.dao.UserDao, com.model.User, com.service.StoreUser" %>
 <%@ page import="java.util.*" %>
 <html>
