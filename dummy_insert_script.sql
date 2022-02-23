@@ -79,5 +79,3 @@ values(1001,1110,239999.99,1,239999.99);
 insert into cart_item(user_id,product_id,product_price,quantity,amount)
 values(1001,1103,4999.00,1,4999.00);
 select * from cart_item;
-
-
