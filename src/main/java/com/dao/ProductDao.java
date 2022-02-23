@@ -85,16 +85,38 @@ public class ProductDao
         return isQuery;
     }
 
-    //Method to get product details item from the database using only Product Name
-    public Product getProductDetailByName( String productName)
-    {
+    public Product GetItem(String query){
         Product p =  new Product();
         try
         {
-            String query = "Select * from product where pname = ?";
             PreparedStatement st = this.con.prepareStatement(query);
-            st.setString(1, productName);
             ResultSet rs = st.executeQuery();
+            rs.next();
+            p.setId(rs.getInt("pid"));
+            p.setPname(rs.getString("pname"));
+            p.setPdesc(rs.getString("pdesc"));
+            p.setPrice(rs.getDouble("price"));
+            p.setCategory(rs.getString("category"));
+            p.setDiscount_percent(rs.getDouble("discount_percent"));
+            p.setAvailable_quantity(rs.getDouble("available_quantity"));
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        return p;
+    }
+
+    //Method to get product details item from the database using only Product Name
+    public Product getProductDetailByName(String productName)
+            {
+                Product p =  new Product();
+                try
+                {
+                    String query = "Select * from product where pname = ?";
+                    PreparedStatement st = this.con.prepareStatement(query);
+                    st.setString(1, productName);
+                    ResultSet rs = st.executeQuery();
             rs.next();
             p.setId(rs.getInt("pid"));
             p.setPname(rs.getString("pname"));

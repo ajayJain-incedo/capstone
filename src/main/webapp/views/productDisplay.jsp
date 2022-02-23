@@ -2,7 +2,7 @@
 <%@ page import="com.dao.ProductDao, com.model.Product, com.service.SearchProducts" %>
 <%@ page import="java.util.HashSet" %>
 <%@ page import="java.sql.*, com.service.VerifySession" %>
-<%@ page errorPage="../error_pages/error_page1.jsp" %>
+<%--<%@ page errorPage="../error_pages/error_page1.jsp" %>--%>
 
 <head>
     <meta charset="UTF-8">

@@ -76,10 +76,7 @@
     <servlet-class>com.servlets.ResetPassword</servlet-class>
   </servlet>
 
-  <servlet>
-    <servlet-name>Header</servlet-name>
-    <servlet-class>com.servlets.HeaderServlet</servlet-class>
-  </servlet>
+
 
 <!--Servlet Mapping-->
 
@@ -125,11 +122,6 @@
   <servlet-mapping>
     <servlet-name>AddToCart</servlet-name>
     <url-pattern>/AddToCart</url-pattern>
-  </servlet-mapping>
-
-  <servlet-mapping>
-    <servlet-name>Header</servlet-name>
-    <url-pattern>/Header</url-pattern>
   </servlet-mapping>
 
   <servlet-mapping>

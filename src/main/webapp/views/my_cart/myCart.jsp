@@ -53,8 +53,7 @@ if("removed".equals(msg))
 <table>
     <thead>
     <%
-    StoreUser store = new StoreUser();
-    User user = store.getUser();
+
     int total=0;
     int sno=0;
     try
