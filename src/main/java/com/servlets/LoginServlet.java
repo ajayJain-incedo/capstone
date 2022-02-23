@@ -11,11 +11,7 @@ import java.util.Base64;
 
 public class LoginServlet extends HttpServlet {
     public void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException {
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+
         PrintWriter out = res.getWriter();
         String userEmail = req.getParameter("email");
 
@@ -37,10 +33,10 @@ public class LoginServlet extends HttpServlet {
             res.addCookie(cookie1);
             // login success
             if(user.getUserType() == 'C'){
-                StoreUser store = new StoreUser();
-                store.storeUser(user);
+                StoreUser.storeUser(user);
             out.println("customer");
             }else{
+                StoreUser.storeUser(user);
                 out.println("admin");
             }
 

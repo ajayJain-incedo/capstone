@@ -6,7 +6,7 @@
 try
 {
     Class.forName("com.mysql.cj.jdbc.Driver");
-    Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/shopping", "root", "admin@1234");
+    Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/shopping", "root", "root");
     Statement st=conn.createStatement();
     int i=st.executeUpdate("DELETE FROM product WHERE pid="+id);
     out.println("Data Deleted Successfully!");
