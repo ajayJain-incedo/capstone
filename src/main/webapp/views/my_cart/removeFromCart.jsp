@@ -1,21 +1,32 @@
-<%@page import="project.ConnectionProvider"%>
-<%@page import="com.service.VerifySession"%>
-<%@page import="java.sql.*"%>
-<%@ page errorPage="../error_pages/error_page1.jsp" %>
+<%@page import="com.service.ConnectionProvider"%>
+<%@page import="java.sql.*,com.service.VerifySession"%>
 <%
 if(VerifySession.verifySession(request, response)){
-return;
+    return;
 }
-String email=session.getAttribute("email").toString();
-String product_id=request.getParameter("id");
+String id=request.getParameter("id");
+String incdec = request.getParameter("quantity");
+double price=0;
+String pidd = request.getParameter("pid");
+int pid = Integer.parseInt(pidd);
+System.out.println("product id is "+pid);
+System.out.println("id is" + id);
+double total=0;
+int quantity=0;
+int final_total=0;
+
 try
 {
-Connection con = ConnectionProvider.getCon();
-Statement st=con.createStatement();
-st.executeUpdate("delete from cart where email='"+email"' and product_id='"+product_id+"' and address is NULL");
-response.sendRedirect("myCart.jsp?msg=removed");
+    Connection con = ConnectionProvider.getConnection();
+    String query="delete from cart_item where user_id=? and product_id=?";
+    PreparedStatement st = con.prepareStatement(query);
+    st.setString(1,id);
+    st.setInt(2,pid);
+    st.executeUpdate();
+    response.sendRedirect("myCart.jsp?msg=removed");
 }
+
 catch(Exception e){
-System.out.println(e);
+    System.out.println(e);
 }
 %>
