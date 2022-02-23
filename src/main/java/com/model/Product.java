@@ -12,11 +12,12 @@ public class Product
     private String category;
     private double discount_percent;
     private double available_quantity;
+    private String pimage;
 
     public Product() {
     }
 
-    public Product(int id, String pname, String pdesc, double price, String category, double discount_percent, double available_quantity)
+    public Product(int id, String pname, String pdesc, double price, String category, double discount_percent, double available_quantity, String pimage)
     {
         this.id = id;
         this.pname = pname;
@@ -25,15 +26,7 @@ public class Product
         this.category = category;
         this.discount_percent = discount_percent;
         this.available_quantity = available_quantity;
-    }
-    public Product(String pname, String pdesc, double price, String category, double discount_percent, double available_quantity)
-    {
-        this.pname = pname;
-        this.pdesc = pdesc;
-        this.price = price;
-        this.category = category;
-        this.discount_percent = discount_percent;
-        this.available_quantity = available_quantity;
+        this.pimage = pimage;
     }
 
     public int getId() {
@@ -90,6 +83,14 @@ public class Product
 
     public void setAvailable_quantity(double available_quantity) {
         this.available_quantity = available_quantity;
+    }
+
+    public String getPimage() {
+        return pimage;
+    }
+
+    public void setPimage(String pimage) {
+        this.pimage = pimage;
     }
 
     @Override
