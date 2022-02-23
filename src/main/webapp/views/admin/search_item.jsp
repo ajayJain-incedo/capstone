@@ -2,6 +2,7 @@
 <%@ page import="com.dao.ProductDao, com.model.Product, com.service.SearchProducts" %>
 <%@ page import="java.util.HashSet" %>
 <%@ page import="java.sql.*, com.service.VerifySession" %>
+<%@page import = "com.service.ConnectionProvider"%>
 <%@ page errorPage="../error_pages/error_page1.jsp" %>
 <html lang="en">
 <head>
@@ -11,14 +12,28 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Search Page</title>
 </head>
-<body>
-<nav>
 
-    <form class="form-inline my-2 my-lg-0 inline-list" action="SearchAdmin" method="post">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="pname">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
-</nav>
+<style>
+    .container
+    {
+    width: 30%;
+    margin:auto;
+    padding: 20px;
+    }
+    body
+    {
+    background-color: #34515e !important;
+    }
+    </style>
+<body>
+<%@ include file= "SearchHeader.jsp" %>
+<!--<nav>-->
+
+<!--    <form class="form-inline my-2 my-lg-0 inline-list" action="SearchAdmin" method="post">-->
+<!--        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="pname">-->
+<!--        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>-->
+<!--    </form>-->
+<!--</nav>-->
 
 <h1 style = "text-align: center" ><u><b>ALL THE ITEMS IN THE DATABASE</b></u></h1>
 
@@ -69,7 +84,8 @@
         <TD><%=p.getDiscount_percent()%></TD>
         <TD><%=p.getAvailable_quantity()%></TD>
 
-        <td><a href="update.jsp?id=<%=p.getId()%>" class="btn btn-dark">UPDATE</a></td>
+        <td><a href="views/admin/update.jsp?id=<%=p.getId()%>" class="btn btn-dark">UPDATE</a></td>
+        <% System.out.println(p.getId()); %>
         <td><button type="button" id ="<%=p.getId()%>"  class="delete btn btn-danger"  >REMOVE</button></td>
     </TR>
     <% } %>
@@ -94,7 +110,7 @@ $(document).ready(function() {
 
     var id = +this.id;
     $.ajax({
-    url: "delete_ajax.jsp",
+    url: "views/admin/delete_ajax.jsp",
     type: "post",
     data: {
     id : id,

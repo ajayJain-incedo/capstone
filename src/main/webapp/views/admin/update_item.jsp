@@ -3,13 +3,12 @@
 <%@ page import = "java.io.*" %>
 <%@page import = "com.service.ConnectionProvider"%>
 <%@ page import="com.service.VerifySession" %>
-<%@ page import = "com.service.ConnectionProvider" %>
 <html xmlns="http://www.w3.org/1999/html">
 <head>
     <title>EDIT PRODUCT</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link href="../../resources/css/update_item.css" rel="stylesheet">
-    <link rel="stylesheet" href="resources/css/user.css">
+    <link rel="stylesheet" href="resources/css/update_item.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <style>
     .container
@@ -17,6 +16,10 @@
     width: 30%;
     margin:auto;
     padding: 20px;
+    }
+    body
+    {
+    background-color: #78909C !important;
     }
     </style>
 </head>
@@ -27,9 +30,8 @@ return;
 }
 %>
 <%@ include file= "AdminHeader.jsp" %>
-<a href="admin_welcome_page.jsp" >
-    <img style="height: 40px; width: 40px" border="0" alt="HomePage Icon" src="../../resources/static/images/admin_home_page.jpg" width="100" height="100">
-</a>
+
+
 
 <h1 style = "text-align: center" ><u><b>ALL THE ITEMS IN THE DATABASE</b></u></h1>
 
@@ -40,8 +42,7 @@ int total = 0;
 try{
     int pgno = request.getParameter("pgno")==null ?0: Integer.parseInt(request.getParameter("pgno"));
     start = pgno * recordCount;
-    Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-    Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/shopping", "root", "admin@1234");
+    Connection con = ConnectionProvider.getConnection();
     String QueryString = "Select pid, pname, pdesc, price, category, discount_percent, available_quantity, pid, pid from product limit ?,?";
     PreparedStatement statement = con.prepareStatement(QueryString);
     statement.setInt(1, start);
@@ -106,10 +107,10 @@ try{
         total = rs2.getInt(1);
     }
     // close all the connections.
-    con.close();
     statement.close();
     } catch (Exception ex)
         {
+        ex.printStackTrace();
         out.println("Unable to connect to database.(update_item.jsp)");
         }
         %>

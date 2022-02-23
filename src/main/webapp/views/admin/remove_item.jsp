@@ -46,7 +46,6 @@ return;
 <h5 id = "msg" class ="center-align"> </h5>
 <%
 try{
-
     Connection connection = null;
     Statement statement = null;
     ResultSet rs = null;
@@ -132,7 +131,7 @@ $(document).ready(function() {
     $(".delete").click(function() {
     var id = +this.id;
     $.ajax({
-    url: "delete_ajax.jsp",
+    url: "/RemoveItem",
     type: "post",
     data: {
     id : id,
