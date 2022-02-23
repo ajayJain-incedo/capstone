@@ -1,4 +1,4 @@
-<%@ page import="com.service.VerifySession" %>
+<%@ page import="com.service.VerifySession, com.dao.UserDao, com.service.ConnectionProvider, com.service.StoreUser, com.model.User" %>
 <%@ page errorPage="../error_pages/error_page1.jsp" %>
 <html>
 <head>
@@ -17,8 +17,19 @@
 </head>
 <body>
 <%
-if(VerifySession.verifySessionForAdmin(request, response)){
+if(VerifySession.verifySession(request, response)){
 return;
+}
+Cookie[] cookies = request.getCookies();
+for(Cookie c: cookies){
+String name = c.getName();
+if(name.equals("userEmail")){
+String email = c.getValue();
+UserDao dao = new UserDao(ConnectionProvider.getConnection());
+User user =dao.getUserByEmail(email);
+StoreUser.storeUser(user);
+break;
+}
 }
 %>
 <h2> <b><u>WELCOME TO THE ADMIN PAGE</u></b></h2>

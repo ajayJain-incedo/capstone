@@ -1,9 +1,14 @@
 package com.servlets;
 
+import com.dao.UserDao;
 import com.model.Product;
+import com.model.User;
+import com.service.ConnectionProvider;
 import com.service.SearchProducts;
+import com.service.StoreUser;
 import com.service.VerifySession;
 
+import javax.mail.Store;
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
@@ -20,8 +25,18 @@ public class DisplayProductsServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
             if(VerifySession.verifySession(req, resp)){
-                System.out.println("Condition true");
                 return;
+            }
+            Cookie[] cookies = req.getCookies();
+            for(Cookie c: cookies){
+                String name = c.getName();
+                if(name.equals("userEmail")){
+                    String email = c.getValue();
+                    UserDao dao = new UserDao(ConnectionProvider.getConnection());
+                    User user =dao.getUserByEmail(email);
+                    StoreUser.storeUser(user);
+                    break;
+                }
             }
             SearchProducts search = new SearchProducts();
 
