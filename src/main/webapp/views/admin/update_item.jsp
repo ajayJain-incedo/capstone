@@ -59,23 +59,22 @@
     </div>
 </div>
 
-
-
-
-
 <h1 style = "text-align: center" ><u><b>ALL THE ITEMS IN THE DATABASE</b></u></h1>
 
 <h5 id = "msg" class ="center-align"> </h5>
 <%
+int start =0, recordCount = 3;
+int total = 0;
 try{
-    Connection connection = null;
-    Statement statement = null;
-    ResultSet rs = null;
+    int pgno = request.getParameter("pgno")==null ?0: Integer.parseInt(request.getParameter("pgno"));
+    start = pgno * recordCount;
     Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-    connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/shopping", "root", "admin@1234");
-    statement = connection.createStatement();
-    String QueryString = "Select pid, pname, pdesc, price, category, discount_percent, available_quantity, pid, pid from product";
-    rs = statement.executeQuery(QueryString);
+    Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/shopping", "root", "admin@1234");
+    String QueryString = "Select pid, pname, pdesc, price, category, discount_percent, available_quantity, pid, pid from product limit ?,?";
+    PreparedStatement statement = con.prepareStatement(QueryString);
+    statement.setInt(1, start);
+    statement.setInt(2,recordCount);
+    ResultSet rs = statement.executeQuery();
 %>
 <table align="center" cellpadding="15" style="background-color: white; text-align: center; border-radius: 15px; border:none;
   border-collapse: collapse;"  >
@@ -126,17 +125,35 @@ try{
         <td><a href="update.jsp?id=<%=rs.getInt(8)%>" class="btn btn-dark">UPDATE</a></td>
         <td><button type="button" id ="<%=rs.getInt(9)%>"  class="delete btn btn-danger"  >REMOVE</button></td>
     </TR>
-    <%
+    <% }
+        String sql1 = " select count(*) from product";
+        PreparedStatement smt2 = con.prepareStatement(sql1);
+        ResultSet rs2 = smt2.executeQuery();
+        if(rs2.next())
+    {
+        total = rs2.getInt(1);
     }
     // close all the connections.
-    rs.close();
+    con.close();
     statement.close();
-    connection.close();
     } catch (Exception ex)
         {
-        out.println("Unable to connect to database.");
+        out.println("Unable to connect to database.(update_item.jsp)");
         }
         %>
+
+    <tr>
+        <th colspan = "9">
+            <table width = "100%">
+                <tr>
+            total records: <%= total%>
+            <% for (int i =0; i<=total/recordCount; i++) {%>
+            <td><a href= "update_item.jsp?pgno=<%=i%>" class = "btn btn-info "> Page<%=i+1%> </a></td>
+            <%}%>
+                </tr>
+            </table>
+        </th>
+    </tr>
 </table>
 &nbsp;&nbsp;
 

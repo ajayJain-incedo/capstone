@@ -113,6 +113,7 @@
     } catch (Exception e)
     {
     e.printStackTrace();
+    out.println("Unable to connect to database.(update.jsp)");
     }
 }
 %>
