@@ -6,6 +6,8 @@ public class Cart {
     private int quantity;
     private double price;
 
+    public Cart(){};
+
     public Cart(int uid, int pid, double price){
         this.uid=uid;
         this.pid=pid;

@@ -59,27 +59,25 @@ select * from product;
 
 
 
-## Test data for cart_item table:
-## The order id column will be null initially and will get updated when user clicks on BUY NOW
-
-## Test 1
-insert into cart_item(user_id,product_id,quantity,amount)
-values(1001,1101,2,2199.00);
-insert into cart_item(user_id,product_id,quantity,amount)
-values(1002,1103,1,4999.00);
-insert into cart_item(user_id,product_id,quantity,amount)
-values(1003,1110,1,239999.99);
-insert into cart_item(user_id,product_id,quantity,amount)
-values(1001,1103,1,4999.00);
+#Testing with dummy data
+insert into cart_item(user_id,product_id,product_price,quantity,amount)
+values(1001,1101,1099.50,1,1099.50);
+insert into cart_item(user_id,product_id,product_price,quantity,amount)
+values(1002,1103,4999.00,1,4999.00);
+insert into cart_item(user_id,product_id,product_price,quantity,amount)
+values(1003,1110,239999.99,1,239999.99);
+insert into cart_item(user_id,product_id,product_price,quantity,amount)
+values(1001,1103,4999.00,1,4999.00);
 ## Test 2
-insert into cart_item(user_id,product_id,quantity,amount)
-values(1001,1104,1,105999.00);
-insert into cart_item(user_id,product_id,quantity,amount)
-values(1001,1103,1,4999.00);
+insert into cart_item(user_id,product_id,product_price,quantity,amount)
+values(1001,1104,105999.00,1,105999.00);
+insert into cart_item(user_id,product_id,product_price,quantity,amount)
+values(1001,1103,4999.00,1,4999.00);
 ## Test 3
-insert into cart_item(user_id,product_id,quantity,amount)
-values(1001,1110,1,239999.99);
-insert into cart_item(user_id,product_id,quantity,amount)
-values(1001,1103,1,4999.00);
-
+insert into cart_item(user_id,product_id,product_price,quantity,amount)
+values(1001,1110,239999.99,1,239999.99);
+insert into cart_item(user_id,product_id,product_price,quantity,amount)
+values(1001,1103,4999.00,1,4999.00);
 select * from cart_item;
+
+
