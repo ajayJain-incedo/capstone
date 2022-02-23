@@ -19,6 +19,10 @@
     margin:auto;
     padding: 20px;
     }
+    body
+    {
+    background-color: #34515e;
+    }
     </style>
 <%
         String id = request.getParameter("id");
