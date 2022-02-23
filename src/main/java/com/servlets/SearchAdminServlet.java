@@ -8,10 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.HashSet;
 
-public class SearchProductServlet extends HttpServlet
+public class SearchAdminServlet extends HttpServlet
 {
     SearchProducts search = new SearchProducts();
     HashSet<Product> products = new HashSet<>();
@@ -24,7 +23,7 @@ public class SearchProductServlet extends HttpServlet
             products = search.searchProductsByInput(searchInput);
             req.setAttribute("list", products);
 
-            req.getRequestDispatcher("views/user/userHome.jsp").forward(req, resp);
+            req.getRequestDispatcher("views/admin/search_item.jsp").forward(req, resp);
         } catch (SQLException e) {
             e.printStackTrace();
         }
