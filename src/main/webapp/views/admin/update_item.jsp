@@ -3,13 +3,13 @@
 <%@ page import = "java.io.*" %>
 <%@page import = "com.service.ConnectionProvider"%>
 <%@ page import="com.service.VerifySession" %>
-<%@ page errorPage="../error_pages/error_page1.jsp" %>
 <%@ page import = "com.service.ConnectionProvider" %>
 <html xmlns="http://www.w3.org/1999/html">
 <head>
     <title>EDIT PRODUCT</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link href="../../resources/css/update_item.css" rel="stylesheet">
+    <link rel="stylesheet" href="resources/css/user.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <style>
     .container
@@ -26,44 +26,10 @@ if(VerifySession.verifySessionForAdmin(request, response)){
 return;
 }
 %>
-
-<h2 style = "text-align: center"> <b><u> UPDATE ITEM PAGE </u></b></h2>
+<%@ include file= "AdminHeader.jsp" %>
 <a href="admin_welcome_page.jsp" >
     <img style="height: 40px; width: 40px" border="0" alt="HomePage Icon" src="../../resources/static/images/admin_home_page.jpg" width="100" height="100">
 </a>
-<div class="row">
-    <div class="col-sm-6" style = "margin:auto">
-        <form action = "update.jsp" method = "post" >
-        <div style = "text-align: center" class="card">
-            <div class="card-body">
-
-                <h5 class="card-title">ENTER PRODUCT NAME</h5>
-                <div class = "mb-3 row">
-                <div class = "col-sm-19">
-                    <input type="text"  name = "pname" placeholder ="Enter here" >
-                </div>
-                </div>
-                <button type = "submit" class="btn btn-dark">UPDATE</button>
-        </div>
-        </div>
-        </form>
-    </div>
-    <div class="col-sm-6">
-        <form action = "../../RemoveItemServlet" method = "post" >
-        <div style = "text-align: center" class="card">
-            <div class="card-body">
-                <h5 class="card-title">ENTER PRODUCT NAME</h5>
-                <div class="mb-3 row">
-                    <div class="col-sm-19" >
-                    <input type="text"  name ="pname" placeholder ="Enter here" >
-                </div>
-                </div>
-                <button type ="submit" class="btn btn-danger">REMOVE</button>
-            </div>
-        </div>
-        </form>
-    </div>
-</div>
 
 <h1 style = "text-align: center" ><u><b>ALL THE ITEMS IN THE DATABASE</b></u></h1>
 

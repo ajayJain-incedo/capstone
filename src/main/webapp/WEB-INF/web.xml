@@ -81,6 +81,11 @@
     <servlet-class>com.servlets.HeaderServlet</servlet-class>
   </servlet>
 
+  <servlet>
+    <servlet-name>SearchAdmin</servlet-name>
+    <servlet-class>com.servlets.SearchAdminServlet</servlet-class>
+  </servlet>
+
 <!--Servlet Mapping-->
 
   <servlet-mapping>
@@ -150,6 +155,11 @@
   <servlet-mapping>
     <servlet-name>reset password</servlet-name>
     <url-pattern>/ResetPassword</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>SearchAdmin</servlet-name>
+    <url-pattern>/SearchAdmin</url-pattern>
   </servlet-mapping>
 
 
