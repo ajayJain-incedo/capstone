@@ -40,14 +40,8 @@ return;
 
     pageContext.setAttribute("type", type);
     %>
-        <c:if test="${type == 'A'}">
-            <%         System.out.println("admi");%>
-            <%@ include file="admin/adminHeaderNav.jsp" %>
-        </c:if>
-        <c:if test="${type == 'C'}">
-            <%         System.out.println("usr");%>
-            <%@ include file="user/userHeaderNav.jsp" %>
-        </c:if>
+
+       <%@ include file="user/userHeaderNav.jsp" %>
 
     |${type}|
 

@@ -6,6 +6,7 @@ import com.model.Cart;
 import com.model.User;
 import com.service.ConnectionProvider;
 import com.service.StoreUser;
+import com.service.VerifySession;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -26,7 +27,9 @@ public class AddToCartServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         PrintWriter out = resp.getWriter();
-
+        if(VerifySession.verifySession(req, resp)){
+            return;
+        }
         int pid = Integer.parseInt(req.getParameter("pid"));
         Double price = Double.valueOf(req.getParameter("price"));
 

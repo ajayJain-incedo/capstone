@@ -2,7 +2,7 @@
 <%@ page import="com.dao.ProductDao, com.model.Product, com.service.SearchProducts" %>
 <%@ page import="java.util.HashSet" %>
 <%@ page import="java.sql.*, com.service.VerifySession" %>
-<%--<%@ page errorPage="../error_pages/error_page1.jsp" %>--%>
+<%@ page errorPage="../error_pages/error_page1.jsp" %>
 
 <head>
     <meta charset="UTF-8">
@@ -20,17 +20,19 @@
     }
         HashSet<Product> products = (HashSet<Product>)request.getAttribute("list");
         for(Product p : products){
+            String path = "../resources/static/product_images/" +p.getPimage();
+            System.out.println(path);
         %>
         <div class='card' style='width: 18rem;'>
             <div class='card-body' >
+                <img class="card-img-top" src=<%=path%> alt=<%=p.getPimage()%>>
                 <h5 class='card-title' > <%= p.getPname() %> </h5 >
                 <h5 class='card-title' > <%= p.getCategory() %> </h5 >
                 <h5 class='card-title' > <%= p.getPrice() %> </h5 >
                 <p class='card-text' > <%= p.getPdesc() %> </p >
                 <a class="btn btn-primary" href="AddToCart?pid=<%= p.getId() %>&price=<%= p.getPrice() %>" >Add to Cart</a >
-<!--                ../my_cart/myCart.jsp?pid=<%= p.getId() %>-->
-                </div >
             </div >
+        </div >
         <% } %>
 
 </body>

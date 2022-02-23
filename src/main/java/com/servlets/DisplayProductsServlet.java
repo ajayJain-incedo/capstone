@@ -14,20 +14,21 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashSet;
 
+import static java.lang.System.out;
+
 public class DisplayProductsServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
             if(VerifySession.verifySession(req, resp)){
-                System.out.println("Condition true");
+                out.println("Condition true");
                 return;
             }
             SearchProducts search = new SearchProducts();
 
             HashSet<Product> products = search.searchAllProducts();
 //            PrintWriter
-//            out.println(products);
 
             req.setAttribute("list", products);
             req.getRequestDispatcher("views/user/userHome.jsp").forward(req, resp);
