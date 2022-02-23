@@ -19,34 +19,25 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashSet;
 
+import static java.lang.System.out;
+
 public class DisplayProductsServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
             if(VerifySession.verifySession(req, resp)){
+                out.println("Condition true");
+
                 return;
-            }
-            Cookie[] cookies = req.getCookies();
-            for(Cookie c: cookies){
-                String name = c.getName();
-                if(name.equals("userEmail")){
-                    String email = c.getValue();
-                    UserDao dao = new UserDao(ConnectionProvider.getConnection());
-                    User user =dao.getUserByEmail(email);
-                    StoreUser.storeUser(user);
-                    break;
-                }
             }
             SearchProducts search = new SearchProducts();
 
             HashSet<Product> products = search.searchAllProducts();
-//            PrintWriter
-//            out.println(products);
 
             req.setAttribute("list", products);
             req.getRequestDispatcher("views/user/userHome.jsp").forward(req, resp);
-//            resp.sendRedirect("views/user/userHome.jsp");
+            resp.sendRedirect("views/user/userHome.jsp");
         } catch (SQLException ex) {
             ex.printStackTrace();
         }

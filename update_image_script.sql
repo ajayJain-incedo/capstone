@@ -1,3 +1,4 @@
+use shopping;
 update product
 set pimage = '1101.jpg'
 where pid = 1101;

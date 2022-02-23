@@ -18,7 +18,7 @@ public class ProductDao
         boolean isQueryExecuted = false;
         try
         {
-            String query = "insert into product( pname, pdesc, price, category, discount_percent, available_quantity) values (?, ?, ?, ?, ?, ?)";
+            String query = "insert into product( pname, pdesc, price, category, discount_percent, available_quantity, pimage) values (?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement st = this.con.prepareStatement(query);
             st.setString(1, product.getPname());
             st.setString(2, product.getPdesc());
@@ -26,6 +26,7 @@ public class ProductDao
             st.setString(4, product.getCategory());
             st.setDouble(5, product.getDiscount_percent());
             st.setDouble(6, product.getAvailable_quantity());
+            st.setString(7, product.getId()+".jpg");
             st.executeUpdate();
             isQueryExecuted=true;
         }catch (Exception e){
@@ -63,7 +64,7 @@ public class ProductDao
         boolean isQuery = false;
         try
         {
-            String query = "Update product set pname=?,pdesc=?,price=?,category=?,discount_percent=?,available_quantity=? where pid="+ product.getId();
+            String query = "Update product set pname=?,pdesc=?,price=?,category=?,discount_percent=?,available_quantity=?,pimage=? where pid="+ product.getId();
             PreparedStatement st = this.con.prepareStatement(query);
             st.setString(1, product.getPname());
             st.setString(2, product.getPdesc());
@@ -71,6 +72,7 @@ public class ProductDao
             st.setString(4, product.getCategory());
             st.setDouble(5, product.getDiscount_percent());
             st.setDouble(6, product.getAvailable_quantity());
+            st.setString(7, product.getId()+".jpg");
 
             st.executeUpdate();
             isQuery=true;
@@ -82,15 +84,11 @@ public class ProductDao
         return isQuery;
     }
 
-    //Method to get product details item from the database using only Product Name
-    public Product getProductDetailByName( String productName)
-    {
+    public Product getItem(String query){
         Product p =  new Product();
         try
         {
-            String query = "Select * from product where pname = ?";
             PreparedStatement st = this.con.prepareStatement(query);
-            st.setString(1, productName);
             ResultSet rs = st.executeQuery();
             rs.next();
             p.setId(rs.getInt("pid"));
@@ -100,11 +98,7 @@ public class ProductDao
             p.setCategory(rs.getString("category"));
             p.setDiscount_percent(rs.getDouble("discount_percent"));
             p.setAvailable_quantity(rs.getDouble("available_quantity"));
-        }
-        catch (SQLException s)
-        {
-            System.out.println(s.getMessage());
-            return null;
+            p.setPimage(rs.getString("pimage"));
         }
         catch (Exception e)
         {
@@ -128,6 +122,7 @@ public class ProductDao
                 p.setPname(rs.getString("pname"));
                 p.setDiscount_percent(rs.getDouble("discount_percent"));
                 p.setCategory(rs.getString("category"));
+                p.setPimage(rs.getString("pimage"));
                 p.setAvailable_quantity(rs.getInt("available_quantity"));
                 products.add(p);
             }
