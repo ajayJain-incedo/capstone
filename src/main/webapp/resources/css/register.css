@@ -13,3 +13,8 @@ background-color: #34515e;
     margin: auto;
     display: none;
 }
+.card-header-background{
+    background-color:#34515e;
+    font-size: 1.1rem;
+    color: white;
+}

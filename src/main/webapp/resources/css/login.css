@@ -53,3 +53,8 @@ margin-left: 10%;
 .register:hover{
      color: black;
  }
+.card-header-background{
+    background-color:#34515e;
+    font-size: 1.1rem;
+    color: white;
+}
