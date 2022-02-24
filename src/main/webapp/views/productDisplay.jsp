@@ -11,7 +11,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="resources/css/user.css">
-    <title>Document</title>
+    <title>All products</title>
 </head>
 <body>
     <%
@@ -20,12 +20,12 @@
     }
         HashSet<Product> products = (HashSet<Product>)request.getAttribute("list");
         for(Product p : products){
-            String path = "resources/static/product_images/" +p.getPimage()+".jpg";
-            System.out.println(path);
+            String path = "resources/static/product_images/" +p.getId()+".jpg";
+            //System.out.println(path);
         %>
         <div class='card' style='width: 18rem;'>
             <div class='card-body' >
-                <img class="card-img-top "style="width:200px; height:200px; object-fit:contain;" src=<%=path%> alt=<%=p.getPimage()%>>
+                <img class="card-img-top "style="width:200px; height:200px; object-fit:contain;" src=<%=path%> alt=<%=p.getId()%>>
                 <h5 class='card-title' style="margin-top:10px;"> <%= p.getPname() %> </h5 >
                 <h5 class='card-title' > <%= p.getCategory() %> </h5 >
                 <h5 class='card-title' > &#8377;<%= p.getPrice() %> </h5 >

@@ -11,7 +11,7 @@ public class ConnectionProvider {
                 Class.forName("com.mysql.cj.jdbc.Driver");
 
                 // Creating a connection
-                con = DriverManager.getConnection("jdbc:mysql://localhost:3306/shopping", "root", "Welcome@2021");
+                con = DriverManager.getConnection("jdbc:mysql://localhost:3306/shopping", "root", "root");
 
             }
         }catch (Exception e){

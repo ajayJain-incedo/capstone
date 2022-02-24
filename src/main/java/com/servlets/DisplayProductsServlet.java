@@ -27,9 +27,16 @@ public class DisplayProductsServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
             if(VerifySession.verifySession(req, resp)){
-                out.println("Condition true");
 
                 return;
+            }
+            UserDao dao = new UserDao(ConnectionProvider.getConnection());
+            Cookie[] cookies = req.getCookies();
+            for(Cookie c: cookies){
+                if(c.getName().equals("userEmail")){
+                    User user = dao.getUserByEmail(c.getValue());
+                    StoreUser.storeUser(user);
+                }
             }
             SearchProducts search = new SearchProducts();
 
