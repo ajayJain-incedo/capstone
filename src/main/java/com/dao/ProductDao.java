@@ -48,7 +48,7 @@ public class ProductDao
             st.setString(1,product.getPname());
 
             st.executeUpdate();
-            System.out.println("QUERY EXECUTED!!");
+            //System.out.println("QUERY EXECUTED!!");
 
             isQuery=true;
         }

@@ -13,7 +13,7 @@
 <div class="container text-center">
     <img class="img-fluid" src="../../resources/static/images/404.png" alt="Error Image" style="width: 40%;">
     <h3 class="display-3">Sorry! the  requested resource is not found..</h3>
-    <a href="/capstone/index.jsp" class="btn btn-lg mt-2 btn-dark">Go to home</a>
+    <a href="/Capstone/index.jsp" class="btn btn-lg mt-2 btn-dark">Go to home</a>
 </div>
 
 </body>
