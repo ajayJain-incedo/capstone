@@ -33,14 +33,6 @@ return;
             <button class="btn dark-bg-color white-color my-2 my-sm-0 " type="submit">Search</button>
         </form>
     </div>
-    <% StoreUser store= new StoreUser();
-        User user = store.getUser();
-        System.out.println(user.getId());
-        char type=user.getUserType();
-        System.out.println(type);
-
-    pageContext.setAttribute("type", type);
-    %>
 
        <%@ include file="user/userHeaderNav.jsp" %>
 
