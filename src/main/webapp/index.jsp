@@ -16,7 +16,7 @@
             if(cookieName.equals("userType")){
                 userType=c.getValue().charAt(0);
                 if(userType=='A'){
-                    response.sendRedirect("views/admin/admin_welcome_page.jsp");
+                    response.sendRedirect("views/admin/update_item.jsp");
                 }else if(userType == 'C'){
                     response.sendRedirect("DisplayProduct");
                 }
@@ -97,7 +97,7 @@
                         if(data.trim() === "customer"){
                             window.location.href = 'DisplayProduct';
                         }else{
-                            window.location.href = 'views/admin/admin_welcome_page.jsp';
+                            window.location.href = 'views/admin/update_item.jsp';
                         }
                     }
                 },

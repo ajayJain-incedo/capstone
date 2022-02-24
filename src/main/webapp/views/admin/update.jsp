@@ -21,61 +21,11 @@
     }
     body
     {
-    background-color: #34515e;
+    background-color: #78909C !important;
     }
     </style>
 <%
         String id = request.getParameter("id");
-        String pname = request.getParameter("pname");
-        if(id == null)
-        {
-            ProductDao pd = new ProductDao(ConnectionProvider.getConnection());
-            Product p = pd.getProductDetailByName(pname);
-            if(p == null)
-            {
-                out.println("<h1>ITEM DOESN'T EXIST IN THE DATABASE!!</h1>");
-                return;
-            }
-%>
-<body>
-<%
-if(VerifySession.verifySessionForAdmin(request, response)){
-return;
-}
-%>
-<div class = "container">
-    <div class="card" style = "text-align: center">
-        <div class="card-body">
-            <h5 class="card-title"><u>UPDATE PRODUCT DETAILS</u></h5>
-            <form  action="../../UpdateItemServlet" method="post">
-                <input type="hidden" name="id" value="<%=p.getId() %>">
-                Product Name:
-                <p> <input type="text" name="pname" value="<%=p.getPname() %>"></p>
-                Product Description:
-                <textarea type = "text" name="pdesc" value="<%=p.getPdesc() %>"   class="form-control" rows="2"><%=p.getPdesc() %> </textarea>
-
-                Price:
-                <p><input type="number" name="price" value="<%=p.getPrice() %>"></p>
-                Category:
-                <p><input readonly type="text" name="category" value="<%=p.getCategory() %>"></p>
-
-                Discount Percentage:
-                <p><input type="number" name="discount_percent" value="<%=p.getDiscount_percent() %>" min="0" max="100"></p>
-
-                Available Quantity:
-                <p><input type="number" name="available_quantity" value="<%=p.getAvailable_quantity() %>"></p>
-
-                <button type="submit" value="DETAILS" class = "btn btn-primary">SUBMIT</button>
-            </form>
-        </div>
-    </div>
-</div>
-</body>
-
-        <%
-        }
-        else
-        {
         try
         {
         Connection connection = ConnectionProvider.getConnection();
@@ -85,17 +35,13 @@ return;
         while(rs.next())
         {
 %>
-
 <body>
-
 <div class = "container">
 <div class="card" style = "text-align: center">
     <div class="card-body">
         <h5 class="card-title"><u>UPDATE PRODUCT DETAILS</u></h5>
         <form  action="../../UpdateItemServlet" method="post">
             <input type="hidden" name="id" value="<%=rs.getString(1) %>">
-<!--            <input type="text" name="id" value="<%=rs.getString(1) %>">-->
-<!--            &nbsp;&nbsp;-->
             Product Name:
             <p> <input type="text" name="pname" value="<%=rs.getString(2) %>"></p>
             Product Description:
@@ -104,7 +50,7 @@ return;
             Price:
             <p><input type="number" name="price" value="<%=rs.getString(4) %>"></p>
             Category:
-            <p><input readonly type="text" name="category" placeholder="<%=rs.getString(5) %>"></p>
+            <p><input  readonly type="text" name="category" value="<%=rs.getString(5) %>"></p>
 
             Discount Percentage:
             <p><input type="number" name="discount_percent" value="<%=rs.getString(6) %>" min="0" max="100"></p>
@@ -125,7 +71,6 @@ return;
     e.printStackTrace();
     out.println("Unable to connect to database.(update.jsp)");
     }
-}
 %>
 </body>
 </html>
