@@ -51,8 +51,9 @@ try{
     ResultSet rs = statement.executeQuery();
 %>
 <table align="center" cellpadding="15" style="background-color: white; text-align: center; border-radius: 15px; border:none;
-  border-collapse: collapse;"  >
+  border-collapse: collapse;" >
     <tr>
+
         <th>
             Product ID
         </th>
