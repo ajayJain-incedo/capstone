@@ -69,7 +69,7 @@ return;
 
                     <tr>
                         <td>Enter Quantity:</td>
-                        <td><Input type = "number" name ="available_quantity" placeholder ="Enter here" value = "0" id = "available_quantity" required ></td>
+                        <td><Input type = "number" name ="available_quantity" placeholder ="Enter here" value = "1" id = "available_quantity" required ></td>
                     </tr>
                     <!--<tr>
                         <td>Enter Image:</td>
@@ -105,20 +105,12 @@ return;
 </div>
 
 <script>
-$('#form').submit(function()
-{
-    if ($.trim($("#pname").val()) == "" || $.trim($("#pdesc").val()) == "") || $.trim($("#price").val()) == 0 ) || $.trim($("#discount_percent").val()) == 0) || $.trim($("#available_quantity").val()) == 0)
-    {
-        alert('you did not fill out one of the fields');
-        return false;
-    }
-else
-{
+
     function myFunction()
     {
-        alert("Item added to the database");
+    alert("Item successfully added.")
     }
-    });
+
 </script>
 
 </body>

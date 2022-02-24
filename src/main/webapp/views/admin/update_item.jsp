@@ -30,7 +30,6 @@ return;
 }
 %>
 
-<h2 style = "text-align: center"> <b><u> UPDATE ITEM PAGE </u></b></h2>
 <%@ include file= "AdminHeader.jsp" %>
 
 
@@ -76,6 +75,9 @@ try{
             Available Quantity
         </th>
         <th>
+            Image
+        </th>
+        <th>
             UPDATE
         </th>
         <th>
@@ -95,6 +97,7 @@ try{
         <TD><%=rs.getString(5)%></TD>
         <TD><%=rs.getDouble(6)%></TD>
         <TD><%=rs.getInt(7)%></TD>
+        <td><img src="../../resources/static/product_images/<%=rs.getInt(1)%>.jpg" style="width:40px;height:40px;object-fit:contain;"></td>
 <!--        <td><button type="button"  class=" btn btn-dark"  >-->
 <!--            <a href="update.jsp?id=<%=rs.getString(8)%>" style= "text-decoration:none" >UPDATE</a></button></td>-->
         <td><a href="update.jsp?id=<%=rs.getInt(8)%>" class="btn btn-dark">UPDATE</a></td>

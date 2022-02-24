@@ -13,7 +13,7 @@
 <nav class="navbar navbar-light bg-light">
     <form class="form-inline" >
         <a href="add_item.jsp" class="btn btn-success">ADD ITEM</a>
-        <a href="/capstone/Logout" class="btn btn-warning">LOG OUT</a>
+        <a href="/Capstone/Logout" class="btn btn-warning">LOG OUT</a>
     </form>
 </nav>
 

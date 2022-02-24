@@ -1,6 +1,6 @@
 <%@ page import = "java.sql.*" %>
 <%@ page import = "java.io.*" %>
-<%@ page import="com.service.VerifySession" %>
+<%@ page import="com.service.VerifySession,  com.service.ConnectionProvider" %>
 <%@ page errorPage="../error_pages/error_page1.jsp" %>
 <html xmlns="http://www.w3.org/1999/html">
 <head>
@@ -46,11 +46,10 @@ return;
 <h5 id = "msg" class ="center-align"> </h5>
 <%
 try{
-    Connection connection = null;
+
     Statement statement = null;
     ResultSet rs = null;
-    Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-    connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/shopping", "root", "root");
+    Connection connection = ConnectionProvider.getConnection();
     statement = connection.createStatement();
     String QueryString = "Select pid, pname, pdesc, price, category, discount_percent, available_quantity, pid from product";
     rs = statement.executeQuery(QueryString);

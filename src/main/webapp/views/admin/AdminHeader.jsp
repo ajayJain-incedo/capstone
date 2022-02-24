@@ -12,7 +12,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="resources/css/user.css">
-    <title>CapStone</title>
+    <title>Capstone</title>
 </head>
 <body>
 <%
@@ -26,7 +26,7 @@ return;
     </button>
 
     <div class="collapse navbar-collapse justify-content-around inline-margin" id="navbarSupportedContent">
-        <form class="form-inline my-2 my-lg-0 inline-list" action="/capstone/SearchAdmin" method="post">
+        <form class="form-inline my-2 my-lg-0 inline-list" action="/Capstone/SearchAdmin" method="post">
             <div class = "d-flex">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="pname">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
@@ -36,7 +36,7 @@ return;
     <nav class="navbar navbar-light bg-light">
         <form class="form-inline" >
             <a href="add_item.jsp" class="btn btn-success">ADD ITEM</a>
-            <a href="/capstone/Logout" class="btn btn-warning">LOG OUT</a>
+            <a href="/Capstone/Logout" class="btn btn-warning">LOG OUT</a>
         </form>
     </nav>
 

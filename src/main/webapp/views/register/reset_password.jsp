@@ -80,7 +80,7 @@ $(document).ready(function(){
             e.preventDefault();
             var f=$(this).serialize();
             $.ajax({
-                url: "/capstone/VerifyOtp",
+                url: "/Capstone/VerifyOtp",
                 data: f,
                 type: "POST",
                 success: function(data, textStatus, jqXHR){
@@ -111,7 +111,7 @@ $(document).ready(function(){
             e.preventDefault();
             var f=$(this).serialize();
             $.ajax({
-                url: "/capstone/ResetPassword",
+                url: "/Capstone/ResetPassword",
                 data: f,
                 type: "POST",
                 success: function(data, textStatus, jqXHR){

@@ -14,7 +14,7 @@
     <img class="img-fluid" src="../../resources/static/images/dizzy-robot.png" alt="Error Image" style="width: 40%;">
     <h3 class="display-3">Sorry! Something went wrong..</h3>
     <p> <%= exception %> </p>
-    <a href="/capstone/index.jsp" class="btn btn-lg mt-2 btn-dark">Go to home</a>
+    <a href="/Capstone/index.jsp" class="btn btn-lg mt-2 btn-dark">Go to home</a>
 </div>
 
 </body>
