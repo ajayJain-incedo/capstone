@@ -10,22 +10,25 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="resources/css/user.css">
-    <title>All products</title>
+    <link rel="stylesheet" href="resources/css/header.css">
+    <link rel="stylesheet" href="resources/css/product.css">
+    <link rel="stylesheet" href="resources/css/color.css">
+    <title>Document</title>
 </head>
-<body>
+<body class="light-bg-color" style="background-color: rgb(252 238 238) !important">
     <%
     if(VerifySession.verifySession(request, response)){
     return;
     }
         HashSet<Product> products = (HashSet<Product>)request.getAttribute("list");
         for(Product p : products){
-            String path = "resources/static/product_images/" +p.getId()+".jpg";
-            //System.out.println(path);
+            String path = "resources/static/product_images/" +p.getPimage();
         %>
-        <div class='card' style='width: 18rem;'>
-            <div class='card-body' >
-                <img class="card-img-top "style="width:200px; height:200px; object-fit:contain;" src=<%=path%> alt=<%=p.getId()%>>
+        <div class='card card-size white-border'>
+            <div class="card-img-top card-image">
+                <img class="card-image-size" src=<%=path%> alt=<%=p.getPimage()%>>
+            </div>
+            <div class='card-body card-body-size' >
                 <h5 class='card-title' style="margin-top:10px;"> <%= p.getPname() %> </h5 >
                 <h5 class='card-title' > <%= p.getCategory() %> </h5 >
                 <h5 class='card-title' > &#8377;<%= p.getPrice() %> </h5 >
