@@ -18,7 +18,7 @@
 <body>
 <%
 if(VerifySession.verifySessionForAdmin(request, response)){
-return;
+    return;
 }
 %>
 <a href="admin_welcome_page.jsp">

@@ -33,6 +33,7 @@ public class DisplayProductsServlet extends HttpServlet {
             UserDao dao = new UserDao(ConnectionProvider.getConnection());
             Cookie[] cookies = req.getCookies();
             for(Cookie c: cookies){
+                out.println(c.getValue());
                 if(c.getName().equals("userEmail")){
                     User user = dao.getUserByEmail(c.getValue());
                     StoreUser.storeUser(user);
@@ -41,10 +42,12 @@ public class DisplayProductsServlet extends HttpServlet {
             SearchProducts search = new SearchProducts();
 
             HashSet<Product> products = search.searchAllProducts();
-
             req.setAttribute("list", products);
+
             req.getRequestDispatcher("views/user/userHome.jsp").forward(req, resp);
-            resp.sendRedirect("views/user/userHome.jsp");
+
+            //resp.sendRedirect("views/user/userHome.jsp");
+
         } catch (SQLException ex) {
             ex.printStackTrace();
         }

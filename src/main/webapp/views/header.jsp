@@ -34,9 +34,9 @@ return;
     </div>
     <% StoreUser store= new StoreUser();
         User user = store.getUser();
-        System.out.println(user.getId());
+        //System.out.println(user.getId());
         char type=user.getUserType();
-        System.out.println(type);
+        //System.out.println(type);
 
     pageContext.setAttribute("type", type);
     %>

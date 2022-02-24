@@ -9,8 +9,7 @@ String incdec = request.getParameter("quantity");
 double price=0;
 String pidd = request.getParameter("pid");
 int pid = Integer.parseInt(pidd);
-System.out.println("product id is "+pid);
-System.out.println("id is" + id);
+
 double total=0;
 int quantity=0;
 int final_total=0;

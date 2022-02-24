@@ -3,7 +3,7 @@
 <%@ page errorPage="../error_pages/error_page1.jsp" %>
 <%
 if(VerifySession.verifySession(request, response)){
-return;
+    return;
 }
 String email = session.getAttribute("email").toString();
 String address = request.getParameter("address");
