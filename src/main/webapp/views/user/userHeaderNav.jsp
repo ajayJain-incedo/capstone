@@ -17,7 +17,7 @@
         <a class="nav-link" href="views/my_cart/myCart.jsp">Go to Cart</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="/capstone/Logout">Logout</a>
+        <a class="nav-link" href="/Capstone/Logout">Logout</a>
     </li>
 </ul>
 </body>

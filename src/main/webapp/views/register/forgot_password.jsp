@@ -27,7 +27,7 @@
                     </div>
                 </div>
                 <div class="card-body">
-        <form action="/capstone/ForgotPassword" method="post" id="email-form">
+        <form action="/Capstone/ForgotPassword" method="post" id="email-form">
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Enter your email:</label>
             <input required name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="example@email.com">
@@ -53,7 +53,7 @@
             e.preventDefault();
             var f=$(this).serialize();
             $.ajax({
-                url: "/capstone/ForgotPassword",
+                url: "/Capstone/ForgotPassword",
                 data: f,
                 type: "POST",
                 success: function(data, textStatus, jqXHR){
