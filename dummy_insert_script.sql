@@ -21,6 +21,18 @@ values('Daksh','Ameta','dakshameta@gmail.com','daksh33','7908868901','A-403,Colu
 select * from users;
 
 
+## Trigger
+delimiter //
+create trigger add_image
+before insert on product
+for each row
+begin
+declare newpid int(5);
+select IFNULL(MAX(pid), 1100) into newpid from product;
+set new.pimage = concat(newpid+1,'.jpg');
+end; //
+
+
 
 ## Test data for product table:
 
