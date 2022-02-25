@@ -14,7 +14,7 @@
 <body>
 <ul class=" navbar-nav mr-auto inline-list-padding">
     <li class="nav-item">
-        <a class="white-color nav-link" href="views/user/my_profile.jsp">My Profile</a>
+        <a class="white-color nav-link" href="#">My Profile</a>
     </li>
     <li class="nav-item">
         <a class="white-color nav-link" href="views/my_cart/myCart.jsp">Go to Cart</a>

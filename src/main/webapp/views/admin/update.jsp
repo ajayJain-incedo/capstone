@@ -1,3 +1,4 @@
+<!doctype html>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
@@ -8,21 +9,13 @@
 <%@ page import="com.service.VerifySession" %>
 <%@ page errorPage="../error_pages/error_page1.jsp" %>
 
-<html xmlns="http://www.w3.org/1999/html">
+<html lang="en">
 <title>UPDATE ITEM DETAILS</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<link rel="stylesheet" href="resources/css/header.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <style>
-    .container
-    {
-    width: 30%;
-    margin:auto;
-    padding: 20px;
-    }
-    body
-    {
-    background-color: #78909C !important;
-    }
+
     </style>
 <%
         String id = request.getParameter("id");

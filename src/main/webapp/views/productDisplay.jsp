@@ -3,7 +3,7 @@
 <%@ page import="java.util.HashSet" %>
 <%@ page import="java.sql.*, com.service.VerifySession" %>
 <%@ page errorPage="../error_pages/error_page1.jsp" %>
-
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
