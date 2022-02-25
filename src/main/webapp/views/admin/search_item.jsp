@@ -13,6 +13,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="../../resources/css/header.css">
     <link rel="stylesheet" href="../../resources/css/color.css">
+    <link rel="stylesheet" href="../../resources/css/product.css">
     <title>Search Page</title>
 </head>
 
@@ -29,21 +30,20 @@
     }
     </style>
 <body class="light-bg-color">
-<%@ include file= "AdminHeader.jsp" %>
+<%
+if(VerifySession.verifySessionForAdmin(request, response)){
+return;
+}
+%>
 <%@ include file= "SearchHeader.jsp" %>
-<!--<nav>-->
 
-<!--    <form class="form-inline my-2 my-lg-0 inline-list" action="SearchAdmin" method="post">-->
-<!--        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="pname">-->
-<!--        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>-->
-<!--    </form>-->
-<!--</nav>-->
-<div>
+
 <h1 style = "text-align: center" ><u><b>ALL THE ITEMS IN THE DATABASE</b></u></h1>
 
 <h5 id = "msg" class ="center-align"> </h5>
-
-<table class="white-border" align="center" cellpadding="15" style="text-align: center;">
+    <div class="product-display-size white-bg-color white-border admin-display-margin">
+<table  align="center" cellpadding="15" style="text-align: center;" class=" table table-striped ">
+    <thead>
     <tr>
         <th>
             Product ID
@@ -76,6 +76,7 @@
             REMOVE
         </th>
     </tr>
+    </thead>
     <%
     HashSet<Product> products = (HashSet<Product>)request.getAttribute("list");
 
@@ -132,5 +133,6 @@ $(document).ready(function() {
     });
     });
 </script>
+
 </body>
 </html>

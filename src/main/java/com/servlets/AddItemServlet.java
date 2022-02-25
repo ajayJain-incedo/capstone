@@ -46,15 +46,19 @@ public class AddItemServlet extends HttpServlet {
 
         Part file = req.getPart("pimage");
         String imageFileName = file.getSubmittedFileName();     //get selected image file name
+
+
         System.out.println("Selected image FileName is: " + imageFileName);
 
         //upload path where we have to upload our actual image
-        String uploadPath = "C:/Users/divyansh.singh1/IdeaProjects/capstone/src/main/webapp/resources/static/product_images/" + imageFileName;
+        String uploadPath = "/resources/static/product_images/" + imageFileName;
         System.out.println("Upload Path is " + uploadPath);
+
+        String absoluteDiskPath = getServletContext().getRealPath(uploadPath);
 
         //uploading our selected image into images folder (product_images)
         try {
-            FileOutputStream fos = new FileOutputStream(uploadPath);
+            FileOutputStream fos = new FileOutputStream(absoluteDiskPath);
             InputStream is = file.getInputStream();
 
             byte[] data = new byte[is.available()];
@@ -64,29 +68,6 @@ public class AddItemServlet extends HttpServlet {
         } catch (Exception e) {
             e.printStackTrace();
         }
-//        Connection connection= null;
-//        try
-//        {
-//            Class.forName("com.mysql.cj.jdbc.Driver");
-//            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/shopping", "root", "admin@1234");
-//            String query = "insert into product (pimage) values(?)";
-//            PreparedStatement stmt;
-//            stmt = connection.prepareStatement(query);
-//            stmt.setString(1, imageFileName);
-//            int row = stmt.executeUpdate();
-//            if(row >0)
-//            {
-//                System.out.println("Image added to the database");
-//            }
-//            else
-//            {
-//                System.out.println("Failed to upload image");
-//            }
-//        }
-//        catch (Exception e)
-//        {
-//            System.out.println("Failed to upload image");
-//        }
 
         product.setPimage(imageFileName);
 
