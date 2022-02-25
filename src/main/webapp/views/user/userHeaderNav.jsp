@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="resources/css/header.css">
     <link rel="stylesheet" href="/resources/css/color.css">
     <title>Document</title>
-
 </head>
 <body>
 <ul class=" navbar-nav mr-auto inline-list-padding">

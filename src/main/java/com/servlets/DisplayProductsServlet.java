@@ -19,6 +19,7 @@ import java.sql.SQLException;
 import java.util.HashSet;
 
 
+
 public class DisplayProductsServlet extends HttpServlet {
 
     @Override
@@ -42,7 +43,7 @@ public class DisplayProductsServlet extends HttpServlet {
 
             req.setAttribute("list", products);
             req.getRequestDispatcher("views/user/userHome.jsp").forward(req, resp);
-            resp.sendRedirect("views/user/userHome.jsp");
+//            resp.sendRedirect("views/user/userHome.jsp");
         } catch (SQLException ex) {
             ex.printStackTrace();
         }

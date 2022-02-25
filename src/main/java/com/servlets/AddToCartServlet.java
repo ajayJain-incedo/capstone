@@ -43,7 +43,7 @@ public class AddToCartServlet extends HttpServlet {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        resp.sendRedirect("DisplayProduct");
+        resp.sendRedirect(req.getHeader("referer"));
 //        req.setAttribute("list", products);
 //        req.getRequestDispatcher("views/user/userHome.jsp").forward(req, resp);
 

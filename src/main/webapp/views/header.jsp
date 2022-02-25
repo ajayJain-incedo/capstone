@@ -44,8 +44,6 @@ return;
 
        <%@ include file="user/userHeaderNav.jsp" %>
 
-
-
 </nav>
 </body>
 </html>
