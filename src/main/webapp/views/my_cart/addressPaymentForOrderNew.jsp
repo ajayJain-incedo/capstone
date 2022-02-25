@@ -10,7 +10,7 @@
 <br>
 <%
 if(VerifySession.verifySession(request, response)){
-    return;
+return;
 }
     Connection con = ConnectionProvider.getConnection();
     StoreUser store = new StoreUser();

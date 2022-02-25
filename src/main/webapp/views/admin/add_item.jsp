@@ -18,15 +18,15 @@
 <body>
 <%
 if(VerifySession.verifySessionForAdmin(request, response)){
-    return;
+return;
 }
 %>
-<a href="admin_welcome_page.jsp">
+<a href="update_item.jsp">
     <img style="height: 40px; width: 40px" border="0" alt="HomePage Icon" src="../../resources/static/images/admin_home_page.jpg" width="100" height="100">
 </a>
 <h2 style = "text-align: center"> <b><u> ADD ITEM PAGE </u></b></h2>
 <div class = "container d-flex inline-padding">
-    <form action = "../../AddItemServlet" method = "post">
+    <form action = "../../AddItemServlet" method = "post" name = "form" id = "form">
         <div class="card">
         <div class="card text-center">
             <div class="card-header">DETAILS
@@ -35,15 +35,15 @@ if(VerifySession.verifySessionForAdmin(request, response)){
                 <table>
                     <tr>
                         <td>Enter Product Name:</td>
-                        <td><Input type = "text" name ="pname" placeholder ="Enter here" required/></td>
+                        <td><Input type = "text" name ="pname" placeholder ="Enter here" id = "pname" required></td>
                     </tr>
                     <tr>
                         <td>Enter Description:</td>
-                        <td><Input type = "text" name ="pdesc" placeholder ="Enter here" /></td>
+                        <td><textarea type = "text" name ="pdesc" placeholder ="Enter here" rows="2" id = "pdesc" required></textarea></td>
                     </tr>
                     <tr>
                         <td>Enter Price:</td>
-                        <td><Input type = "number" name ="price" placeholder ="Enter here"/></td>
+                        <td><Input type = "number" name ="price" placeholder ="Enter here" id = "price" value ="0" required></td>
                     </tr>
 
                     <tr>
@@ -64,12 +64,12 @@ if(VerifySession.verifySessionForAdmin(request, response)){
                     </tr>
                     <tr>
                         <td>Enter Discount Percent:</td>
-                        <td><Input type = "number" name ="discount_percent" placeholder ="Enter here" min="0" max="100" /></td>
+                        <td><Input type = "number" name ="discount_percent" placeholder ="Enter here" min="0" max="100"  value = "0" id = "discount_percent" required ></td>
                     </tr>
 
                     <tr>
                         <td>Enter Quantity:</td>
-                        <td><Input type = "number" name ="available_quantity" placeholder ="Enter here"/></td>
+                        <td><Input type = "number" name ="available_quantity" placeholder ="Enter here" value = "1" id = "available_quantity" required ></td>
                     </tr>
                     <!--<tr>
                         <td>Enter Image:</td>
@@ -91,7 +91,7 @@ if(VerifySession.verifySessionForAdmin(request, response)){
                     <tr>
                         <td>
                             <div class="d-flex">
-                            <button type = "submit" class="btn btn-success " style="margin-right: 10px">SUBMIT</button>
+                            <button  onclick="myFunction()" type = "submit" class="btn btn-success " style="margin-right: 10px">SUBMIT</button>
                             <button type = "reset" class = "btn btn-warning"> Reset </button>
                             </div>
                         </td>
@@ -103,5 +103,15 @@ if(VerifySession.verifySessionForAdmin(request, response)){
         </div>
     </form>
 </div>
+
+<script>
+
+    function myFunction()
+    {
+    alert("Item successfully added.")
+    }
+
+</script>
+
 </body>
 </html>

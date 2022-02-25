@@ -34,7 +34,7 @@ if(window.history.forward(1) !=null)
     ResultSet rs1=st.executeQuery();
     while(rs1.next())
     {
-        total=rs1.getInt(1);
+    total=rs1.getInt(1);
     }
     %>
     <tr>

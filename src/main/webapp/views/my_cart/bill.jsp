@@ -86,7 +86,7 @@ while(rs2.next())
 }
 catch(Exception e)
 {
-System.out.println(e);
+Sytsem.out.println(e);
 }%>
 </body>
 </html>

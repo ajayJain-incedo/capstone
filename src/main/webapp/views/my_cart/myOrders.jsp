@@ -29,7 +29,7 @@
     <tbody>
     <%
     if(VerifySession.verifySession(request, response)){
-        return;
+    return;
     }
     int sno=0;
     try

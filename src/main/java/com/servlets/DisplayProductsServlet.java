@@ -8,7 +8,6 @@ import com.service.SearchProducts;
 import com.service.StoreUser;
 import com.service.VerifySession;
 
-import javax.mail.Store;
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
@@ -16,10 +15,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
+
 import java.util.HashSet;
 
-import static java.lang.System.out;
 
 public class DisplayProductsServlet extends HttpServlet {
 
@@ -33,7 +31,6 @@ public class DisplayProductsServlet extends HttpServlet {
             UserDao dao = new UserDao(ConnectionProvider.getConnection());
             Cookie[] cookies = req.getCookies();
             for(Cookie c: cookies){
-                out.println(c.getValue());
                 if(c.getName().equals("userEmail")){
                     User user = dao.getUserByEmail(c.getValue());
                     StoreUser.storeUser(user);
@@ -42,12 +39,10 @@ public class DisplayProductsServlet extends HttpServlet {
             SearchProducts search = new SearchProducts();
 
             HashSet<Product> products = search.searchAllProducts();
+
             req.setAttribute("list", products);
-
             req.getRequestDispatcher("views/user/userHome.jsp").forward(req, resp);
-
-            //resp.sendRedirect("views/user/userHome.jsp");
-
+            resp.sendRedirect("views/user/userHome.jsp");
         } catch (SQLException ex) {
             ex.printStackTrace();
         }

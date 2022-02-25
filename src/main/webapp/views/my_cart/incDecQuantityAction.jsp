@@ -28,7 +28,12 @@ while(rs.next()){
 
 }
 if(quantity==1 && incdec.equals("dec")){
-    response.sendRedirect("myCart.jsp?msg=notPossible");
+    String query1 = "delete from cart_item where user_id=? and product_id=?";
+    PreparedStatement st1 = con.prepareStatement(query1);
+    st1.setString(1, id);
+    st1.setInt(2, pid);
+    st1.executeUpdate();
+    response.sendRedirect("myCart.jsp?msg=removed");
 }
 else if(quantity !=1 && incdec.equals("dec"))
 {
