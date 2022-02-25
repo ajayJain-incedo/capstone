@@ -3,27 +3,18 @@
 <%@ page import = "java.io.*" %>
 <%@page import = "com.service.ConnectionProvider"%>
 <%@ page import="com.service.VerifySession" %>
-<html xmlns="http://www.w3.org/1999/html">
+<html lang="en">
 <head>
     <title>EDIT PRODUCT</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link href="../../resources/css/update_item.css" rel="stylesheet">
-    <link rel="stylesheet" href="resources/css/update_item.css">
+    <link rel="stylesheet" href="../../resources/css/header.css">
+    <link rel="stylesheet" href="../../resources/css/color.css">
+    <link rel="stylesheet" href="../../resources/css/product.css">
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <style>
-    .container
-    {
-    width: 30%;
-    margin:auto;
-    padding: 20px;
-    }
-    body
-    {
-    background-color: #78909C !important;
-    }
-    </style>
+
 </head>
-<body>
+<body class="light-bg-color">
 <%
 if(VerifySession.verifySessionForAdmin(request, response)){
 return;
@@ -52,6 +43,9 @@ try{
 %>
 <table align="center" cellpadding="15" style="background-color: white; text-align: center; border-radius: 15px; border:none;
   border-collapse: collapse;" >
+<div class="product-display-size white-bg-color white-border admin-display-margin">
+
+<table align="center" cellpadding="15" style="text-align: center;">
     <tr>
 
         <th>
@@ -101,7 +95,7 @@ try{
         <td><img src='../../resources/static/product_images/<%=rs.getString("pimage")%>' style="width:40px;height:40px;object-fit:contain;"></td>
 <!--        <td><button type="button"  class=" btn btn-dark"  >-->
 <!--            <a href="update.jsp?id=<%=rs.getString(8)%>" style= "text-decoration:none" >UPDATE</a></button></td>-->
-        <td><a href="update.jsp?id=<%=rs.getInt(8)%>" class="btn btn-dark">UPDATE</a></td>
+        <td><a href="update.jsp?id=<%=rs.getInt(8)%>" class="btn btn-primary">UPDATE</a></td>
         <td><button type="button" id ="<%=rs.getInt(9)%>"  class="delete btn btn-danger"  >REMOVE</button></td>
     </TR>
     <% }
@@ -120,20 +114,24 @@ try{
         out.println("Unable to connect to database.(update_item.jsp)");
         }
         %>
-
-    <tr>
+    <tr class="page-bar pagination-bar">
         <th colspan = "9">
-            <table width = "100%">
-                <tr>
+            <div class="white-border blue-bg-color">
+            <table>
+                <tr class="page-bar" >
             total records: <%= total%>
             <% for (int i =0; i<=total/recordCount; i++) {%>
-            <td><a href= "update_item.jsp?pgno=<%=i%>" class = "btn btn-dark "> Page<%=i+1%> </a></td>
+            <td><a href= "update_item.jsp?pgno=<%=i%>" class = "btn dark-bg-color white-color my-2 my-sm-0 "> Page<%=i+1%> </a></td>
             <%}%>
                 </tr>
             </table>
+            </div>
         </th>
     </tr>
+
 </table>
+</div>
+
 &nbsp;&nbsp;
 
 <%--Javascripts--%>

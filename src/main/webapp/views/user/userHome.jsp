@@ -19,7 +19,7 @@ return;
     <%@page contentType="text/html" pageEncoding="UTF-8"%>
     <%@ include file='../header.jsp' %>
     <%@ include file='../categoryBar.jsp' %>
-    <div class="inline-list inline-wrap block-margin inline-margin">
+    <div class="inline-list inline-wrap inline-margin-start block-margin product-display-size">
     <%@ include file="../productDisplay.jsp" %>
     </div>
 

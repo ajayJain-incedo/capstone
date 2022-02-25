@@ -1,24 +1,14 @@
-## Test data for users table :
 
-insert into users(uid,first_name,last_name,email,pass,mobile,address)
-values(1001,'Rakesh','Sharma','rakesh21@gmail.com','r0123','9838868901','House 3,Shanti Nagar,Phase-4,gurgaon');
-
-insert into users(first_name,last_name,email,pass,mobile,address)
-values('Rishi','Jain','rishijain1@gmail.com','rishi01','9837688901','House 4,Surya Nagar,lucknow');
-
-insert into users(first_name,last_name,email,pass,mobile,address)
-values('Shreya','Sharma','shreya12@gmail.com','s9988','9235868901','House 12,arya colony,jaipur');
-
-insert into users(first_name,last_name,email,pass,mobile,address)
-values('Harish','Jain','harish32@gmail.com','hj321','9838843201','house 6,hari nagar,jodhpur');
-
-insert into users(first_name,last_name,email,pass,mobile,address)
-values('Ronak','Vasu','ronak01@gmail.com','vasu12','6678868901','house 1,vaishali apartment,Phase-4,noida');
-
-insert into users(first_name,last_name,email,pass,mobile,address,usertype)
-values('Daksh','Ameta','dakshameta@gmail.com','daksh33','7908868901','A-403,Columbus Apartment,Phase-4,gurgaon','A');
-
-select * from users;
+## Trigger
+delimiter //
+create trigger add_image
+before insert on product
+for each row
+begin
+declare newpid int(5);
+select IFNULL(MAX(pid), 1100) into newpid from product;
+set new.pimage = concat(newpid+1,'.jpg');
+end; //
 
 
 
