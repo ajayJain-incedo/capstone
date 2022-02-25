@@ -30,14 +30,14 @@ h3
 <body>
 <%
 if(VerifySession.verifySession(request, response)){
-return;
+    return;
 }
-String msg=request.getParameter("msg");
+    String msg=request.getParameter("msg");
 if("notPossible".equals(msg))
 {
 %>
 <div style="color: white; text-align: center; font-size: 30px;">My Cart <i class='fas fa-cart-arrow-down'></i></div>
-<h3 class="alert" style="color:green">There is only one Quantity! So click on remove!</h3>
+<h3 class="alert" style="color:red">There is only one Quantity! So click on remove!</h3>
 <%} %>
 <%
 if("inc".equals(msg))
@@ -117,7 +117,7 @@ if("removed".equals(msg))
     }
     }
     catch(Exception e)
-    {}
+    {e.printStackTrace();}
     %>
     </tbody>
 </table>

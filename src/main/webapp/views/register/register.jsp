@@ -17,8 +17,6 @@
                         <span class="fa fa-2x fa-user-plus"></span>
                         <br>
                         <p>Register Here</p>
-
-
                     </div>
                     <div class="card-body">
                         <form action="../../RegisterServlet" method="POST" id="register-form">
@@ -77,70 +75,9 @@
             </div>
         </div>
     </main>
-    <%--Javascripts--%>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-<script>
-    function isNumberKey(evt) {
-        var charCode = (evt.which) ? evt.which : event.keyCode;
-        if ((charCode < 48 || charCode > 57))
-            return false;
-
-        return true;
-    }
-    $(document).ready(function(){
-
-       $("#register-form").on("submit", function(e){
-             $("#failuremessage").html("")
-             $("#failuremessage-mobile").html("");
-             $("#failuremessage-email").html("");
-             $("#failuremessage-password").html("");
-            e.preventDefault();
-            var f=$(this).serialize();
-            $(".loader").css("display", "flex");
-            $.ajax({
-                url: "../../RegisterServlet",
-                data: f,
-                type: "POST",
-                success: function(data, textStatus, jqXHR){
-                    $(".loader").css("display", "none");
-                    if(data.trim()==="done"){
-                    $("#submit-button").hide();
-                    $("#login-button").hide();
-                    var mob=$("#mobile").val();
-                        $("#failuremessage").css("color", "green");
-                        $("#failuremessage").html("Successfully Registered, Redirecting to login page in ");
-                        var seconds=5;
-                        setInterval(function() {
-                            $("#failuremessage").html("Successfully Registered, Redirecting to login page in "+seconds);
-                            seconds-=1;
-                        }, 1000);
-
-                        setTimeout(function(){
-                            window.location.href = '../../index.jsp';
-                        }, 5000);
-
-                    }else if(data.trim()==="mobileError"){
-                         $("#failuremessage-mobile").html("Please enter correct mobile number!");
-                    }else if(data.trim()==="emailDuplicate"){
-                        $("#failuremessage-email").html("Email already exist!");
-                    }else if(data.trim()==="passwordNotMatching"){
-                        $("#failuremessage-password").html("Passwords not matching!");
-                    }else if(data.trim()==="tooLong"){
-                        $("#failuremessage").html("Maximum character limit exceeded!");
-                    }
-                    else{
-                        $("#failuremessage").html("Sorry, something went wrong");
-                    }
-                },
-                error: function(jqXHR, textStatus, errorThrown){
-                    $(".loader").css("display", "none");
-                    $("#failuremessage").html("Sorry! Something went wrong.")
-
-                }
-            })
-       })
-    })
-</script>
+<%--Javascripts--%>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script type="text/javascript" src="../../resources/js/register.js"></script>
 </body>
 </html>
