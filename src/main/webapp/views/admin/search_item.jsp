@@ -64,6 +64,9 @@
             Available Quantity
         </th>
         <th>
+            Image
+        </th>
+        <th>
             UPDATE
         </th>
         <th>
@@ -72,7 +75,9 @@
     </tr>
     <%
     HashSet<Product> products = (HashSet<Product>)request.getAttribute("list");
+
     for(Product p : products){
+    String path = "resources/static/product_images/" +p.getPimage();
     %>
     <TR>
 
@@ -83,9 +88,9 @@
         <TD><%=p.getCategory()%></TD>
         <TD><%=p.getDiscount_percent()%></TD>
         <TD><%=p.getAvailable_quantity()%></TD>
-
+        <td><img src=<%=path%> alt = "<%=p.getPimage()%>" style="width:40px;height:40px;object-fit:contain;"></td>
         <td><a href="views/admin/update.jsp?id=<%=p.getId()%>" class="btn btn-dark">UPDATE</a></td>
-        <% System.out.println(p.getId()); %>
+        <% System.out.println("image in search_item i got is " + p.getPimage()); %>
         <td><button type="button" id ="<%=p.getId()%>"  class="delete btn btn-danger"  >REMOVE</button></td>
     </TR>
     <% } %>

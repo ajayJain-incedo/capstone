@@ -30,7 +30,7 @@
         {
         Connection connection = ConnectionProvider.getConnection();
         Statement statement=connection.createStatement();
-        String sql ="Select pid, pname, pdesc, price, category, discount_percent, available_quantity from product where pid="+id;
+        String sql ="Select pid, pname, pdesc, price, category, discount_percent, available_quantity, pimage from product where pid="+id;
         ResultSet rs = statement.executeQuery(sql);
         while(rs.next())
         {
@@ -57,6 +57,7 @@
 
             Available Quantity:
             <p><input type="number" name="available_quantity" value="<%=rs.getString(7) %>"></p>
+            <input type="hidden" name="pimage" value="<%=rs.getString(8) %>">
 
             <button type="submit" value="DETAILS" class = "btn btn-primary">SUBMIT</button>
         </form>

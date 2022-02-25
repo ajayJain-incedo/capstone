@@ -26,7 +26,7 @@ return;
 </a>
 <h2 style = "text-align: center"> <b><u> ADD ITEM PAGE </u></b></h2>
 <div class = "container d-flex inline-padding">
-    <form action = "../../AddItemServlet" method = "post" name = "form" id = "form">
+    <form action = "../../AddItemServlet" method = "post" name = "form" id = "form" enctype = "multipart/form-data">
         <div class="card">
         <div class="card text-center">
             <div class="card-header">DETAILS
@@ -70,6 +70,10 @@ return;
                     <tr>
                         <td>Enter Quantity:</td>
                         <td><Input type = "number" name ="available_quantity" placeholder ="Enter here" value = "1" id = "available_quantity" required ></td>
+                    </tr>
+                    <tr>
+                        <td>Enter Image of the Product:</td>
+                        <td><input class="form-control form-control-sm" type="file" name = "pimage"  ></td>
                     </tr>
                     <!--<tr>
                         <td>Enter Image:</td>

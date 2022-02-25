@@ -44,7 +44,7 @@ try{
     int pgno = request.getParameter("pgno")==null ?0: Integer.parseInt(request.getParameter("pgno"));
     start = pgno * recordCount;
     Connection con = ConnectionProvider.getConnection();
-    String QueryString = "Select pid, pname, pdesc, price, category, discount_percent, available_quantity, pid, pid from product limit ?,?";
+    String QueryString = "Select pid, pname, pdesc, price, category, discount_percent, available_quantity, pid, pid, pimage from product limit ?,?";
     PreparedStatement statement = con.prepareStatement(QueryString);
     statement.setInt(1, start);
     statement.setInt(2,recordCount);
@@ -98,7 +98,7 @@ try{
         <TD><%=rs.getString(5)%></TD>
         <TD><%=rs.getDouble(6)%></TD>
         <TD><%=rs.getInt(7)%></TD>
-        <td><img src="../../resources/static/product_images/<%=rs.getInt(1)%>.jpg" style="width:40px;height:40px;object-fit:contain;"></td>
+        <td><img src='../../resources/static/product_images/<%=rs.getString("pimage")%>' style="width:40px;height:40px;object-fit:contain;"></td>
 <!--        <td><button type="button"  class=" btn btn-dark"  >-->
 <!--            <a href="update.jsp?id=<%=rs.getString(8)%>" style= "text-decoration:none" >UPDATE</a></button></td>-->
         <td><a href="update.jsp?id=<%=rs.getInt(8)%>" class="btn btn-dark">UPDATE</a></td>

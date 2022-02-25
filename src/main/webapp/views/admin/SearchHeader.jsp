@@ -20,7 +20,8 @@ if(VerifySession.verifySession(request, response)){
 return;
 }%>
 <nav class="navbar navbar-expand-lg navbar-light bg-light" style = "height: 10vh;">
-    <a class="navbar-brand inline-margin-start" href="views/admin/update_item.jsp">ICON</a>
+<!--    <a class="navbar-brand inline-margin-start" href="views/admin/update_item.jsp">ICON</a>-->
+    <a style = "text-decoration: none; cursor:pointer; width:100px; height:80px;"> <img src = "../../resources/static/images/iconhead.png" alt = "icon.png" style="width:100px; height:80px; object-fit:contain;" class="navbar-brand inline-margin-start" href="views/admin/update_item.jsp"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>

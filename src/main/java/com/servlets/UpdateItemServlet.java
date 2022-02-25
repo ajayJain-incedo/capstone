@@ -38,6 +38,9 @@ public class UpdateItemServlet extends HttpServlet
         double available_quantity = Double.parseDouble(req.getParameter("available_quantity"));
         product.setAvailable_quantity(available_quantity);
 
+        String pimage = req.getParameter("pname");
+        product.setPimage(pimage);
+
         ProductDao dao = new ProductDao(ConnectionProvider.getConnection());
         dao.UpdateItem(product);
 
