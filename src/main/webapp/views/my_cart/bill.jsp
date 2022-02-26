@@ -46,7 +46,7 @@
 <hr>
 <%break;%>
 <%
-    //StoreUser store = new StoreUser();
+
     //User user = store.getUser();
     int total=0;
     int sno=0;

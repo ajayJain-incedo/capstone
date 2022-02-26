@@ -1,6 +1,8 @@
 package com.dao;
 
 import com.model.Cart;
+import com.model.Order;
+import com.model.Product;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -101,5 +103,31 @@ public class CartDao {
         }
         return cartItem;
 
+    }
+
+    public void deleteAllCartItems(int id){
+        try{
+            String query = "delete from cart_item where user_id =?";
+            PreparedStatement st = this.con.prepareStatement(query);
+            st.setInt(1, id);
+            st.executeUpdate();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+    public void addToOrderHistory(Order order){
+        try {
+            String query = "insert into order_history(user_id, product_id, product_name, product_quantity, pay_amount) values(?, ?, ?, ?, ?)";
+            System.out.println(order);
+            PreparedStatement ps = this.con.prepareStatement(query);
+            ps.setInt(1, order.getUser_id());
+            ps.setInt(2, order.getProduct_id());
+            ps.setString(3, order.getProduct_name());
+            ps.setInt(4, order.getProduct_quantity());
+            ps.setDouble(5, order.getPay_amount());
+            ps.executeUpdate();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 }

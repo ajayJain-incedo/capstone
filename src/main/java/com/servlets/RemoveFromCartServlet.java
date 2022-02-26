@@ -26,8 +26,8 @@ public class RemoveFromCartServlet extends HttpServlet {
             return;
         }
         int pid = Integer.parseInt(req.getParameter("pid"));
-        StoreUser store= new StoreUser();
-        User user = store.getUser();
+
+        User user = StoreUser.getUser();
         try {
             dao.Remove(user.getId(),pid);
         } catch (SQLException e) {

@@ -12,7 +12,7 @@ public class ConnectionProvider {
 
                 // Creating a connection
 
-                con = DriverManager.getConnection("jdbc:mysql://localhost:3306/shopping", "root", "3.1415926");
+                con = DriverManager.getConnection("jdbc:mysql://localhost:3306/shopping", "root", "root");
 
 
 

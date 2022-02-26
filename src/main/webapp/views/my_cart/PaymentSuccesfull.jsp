@@ -1,12 +1,33 @@
 <!DOCTYPE html>
-<%@page import="com.service.VerifySession"%>
-<%@ page errorPage="../error_pages/error_page1.jsp" %>
+<%@page import="com.service.*, com.dao.*, java.sql.*, com.model.*, java.util.HashSet"%>
+<%--<%@ page errorPage="../error_pages/error_page1.jsp" %>--%>
 <html>
 <body style = "background-color: #78909C;">
 <%if(VerifySession.verifySession(request, response)){
 return;
-}%>
+}
+try{
+Connection con = ConnectionProvider.getConnection();
 
+User user =StoreUser.getUser();
+int uid = user.getId();
+String queryToGetOrderId="select oid from orders where user_id =? and payment_status ='Pending'";
+PreparedStatement pstmt = con.prepareStatement(queryToGetOrderId);
+pstmt.setInt(1, uid);
+ResultSet rsOrderId = pstmt.executeQuery();
+int oid = 0;
+while(rsOrderId.next()){
+oid=rsOrderId.getInt("oid");
+}
+String callQuery = "call insert_history(?)";
+CallableStatement cstmt = con.prepareCall(callQuery);
+cstmt.setInt(1,oid);
+cstmt.execute();
+
+}
+catch(Exception e){e.printStackTrace();}
+
+%>
 
 <div class="container">
     <div class="row">

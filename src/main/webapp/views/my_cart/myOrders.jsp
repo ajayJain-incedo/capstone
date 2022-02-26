@@ -15,14 +15,12 @@
     <thead>
     <tr>
         <th scope="col">S.No</th>
+        <th scope="col"> Order Number</th>
         <th scope="col">Product Name</th>
         <th scope="col">category</th>
         <th scope="col"><i class="fa fa-inr"></i>  Price</th>
         <th scope="col">Quantity</th>
         <th scope="col"><i class="fa fa-inr"></i> Sub Total</th>
-        <th scope="col">Order Date</th>
-        <th scope="col">Expected Delivery Date</th>
-
 
     </tr>
     </thead>
@@ -31,14 +29,12 @@
 
     try
     {
-        StoreUser store = new StoreUser();
-        User user = store.getUser();
+
+        User user = StoreUser.getUser();
         Connection con = ConnectionProvider.getConnection();
-        //java.sql.PreparedStatement st = con.prepareStatement("select * from order_history where user_id=? ");
+        java.sql.PreparedStatement st = con.prepareStatement("select order_id, pname, category, price, product_quantity, pay_amount from order_history, product where order_history.user_id=? and product.pid=order_history.product_id");
         //st.setInt(1, user.getId());
-
-
-        PreparedStatement st = con.prepareStatement("select pname, category, product_price,  product_id, quantity, product_id ,amount,  product_id from cart_item, product where user_id = ? and cart_item.product_id = product.pid");
+       // PreparedStatement st = con.prepareStatement("select pname, category, product_price,  product_id, quantity, product_id ,amount,  product_id from cart_item, product where user_id = ? and cart_item.product_id = product.pid");
 
         st.setInt(1, user.getId());
         int total=0;
@@ -46,16 +42,18 @@
         ResultSet rs1=st.executeQuery();
         while(rs1.next())
         {
-            total +=rs1.getInt("amount");
+
+            total +=rs1.getDouble("pay_amount");
     %>
     <tr>
         <%sno=sno+1; %>
         <td><%=sno %></td>
+        <td><%=rs1.getInt("order_id") %></td>
         <td><%=rs1.getString("pname") %></td>
         <td><%=rs1.getString("category") %></td>
-        <td><i class="fa fa-inr"></i> <%=rs1.getString("product_price") %></td>
-        <td> <%=rs1.getInt("quantity") %></td>
-        <td><i class="fa fa-inr"></i> <%=rs1.getInt("amount") %></td>
+        <td><i class="fa fa-inr"></i> <%=rs1.getDouble("price") %></td>
+        <td> <%=rs1.getInt("product_quantity") %></td>
+        <td><i class="fa fa-inr"></i> <%=rs1.getDouble("pay_amount") %></td>
     </tr>
     <%
     }

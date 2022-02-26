@@ -21,12 +21,25 @@
 <body class="light-bg-color">
 
 <nav class="navbar navbar-expand-lg navbar-light blue-bg-color">
-    <a class="navbar-brand inline-margin-start white-color" href="DisplayProduct">CapStone</a>
+    <a class="navbar-brand inline-margin-start white-color" href="/Capstone/DisplayProduct"><img style="width:60px;" src="../../resources/static/images/iconhead.png"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
+    <ul class=" navbar-nav mr-auto inline-list-padding">
+        <li class="nav-item d-flex align-items-center text-white mr-16">
+            <a class="white-color nav-link hover-oscillate" href="../my_cart/myOrders.jsp">My Orders</a>
+            <i class="fa fa-file icon"></i>
+        </li>
+        <li class="nav-item d-flex align-items-center text-white mr-16">
+            <a class="white-color nav-link hover-oscillate" href="../my_cart/myCart.jsp">Cart</a>
+            <i class=" fa fa-shopping-cart icon"></i>
+        </li>
+        <li class="nav-item d-flex align-items-center text-white mr-16">
+            <a class="white-color nav-link hover-oscillate" href="/Capstone/Logout">Logout</a>
+            <i class="fa fa-sign-out icon"></i>
+        </li>
+    </ul>
 
-<%@ include file="userHeaderNav.jsp" %>
 </nav>
 <br><br>
 <%
@@ -70,8 +83,8 @@ if(msg.equals("errorDeleteUser")){
                     }
                 }
 
-                   StoreUser store = new StoreUser();
-                    User user = store.getUser();
+
+                    User user = StoreUser.getUser();
                     int id =user.getId();
                     String firstName = user.getFirstName();
                     String lastName = user.getLastName();

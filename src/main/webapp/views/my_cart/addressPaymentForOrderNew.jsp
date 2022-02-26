@@ -13,8 +13,15 @@ if(VerifySession.verifySession(request, response)){
 return;
 }
     Connection con = ConnectionProvider.getConnection();
-    StoreUser store = new StoreUser();
-    User user = store.getUser();
+
+    User user = StoreUser.getUser();
+    int uid = user.getId();
+    String callQuery = "call insert_order(?)";
+try{
+    CallableStatement cstmt = con.prepareCall(callQuery);
+    cstmt.setInt(1,uid);
+    cstmt.execute();
+}catch(Exception e){e.printStackTrace();}
 
 %>
 
@@ -35,13 +42,13 @@ return;
     <div class="card">
         <div class="card-body">
             <h5 class="card-title"><u><b>PAYMENT DETAILS</b></u></h5>
-            <p><a href="PaymentSuccesfull.jsp" style = "text-decoration:none;">UPI: &nbsp;
+            <p><a href="billMy.jsp" style = "text-decoration:none;">UPI: &nbsp;
             <img src = "../../resources/static/images/upi.png"  alt = "upi_image" width = "40" height = "50">  </a></p>
-            <p><a href="PaymentSuccesfull.jsp " style = "text-decoration:none;" > Credit Card: &nbsp;
+            <p><a href="billMy.jsp " style = "text-decoration:none;" > Credit Card: &nbsp;
                 <img src = "../../resources/static/images/credit_card.png"  alt = "creditcard_image" width = "40" height = "50">  </a></p>
-            <p><a href="PaymentSuccesfull.jsp" style = "text-decoration:none;">Debit Card: &nbsp;
+            <p><a href="billMy.jsp" style = "text-decoration:none;">Debit Card: &nbsp;
                 <img src = "../../resources/static/images/debit_card.jpg"  alt = "debitcard_image" width = "40" height = "50">  </a></p>
-            <p><a href="PaymentSuccesfull.jsp" style = "text-decoration:none;" >Cash On Delivery: &nbsp;
+            <p><a href="billMy.jsp" style = "text-decoration:none;" >Cash On Delivery: &nbsp;
                 <img src = "../../resources/static/images/cash_on_delivery.jpg"  alt = "cashOnDelivery_image" width = "40" height = "50">  </a></p>
         </div>
 
