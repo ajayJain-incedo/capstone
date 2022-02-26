@@ -1,5 +1,5 @@
 <%@page import="com.service.ConnectionProvider, com.service.VerifySession"%>
-<%@page import="java.sql.*"%>
+<%@page import="java.sql.* , com.service.StoreUser, com.model.User"%>
 <%@include file="footer.jsp" %>
 <%@ page errorPage="../error_pages/error_page1.jsp" %>
 <html>
@@ -9,45 +9,61 @@
 </head>
 <body>
 <%
-if(VerifySession.verifySession(request, response)){
-return;
-}
-String email = session.getAttribute("email").toString();
-try
-{
-int total=0;
-int sno=0;
-Connection con = ConnectionProvider.getCon();
-Statement st = con.createStatement();
-ResultSet rs = st.executeQuery("select sum(total) from cart where email='"+email"' and status='bill'");
-while(rs.next())
-{
-total = rs.getInt(1);
-}
-ResultSet rs2 = st.executeQuery("select * from users inner join cart where cart.email='"+email"' and cart.status='bill'");
-while(rs2.next())
-{
+    StoreUser store = new StoreUser();
+    User user = store.getUser();
+
+    try
+    {
+        int total=0;
+        int sno=0;
+        Connection con = ConnectionProvider.getConnection();
+        java.sql.PreparedStatement st = con.prepareStatement("select * from cart_item where user_id=? ");
+        st.setInt(1, user.getId());
+
+        ResultSet rs1=st.executeQuery();
+        while(rs1.next())
+        {
+        total +=rs1.getInt("amount");
+        }
+
+        //ResultSet rs2 = st.executeQuery("select * from users inner join cart where cart.email='"+email"' and cart.status='bill'");
+       // while(rs2.next())
+        //{
+    }
+    catch(Exception e )     {System.out.println(e);}
 %>
 <h3>Online shopping Bill </h3>
 <hr>
-<div class="left-div"><h3>Name: <%=rs2.getString(1) %> </h3></div>
-<div class="right-div-right"><h3>Email: <%out.println(email); %> </h3></div>
-<div class="right-div"><h3>Mobile Number: <%=rs2.getString(20) %> </h3></div>
+<div class="left-div"><h3>Name: <%=user.getFirstName()%> </h3></div>
+<div class="right-div-right"><h3>Email: <%=user.getEmail()%> </h3></div>
+<div class="right-div"><h3>Mobile Number: <%=user.getMobile()%> </h3></div>
 
-<div class="left-div"><h3>Order Date: <%=rs2.getString(21) %> </h3></div>
-<div class="right-div-right"><h3>Payment Method: <%=rs2.getString(23) %> </h3></div>
-<div class="right-div"><h3>Expected Delivery: <%=rs2.getString(22) %> </h3></div>
+<div class="left-div"><h3>Order Date: <%= (new java.util.Date()).toLocaleString()%> </h3></div>
+<div class="left-div"><h3>Expected Delivery Date: <%= (new java.util.Date()).toLocaleString()%> </h3></div>
 
-<div class="left-div"><h3>Transaction Id: <%=rs2.getString(24) %> </h3></div>
-<div class="right-div-right"><h3>City: <%=rs2.getString(17) %> </h3></div>
-<div class="right-div"><h3>Address: <%=rs2.getString(16) %> </h3></div>
-
-<div class="left-div"><h3>State: <%=rs2.getString(18) %> </h3></div>
-<div class="right-div-right"><h3>Country: <%=rs2.getString(19) %> </h3></div>
+<div class="right-div"><h3>Address: <%=user.getAddress()%> </h3></div>
 
 <hr>
-<%break;} %>
+<%break;%>
+<%
+    //StoreUser store = new StoreUser();
+    //User user = store.getUser();
+    int total=0;
+    int sno=0;
+    try
+    {
+        Connection con = ConnectionProvider.getConnection();
+        java.sql.PreparedStatement st = con.prepareStatement("select * from cart_item where user_id=? ");
+        st.setInt(1, user.getId());
 
+        ResultSet rs1=st.executeQuery();
+        while(rs1.next())
+        {
+            total +=rs1.getInt("amount");
+        }
+    }
+    catch(Exception e ){System.out.println(e);}
+%>
 
 <br>
 
@@ -62,21 +78,31 @@ while(rs2.next())
         <th>Sub Total</th>
     </tr>
     <%
-    ResultSet rs1=st.executeQuery("select * from cart inner join product where cart.product_id=product.id and cart.email='"+email+"' and cart.status='bill'");
-    while(rs1.next())
+    try
     {
-    sno=sno+1;
-    %>
-    <tr>
-        <td><%out.println(sno); %></td>
-        <td><%rs1.getString(17) %></td>
-        <td><%rs1.getString(18) %></td>
-        <td><%rs1.getString(19) %></td>
-        <td><%rs1.getString(3) %></td>
-        <td><%rs1.getString(5) %></td>
-    </tr>
-    <tr>
-        <%} %>
+    Connection con = ConnectionProvider.getConnection();
+    PreparedStatement st = con.prepareStatement("select pname, category, product_price,  product_id, quantity, product_id ,amount,  product_id from cart_item, product where user_id = ? and cart_item.product_id = product.pid");
+
+    st.setInt(1, user.getId());
+
+    ResultSet rs3=st.executeQuery();
+    //int sno=0;
+    //int total=0;
+    while(rs3.next())
+    {
+        total +=rs3.getInt("amount");
+        %>
+        <tr>
+            <%sno=sno+1; %>
+            <td><%=sno %></td>
+            <td><%=rs3.getString("pname") %></td>
+            <td><%=rs3.getString("category") %></td>
+            <td><%=rs3.getString("product_price") %></td>
+            <td><%=rs3.getInt("quantity") %></td>
+            <td><%=rs3.getInt("amount") %></td>
+        </tr>
+        <tr>
+            <%} %>
 </table>
 <h3>Total: <%out.println(total); %></h3>
 <a href="continueShopping.jsp"><button class="button left-button">Continue Shopping</button></a>
@@ -86,7 +112,10 @@ while(rs2.next())
 }
 catch(Exception e)
 {
-System.out.println(e);
-}%>
+    System.out.println(e);
+}
+finally{
+System.out.println("Finally Block Executed");
+%>
 </body>
 </html>
