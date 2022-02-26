@@ -34,7 +34,7 @@
         StoreUser store = new StoreUser();
         User user = store.getUser();
         Connection con = ConnectionProvider.getConnection();
-        //java.sql.PreparedStatement st = con.prepareStatement("select * from cart_item where user_id=? ");
+        //java.sql.PreparedStatement st = con.prepareStatement("select * from order_history where user_id=? ");
         //st.setInt(1, user.getId());
 
 

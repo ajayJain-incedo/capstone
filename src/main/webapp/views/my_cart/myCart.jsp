@@ -8,17 +8,11 @@
 <%@include file ="header.jsp" %>
 <%@include file="footer.jsp" %>
 <%@ page errorPage="../error_pages/error_page1.jsp" %>
-<html lang="en" >
+<html >
 <head>
     <link rel="stylesheet" href="css/addressPaymentForOrder-style.css">
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="resources/css/header.css">
-    <link rel="stylesheet" href="resources/css/color.css">
+
     <title>My Cart</title>
     <style>
 h3
