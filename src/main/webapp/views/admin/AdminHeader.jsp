@@ -21,7 +21,7 @@ if(VerifySession.verifySession(request, response)){
 return;
 }%>
 <nav class="navbar navbar-expand-lg navbar-light blue-bg-color">
-    <a href="update_item.jsp" style = "text-decoration: none; cursor:pointer; width:100px; height:80px;"> <img src = "../../resources/static/images/iconhead.png" alt = "icon.png" style="width:100px; height:80px; object-fit:contain;" class="navbar-brand inline-margin-start" ></a>
+    <a href="update_item.jsp" style = "text-decoration: none; cursor:pointer; width:6.25rem; height:5rem;"> <img src = "../../resources/static/images/iconhead.png" alt = "icon.png" style="width:6.25rem; height:5rem; object-fit:contain;" class="navbar-brand inline-margin-start" ></a>
 
 <!--    <a class="navbar-brand inline-margin-start white-color" href="update_item.jsp">ICON</a>-->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -37,10 +37,11 @@ return;
 
     <ul class=" navbar-nav mr-auto inline-list-padding">
         <li class="nav-item">
-            <a href="add_item.jsp" class="white-color nav-link">ADD ITEM</a>
+            <a href="add_item.jsp" class=" btn btn-success white-color nav-link">ADD ITEM</a>
         </li>
+        &nbsp;&nbsp;
         <li class="nav-item">
-            <a href="/Capstone/Logout" class="white-color nav-link">Logout</a>
+            <a href="/Capstone/Logout" class=" btn btn-info white-color nav-link">Logout</a>
         </li>
     </ul>
 

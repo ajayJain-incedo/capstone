@@ -22,7 +22,7 @@
     {
     width: 30%;
     margin:auto;
-    padding: 20px;
+    padding: 1.25rem;
     }
     body
     {
@@ -43,7 +43,7 @@ return;
 <h5 id = "msg" class ="center-align"> </h5>
     <div class="product-display-size white-bg-color white-border admin-display-margin">
 <table  align="center" cellpadding="15" style="text-align: center;" class=" table table-striped ">
-    <thead>
+    <thead style = "position: sticky; top: 0; background-color: white">
     <tr>
         <th>
             Product ID
@@ -92,7 +92,7 @@ return;
         <TD><%=p.getCategory()%></TD>
         <TD><%=p.getDiscount_percent()%></TD>
         <TD><%=p.getAvailable_quantity()%></TD>
-        <td><img src=<%=path%> alt = "<%=p.getPimage()%>" style="width:40px;height:40px;object-fit:contain;"></td>
+        <td><img src=<%=path%> alt = "<%=p.getPimage()%>" style="width:2.94rem;height:2.94rem;object-fit:contain;"></td>
         <td><a href="views/admin/update.jsp?id=<%=p.getId()%>" class="btn btn-dark">UPDATE</a></td>
         <% System.out.println("image in search_item i got is " + p.getPimage()); %>
         <td><button type="button" id ="<%=p.getId()%>"  class="delete btn btn-danger"  >REMOVE</button></td>

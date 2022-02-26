@@ -41,34 +41,79 @@ if(VerifySession.verifySessionForAdmin(request, response)){
 return;
 }
 %>
-<div class = "container">
-<div class="card" style = "text-align: center">
-    <div class="card-body">
-        <h5 class="card-title"><u>UPDATE PRODUCT DETAILS</u></h5>
-        <form  action="../../UpdateItemServlet" method="post">
-            <input type="hidden" name="id" value="<%=rs.getString(1) %>">
-            Product Name:
-            <p> <input type="text" name="pname" value="<%=rs.getString(2) %>"></p>
-            Product Description:
-            <textarea type = "text" name="pdesc" value="<%=rs.getString(3) %>"   class="form-control" rows="2"><%=rs.getString(3) %> </textarea>
+<a href="update_item.jsp">
+    <img style="height: 3rem; width: 3rem" border="0" alt="HomePage Icon" src="../../resources/static/images/admin_home_page.jpg" width="100" height="100">
+</a>
 
-            Price:
-            <p><input type="number" name="price" value="<%=rs.getString(4) %>"></p>
-            Category:
-            <p><input  readonly type="text" name="category" value="<%=rs.getString(5) %>"></p>
+<!--<main class="d-flex align-items-center my-background clip" style="height: 85vh; ">-->
 
-            Discount Percentage:
-            <p><input type="number" name="discount_percent" value="<%=rs.getString(6) %>" min="0" max="100"></p>
+    <div class="container" style="width: 100%;">
 
-            Available Quantity:
-            <p><input type="number" name="available_quantity" value="<%=rs.getString(7) %>"></p>
-            <input type="hidden" name="pimage" value="<%=rs.getString(8) %>">
+        <div class="col-md-4 offset-md-4 lc">
+            <div class="card" style="border: 2px solid black; ">
+                <div class="card-header text-center card-header-background{" style ="height: 50px; ">
+                    <i class="	fa fa-user-circle-o fa-2x "></i>
+                    <p><strong>Update Item Details</strong></p>
 
-            <button type="submit" value="DETAILS" class = "btn btn-primary">SUBMIT</button>
-        </form>
+                </div>
+                <div class="card-body" style = "text-align: center">
+                    <form  action="../../UpdateItemServlet" method="post">
+                        <input type="hidden" name="id" value="<%=rs.getString(1) %>">
+                        Product Name:
+                        <p> <input type="text" name="pname" value="<%=rs.getString(2) %>"></p>
+                        Product Description:
+                        <textarea type = "text" name="pdesc" value="<%=rs.getString(3) %>"   class="form-control" rows="2"><%=rs.getString(3) %> </textarea>
+
+                        Price:
+                        <p><input type="number" name="price" value="<%=rs.getString(4) %>"></p>
+                        Category:
+                        <p><input  readonly type="text" name="category" value="<%=rs.getString(5) %>"></p>
+
+                        Discount Percentage:
+                        <p><input type="number" name="discount_percent" value="<%=rs.getString(6) %>" min="0" max="100"></p>
+
+                        Available Quantity:
+                        <p><input type="number" name="available_quantity" value="<%=rs.getString(7) %>"></p>
+                        <input type="hidden" name="pimage" value="<%=rs.getString(8) %>">
+
+                        <button type="submit" value="DETAILS" class = "btn btn-primary">SUBMIT</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
     </div>
-</div>
-</div>
+</main>
+
+
+<!--<div class = "container">-->
+<!--<div class="card" style = "text-align: center">-->
+<!--    <div class="card-body">-->
+<!--        <h5 class="card-title"><u>UPDATE PRODUCT DETAILS</u></h5>-->
+<!--        <form  action="../../UpdateItemServlet" method="post">-->
+<!--            <input type="hidden" name="id" value="<%=rs.getString(1) %>">-->
+<!--            Product Name:-->
+<!--            <p> <input type="text" name="pname" value="<%=rs.getString(2) %>"></p>-->
+<!--            Product Description:-->
+<!--            <textarea type = "text" name="pdesc" value="<%=rs.getString(3) %>"   class="form-control" rows="2"><%=rs.getString(3) %> </textarea>-->
+
+<!--            Price:-->
+<!--            <p><input type="number" name="price" value="<%=rs.getString(4) %>"></p>-->
+<!--            Category:-->
+<!--            <p><input  readonly type="text" name="category" value="<%=rs.getString(5) %>"></p>-->
+
+<!--            Discount Percentage:-->
+<!--            <p><input type="number" name="discount_percent" value="<%=rs.getString(6) %>" min="0" max="100"></p>-->
+
+<!--            Available Quantity:-->
+<!--            <p><input type="number" name="available_quantity" value="<%=rs.getString(7) %>"></p>-->
+<!--            <input type="hidden" name="pimage" value="<%=rs.getString(8) %>">-->
+
+<!--            <button type="submit" value="DETAILS" class = "btn btn-primary">SUBMIT</button>-->
+<!--        </form>-->
+<!--    </div>-->
+<!--</div>-->
+<!--</div>-->
 <%
     }
     //connection.close();
