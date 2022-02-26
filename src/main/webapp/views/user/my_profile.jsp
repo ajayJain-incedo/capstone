@@ -2,7 +2,7 @@
 <html lang="en">
 
 
-<%@ page import="com.service.ConnectionProvider, com.dao.UserDao, com.service.VerifySession, com.service.StoreUser, com.model.User" %>
+<%@ page import="java.time.LocalDate, java.time.format.FormatStyle, java.sql.*, java.time.format.DateTimeFormatter, com.service.ConnectionProvider, com.dao.UserDao, com.service.VerifySession, com.service.StoreUser, com.model.User" %>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -45,14 +45,13 @@ if(msg.equals("errorDeleteUser")){
 <%} }%>
 <main class="d-flex align-items-center">
 
-    <div class="container">
+    <div class="container ">
 
         <div class="col-md-4 offset-md-4 ">
-            <div class="card">
-                <div class="card-header text-white card-header-color text-center">
+            <div class="card br-21 bs">
+                <div class="card-header text-white card-header-color text-center br-t-21" >
                     <i class="fa fa-user-circle-o fa-2x "></i>
                     <p>My details</p>
-
                     <div class="loader" style="justify-content:center;display:none;">
                         <div class="d-flex align-items-center">
                             <strong>Loading...</strong>
@@ -79,6 +78,8 @@ if(msg.equals("errorDeleteUser")){
                     String email = user.getEmail();
                     String address = user.getAddress();
                     String mobile = user.getMobile();
+                    LocalDate date = user.getCreatedAt().toLocalDateTime().toLocalDate();
+                String formattedDate = date.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG));
                 %>
                 <div class="card-body">
                     <div class="text-center"> <p id="msg" ></p></div>
@@ -95,6 +96,9 @@ if(msg.equals("errorDeleteUser")){
                     </div>
                     <div class="show-mobile inline-flex-my">
                         <p>Address: &nbsp;</p><p class="bold"><%=address %></p>
+                    </div>
+                        <div class="show-mobile inline-flex-my">
+                        <p>Joined on: &nbsp;</p><p class="bold"><%=formattedDate %></p>
                     </div>
                     <div class="edit-icon">
                        <button class="btn-edit"><i class="fa fa-edit fa-2x"></i></button>
