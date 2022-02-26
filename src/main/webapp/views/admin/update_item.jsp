@@ -42,9 +42,9 @@ try{
     ResultSet rs = statement.executeQuery();
 %>
 
-<div class="product-display-size white-bg-color white-border admin-display-margin">
+<div class="product-display-size white-bg-color white-border admin-display-margin" style = "height: 36.8rem;">
 
-<table  align = "center" cellpadding="15"  style="text-align: center;  " class=" table table-striped" >
+<table  align = "center" cellpadding="15"  style="text-align: center; height: 300px  " class=" table table-striped"  >
     <thead >
     <tr>
         <th scope = "col" >
@@ -68,7 +68,7 @@ try{
         <th  scope = "col">
             Available Quantity
         </th>
-        <th >
+        <th scope = "col">
             Image
         </th>
         <th  scope = "col">
@@ -90,7 +90,7 @@ try{
         <TD><%=rs.getString(5)%></TD>
         <TD><%=rs.getDouble(6)%></TD>
         <TD><%=rs.getInt(7)%></TD>
-        <td><img src='../../resources/static/product_images/<%=rs.getString("pimage")%>' style="width:40px;height:40px;object-fit:contain;"></td>
+        <td><img src='../../resources/static/product_images/<%=rs.getString("pimage")%>' style="width:2.94rem;height:2.94rem;object-fit:contain;"></td>
 <!--        <td><button type="button"  class=" btn btn-dark"  >-->
 <!--            <a href="update.jsp?id=<%=rs.getString(8)%>" style= "text-decoration:none" >UPDATE</a></button></td>-->
         <td><a href="update.jsp?id=<%=rs.getInt(8)%>" class="btn btn-primary">UPDATE</a></td>
@@ -116,7 +116,7 @@ try{
     <div class = "text-center">
             <table width = "30%" align = "center" >
                 <tr>
-            <div style = "border:1px solid "> total records: <%= total%>
+            <div class="btn btn-dark" style = " margin: auto; border:1px solid; height: 40px;"> total records: <%= total%>
             </div>
             <% for (int i =0; i<=total/recordCount; i++) {%>
             <td><a href= "update_item.jsp?pgno=<%=i%>" class = "btn btn-dark "> Page<%=i+1%> </a></td>

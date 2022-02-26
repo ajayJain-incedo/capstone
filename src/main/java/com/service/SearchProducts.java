@@ -41,7 +41,7 @@ public class SearchProducts {
     }
 
     public HashSet<Product> searchAllProductInCart(int uid) {
-        String cartQuery = "select product.* product p join (select * from cart_item where cart_item.uid=uid) c on p.pid=c.pid";
+        String cartQuery = "select product.* from product p join (select * from cart_item where cart_item.uid=uid) c on p.pid=c.pid";
         HashSet<Product> cartProducts = dao.getAllProduct(cartQuery);
         return cartProducts;
     }

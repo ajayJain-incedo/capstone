@@ -13,20 +13,11 @@ public class User {
     private String address;
     private char userType;
     private Timestamp createdAt;
+    private int cartItem;
 
     // Constructors
     public User() {
-    }
-
-    public User(String firstName, String last_name, String email, String password, String mobile, String address, char userType, Timestamp created_at) {
-        this.firstName = firstName;
-        this.lastName = last_name;
-        this.email = email;
-        this.password = password;
-        this.mobile = mobile;
-        this.address = address;
-        this.userType = userType;
-        this.createdAt = created_at;
+        this.cartItem=0;
     }
 
     public User(int id, String firstName, String last_name, String email, String password, String mobile, String address, char userType, Timestamp createdAt) {
@@ -39,6 +30,7 @@ public class User {
         this.address = address;
         this.userType = userType;
         this.createdAt = createdAt;
+        this.cartItem=0;
     }
 
     // Getters and Setters
@@ -113,6 +105,14 @@ public class User {
 
     public void setCreatedAt(Timestamp createdAt) {
         this.createdAt = createdAt;
+    }
+
+    public int getCartItem() {
+        return cartItem;
+    }
+
+    public void setCartItem(int cartItem) {
+        this.cartItem = cartItem;
     }
     
 }

@@ -1,5 +1,10 @@
 package com.servlets;
 
+import com.dao.*;
+import com.model.User;
+import com.service.ConnectionProvider;
+import com.service.StoreUser;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpSession;
@@ -13,6 +18,10 @@ import java.io.PrintWriter;
 public class Logout extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        StoreUser store= new StoreUser();
+        User user = store.getUser();
+        UserDao dao = new UserDao(ConnectionProvider.getConnection());
+        dao.updateCartItem(user.getCartItem());
         //PrintWriter out = response.getWriter();
         Cookie[] cookies = request.getCookies();
         response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.

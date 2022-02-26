@@ -1,5 +1,7 @@
 package com.servlets;
 import com.dao.UserDao;
+
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,11 +15,7 @@ import java.util.Base64;
 public class RegisterServlet extends HttpServlet {
 
     public void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException {
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+
         PrintWriter out = res.getWriter();
         String firstName = req.getParameter("first_name");
         String lastName = req.getParameter("last_name");
