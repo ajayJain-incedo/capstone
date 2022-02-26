@@ -32,11 +32,11 @@ if(window.history.forward(1) !=null)
     {
     total +=rs1.getInt("amount");
     }
-    }
-    catch(Exception e ){System.out.println(e);}
+    } catch(Exception e ){System.out.println(e);}
+
     %>
     <tr>
-        <th scope="col"><a href="myCart.jsp"><i class='fas fa-arrow-circle-left'> Back</i></a></th>
+        <th scope="col"><a href="myCart.jsp?back=true"><i class='fas fa-arrow-circle-left'> Back</i></a></th>
         <th scope="col" style="background-color: yellow;">Total: <i class="fa fa-inr"></i> <%out.println(total); %> </th>
     </tr>
     </thead>
@@ -52,17 +52,19 @@ if(window.history.forward(1) !=null)
     </thead>
     <tbody>
     <%
-
+    int uid=0;
     try
     {
     Connection con = ConnectionProvider.getConnection();
-    PreparedStatement st = con.prepareStatement("select pname, category, product_price,  product_id, quantity, product_id ,amount,  product_id from cart_item, product where user_id = ? and cart_item.product_id = product.pid");
+
+    PreparedStatement st = con.prepareStatement("select  p.pname, p.category, c.product_price,  c.product_id, c.quantity, c.user_id, c.amount from cart_item c, product p where user_id = ? and c.product_id = p.pid");
 
     st.setInt(1, user.getId());
 
     ResultSet rs3=st.executeQuery();
     while(rs3.next())
     {
+    uid=rs3.getInt("user_id");
     total +=rs3.getInt("amount");
 
     %>
@@ -72,9 +74,9 @@ if(window.history.forward(1) !=null)
         <td><%=sno %></td>
         <td><%=rs3.getString("pname") %></td>
         <td><%=rs3.getString("category") %></td>
-        <td><i class="fa fa-inr"></i> <%=rs3.getString("product_price") %></td>
+        <td><i class="fa fa-inr"></i> <%=rs3.getDouble("product_price") %></td>
         <td> <%=rs3.getInt("quantity") %></td>
-        <td><i class="fa fa-inr"></i> <%=rs3.getInt("amount") %></td>
+        <td><i class="fa fa-inr"></i> <%=rs3.getDouble("amount") %></td>
     </tr>
     <%
     }
@@ -89,11 +91,12 @@ if(window.history.forward(1) !=null)
 
 <hr style="width: 100%">
 
-
-    <h3 >Total: <%out.println(total/2); %></h3>
-    <a href="addressPaymentForOrderNew.jsp"><button class="button left-button">Proceed For Payment</button></a>
-    <a onclick="window.print();"><button class="button right-button">Print</button></a>
-
+<div style="text-align:center; ">
+    <h3> &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Total: <%out.println(total/2); %></h3>
+</div>
+    <div class="" style="text-align:center;">
+    <a onclick='doPrint()'><button class="button right-button">Place Order & Get Invoice</button></a>
+    </div>
 <%
 
 }
@@ -101,15 +104,19 @@ catch(Exception e)
 {
 System.out.println(e);
 }
-finally{
-System.out.println("Finally Block Executed");}%>
+%>
 <br>
 <br>
 <br>
 <br>
 <br>
 <br>
-
+<script>
+function doPrint() {
+    window.print();
+    document.location.href = "PaymentSuccesfull.jsp";
+}
+</script>
 
 
 

@@ -27,6 +27,33 @@ h3
     if(VerifySession.verifySession(request, response)){
         return;
     }
+    StoreUser store = new StoreUser();
+    Connection con = ConnectionProvider.getConnection();
+    User user = store.getUser();
+    int uid = user.getId();
+    String back = request.getParameter("back");
+    int oid = 0;
+
+    if(back!=null && back.equals("true")){
+
+    String queryToGetOrderId="select oid from orders where user_id =? and payment_status ='Pending'";
+    PreparedStatement pstmt = con.prepareStatement(queryToGetOrderId);
+    pstmt.setInt(1, uid);
+    ResultSet rsOrderId = pstmt.executeQuery();
+    while(rsOrderId.next()){
+        oid=rsOrderId.getInt("oid");
+
+    }
+
+
+    String callQuery = "call remove_order(?, ?)";
+    try{
+    CallableStatement cstmt = con.prepareCall(callQuery);
+    cstmt.setInt(1,oid);
+    cstmt.setInt(2, uid);
+    cstmt.execute();
+    }catch(Exception e){e.printStackTrace();}
+    }
     String msg=request.getParameter("msg");
     if("notPossible".equals(msg))
     {
@@ -55,13 +82,13 @@ if("removed".equals(msg))
 <table>
     <thead>
     <%
-    StoreUser store = new StoreUser();
-    User user = store.getUser();
+
+
     int total=0;
     int sno=0;
     try
     {
-        Connection con = ConnectionProvider.getConnection();
+        //Connection con = ConnectionProvider.getConnection();
         java.sql.PreparedStatement st = con.prepareStatement("select * from cart_item where user_id=?");
         st.setInt(1, user.getId());
         ResultSet rs1=st.executeQuery();
@@ -72,7 +99,7 @@ if("removed".equals(msg))
     %>
     <tr>
         <th scope="col" style="background-color: yellow;">Total: <i class="fa fa-inr"></i> <%out.println(total); %></th>
-        <%if(total>0){ %><th scope="col"><a href="billMy.jsp">Proceed to order</a></th><%} %>
+        <%if(total>0){ %><th scope="col"><a href="addressPaymentForOrderNew.jsp">Proceed to order</a></th><%} %>
     </tr>
     </thead>
     <thead>
@@ -117,7 +144,7 @@ if("removed".equals(msg))
 
     <%if(total>0){ %>
     <div style="text-align: right; width:100%; padding:0;">
-    <th scope="col"><a class="btn text-right" href="billMy.jsp">Proceed to order</a></th><%} %>
+    <th scope="col"><a class="btn text-right" href="addressPaymentForOrderNew.jsp">Proceed to order</a></th><%} %>
     </div>
     </tbody>
 </table>

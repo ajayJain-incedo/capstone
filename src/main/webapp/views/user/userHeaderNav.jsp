@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="resources/css/header.css">
     <link rel="stylesheet" href="/resources/css/color.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>Document</title>
+    <title>Incedo Dukaan</title>
 </head>
 <body>
 <ul class=" navbar-nav mr-auto inline-list-padding">
