@@ -18,8 +18,8 @@ import java.io.PrintWriter;
 public class Logout extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        StoreUser store= new StoreUser();
-        User user = store.getUser();
+
+        User user = StoreUser.getUser();
         UserDao dao = new UserDao(ConnectionProvider.getConnection());
         dao.updateCartItem(user.getCartItem());
         //PrintWriter out = response.getWriter();

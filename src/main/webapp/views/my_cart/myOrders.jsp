@@ -29,8 +29,8 @@
 
     try
     {
-        StoreUser store = new StoreUser();
-        User user = store.getUser();
+
+        User user = StoreUser.getUser();
         Connection con = ConnectionProvider.getConnection();
         java.sql.PreparedStatement st = con.prepareStatement("select order_id, pname, category, price, product_quantity, pay_amount from order_history, product where order_history.user_id=? and product.pid=order_history.product_id");
         //st.setInt(1, user.getId());

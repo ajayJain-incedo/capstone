@@ -17,8 +17,8 @@ if(window.history.forward(1) !=null)
 <table>
     <thead>
     <%
-    StoreUser store = new StoreUser();
-    User user = store.getUser();
+
+    User user = StoreUser.getUser();
     int total=0;
     int sno=0;
     try

@@ -8,8 +8,8 @@ return;
 }
 try{
 Connection con = ConnectionProvider.getConnection();
-StoreUser store =new StoreUser();
-User user =store.getUser();
+
+User user =StoreUser.getUser();
 int uid = user.getId();
 String queryToGetOrderId="select oid from orders where user_id =? and payment_status ='Pending'";
 PreparedStatement pstmt = con.prepareStatement(queryToGetOrderId);

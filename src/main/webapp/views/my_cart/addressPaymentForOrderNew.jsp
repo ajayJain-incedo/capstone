@@ -13,8 +13,8 @@ if(VerifySession.verifySession(request, response)){
 return;
 }
     Connection con = ConnectionProvider.getConnection();
-    StoreUser store = new StoreUser();
-    User user = store.getUser();
+
+    User user = StoreUser.getUser();
     int uid = user.getId();
     String callQuery = "call insert_order(?)";
 try{

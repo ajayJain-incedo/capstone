@@ -5,18 +5,17 @@ public class StoreUser {
     static User currentUser = new User();
     public static void storeUser(User userr){
 
-        User newUser=new User();
-        newUser.setMobile(userr.getMobile());
-        newUser.setAddress(userr.getAddress());
-        newUser.setPassword(userr.getPassword());
-        newUser.setUserType(userr.getUserType());
-        newUser.setEmail(userr.getEmail());
-        newUser.setLastName(userr.getLastName());
-        newUser.setFirstName(userr.getFirstName());
-        newUser.setId(userr.getId());
-        newUser.setCreatedAt(userr.getCreatedAt());
-        newUser.setCartItem(userr.getCartItem());
-        currentUser =newUser;
+        currentUser.setMobile(userr.getMobile());
+        currentUser.setAddress(userr.getAddress());
+        currentUser.setPassword(userr.getPassword());
+        currentUser.setUserType(userr.getUserType());
+        currentUser.setEmail(userr.getEmail());
+        currentUser.setLastName(userr.getLastName());
+        currentUser.setFirstName(userr.getFirstName());
+        currentUser.setId(userr.getId());
+        currentUser.setCreatedAt(userr.getCreatedAt());
+        currentUser.setCartItem(userr.getCartItem());
+
     }
     public static User getUser(){
         return currentUser;

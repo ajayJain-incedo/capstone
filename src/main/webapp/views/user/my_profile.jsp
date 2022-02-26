@@ -83,8 +83,8 @@ if(msg.equals("errorDeleteUser")){
                     }
                 }
 
-                   StoreUser store = new StoreUser();
-                    User user = store.getUser();
+
+                    User user = StoreUser.getUser();
                     int id =user.getId();
                     String firstName = user.getFirstName();
                     String lastName = user.getLastName();

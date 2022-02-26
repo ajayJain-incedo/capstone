@@ -33,8 +33,7 @@ public class UpdateUserInfo extends HttpServlet {
                 return;
             }
         }
-        StoreUser store = new StoreUser();
-        User current_user = store.getUser();
+        User current_user = StoreUser.getUser();
         user.setId(current_user.getId());
         user.setFirstName(firstName);
         user.setLastName(lastName);

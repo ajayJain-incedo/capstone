@@ -23,8 +23,8 @@ public class CartDisplay extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        StoreUser store = new StoreUser();
-        User user = store.getUser();
+
+        User user = StoreUser.getUser();
         HashSet<Cart> cartItems = dao.getAllCartItemsById(user.getId());
 
     }
