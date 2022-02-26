@@ -1,6 +1,7 @@
 package com.servlets;
 import com.model.Product;
 import com.service.SearchProducts;
+import com.service.VerifySession;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -12,11 +13,14 @@ import java.util.HashSet;
 
 public class SearchAdminServlet extends HttpServlet
 {
+
     SearchProducts search = new SearchProducts();
     HashSet<Product> products = new HashSet<>();
     @Override
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+        if(VerifySession.verifySessionForAdmin(req, resp)){
+            return;
+        }
         String searchInput = req.getParameter("pname");
 
         try {
