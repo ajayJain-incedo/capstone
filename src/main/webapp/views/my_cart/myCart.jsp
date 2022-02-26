@@ -10,24 +10,25 @@
 <%@ page errorPage="../error_pages/error_page1.jsp" %>
 <html>
 <head>
+    <link rel="stylesheet" href="css/addressPaymentForOrder-style.css">
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
     <title>My Cart</title>
     <style>
 h3
 {
-	color: yellow;
+	color: #E74C3C;
 	text-align: center;
 }
 </style>
 </head>
 <body>
-<%
-if(VerifySession.verifySession(request, response)){
-return;
-}
-String msg=request.getParameter("msg");
-if("notPossible".equals(msg))
-{
+    <%
+    if(VerifySession.verifySession(request, response)){
+        return;
+    }
+    String msg=request.getParameter("msg");
+    if("notPossible".equals(msg))
+    {
 %>
 <div style="color: white; text-align: center; font-size: 30px;">My Cart <i class='fas fa-cart-arrow-down'></i></div>
 <h3 class="alert">There is only one Quantity! So click on remove!</h3>
@@ -59,18 +60,18 @@ if("removed".equals(msg))
     int sno=0;
     try
     {
-    Connection con = ConnectionProvider.getConnection();
-    java.sql.PreparedStatement st = con.prepareStatement("select * from cart_item where user_id=?");
-    st.setInt(1, user.getId());
-    ResultSet rs1=st.executeQuery();
-    while(rs1.next())
-    {
-    total +=rs1.getInt("amount");
-    }
+        Connection con = ConnectionProvider.getConnection();
+        java.sql.PreparedStatement st = con.prepareStatement("select * from cart_item where user_id=?");
+        st.setInt(1, user.getId());
+        ResultSet rs1=st.executeQuery();
+        while(rs1.next())
+        {
+        total +=rs1.getInt("amount");
+        }
     %>
     <tr>
         <th scope="col" style="background-color: yellow;">Total: <i class="fa fa-inr"></i> <%out.println(total); %></th>
-        <%if(total>0){ %><th scope="col"><a href="addressPaymentForOrderNew.jsp">Proceed to order</a></th><%} %>
+        <%if(total>0){ %><th scope="col"><a href="billMy.jsp">Proceed to order</a></th><%} %>
     </tr>
     </thead>
     <thead>
@@ -112,6 +113,11 @@ if("removed".equals(msg))
     catch(Exception e)
     {}
     %>
+
+    <%if(total>0){ %>
+    <div style="text-align: right; width:100%; padding:0;">
+    <th scope="col"><a class="btn text-right" href="billMy.jsp">Proceed to order</a></th><%} %>
+    </div>
     </tbody>
 </table>
 <br>
