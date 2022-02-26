@@ -73,6 +73,18 @@ if(window.history.forward(1) !=null)
     while(rs2.next())
     {
     %>
+
+    <%
+    String query ="select pname, category, round(amount/quantity, 1) as price,  product_id, quantity, product_id ,amount,  product_id from cart_item, product where user_id = ? and cart_item.product_id = product.pid";
+
+    PreparedStatement pstmt =con.prepareStatement(query);
+    pstmt.setInt(1, user.getId());
+    ResultSet rs=pstmt.executeQuery();
+    while(rs.next())
+    {
+    %>
+
+
     </tbody>
 </table>
 
