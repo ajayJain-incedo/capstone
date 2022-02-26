@@ -26,7 +26,24 @@
 .inline-align-stretch{
     align-items: stretch;
 }
+.icon{
+    font-size: 21px;
+}
 
+.hover-oscillate:hover + .icon {
+  animation: rotate 1.5s linear infinite;
 
+}
+
+@keyframes rotate {
+ from {transform: rotate(0deg); animation-timing-function: cubic-bezier(0.1, 0.3, 0.3, 1);}
+  25% {transform: rotate(20deg); animation-timing-function: cubic-bezier(0.7, 0.0, 0.9, 0.7);}
+  50% {transform: rotate(0deg); animation-timing-function: cubic-bezier(0.1, 0.3, 0.3, 1);}
+  75% {transform: rotate(-20deg); animation-timing-function: cubic-bezier(0.7, 0.0, 0.9, 0.7);}
+  to {transform: rotate(0deg);}
+}
+.mr-16{
+    margin-right:16px;
+}
 
 
