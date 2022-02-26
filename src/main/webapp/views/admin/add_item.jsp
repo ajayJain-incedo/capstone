@@ -13,16 +13,17 @@
     margin:auto;
     padding: 20px;
     }
+
     </style>
 </head>
-<body>
+<body style = "background-color: rgb(252 238 238) !important;">
 <%
 if(VerifySession.verifySessionForAdmin(request, response)){
 return;
 }
 %>
 <a href="update_item.jsp">
-    <img style="height: 40px; width: 40px" border="0" alt="HomePage Icon" src="../../resources/static/images/admin_home_page.jpg" width="100" height="100">
+    <img style="height: 3rem; width: 3rem" border="0" alt="HomePage Icon" src="../../resources/static/images/admin_home_page.jpg" width="100" height="100">
 </a>
 <h2 style = "text-align: center"> <b><u> ADD ITEM PAGE </u></b></h2>
 <div class = "container d-flex inline-padding">
