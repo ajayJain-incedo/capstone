@@ -17,11 +17,14 @@
 </head>
 <body>
 <%
-if(VerifySession.verifySession(request, response)){
+if(VerifySession.verifySessionForAdmin(request, response)){
 return;
-}%>
-<nav class="navbar navbar-expand-lg navbar-light bg-light" style = "height: 10vh;">
-    <a class="navbar-brand inline-margin-start white-color" href="views/admin/update_item.jsp">ICON</a>
+}
+%>
+<nav class="navbar navbar-expand-lg navbar-light blue-bg-color">
+    <a href="views/admin/update_item.jsp" style = "text-decoration: none; cursor:pointer; width:100px; height:80px;" ><img src = "resources/static/images/iconhead.png" alt = "icon.png" style="width:100px; height:80px; object-fit:contain;" class="navbar-brand inline-margin-start" ></a>
+
+    <!--    <a class="navbar-brand inline-margin-start white-color" href="update_item.jsp">ICON</a>-->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -29,17 +32,18 @@ return;
     <div class="collapse navbar-collapse justify-content-around inline-margin" id="navbarSupportedContent">
         <form class="form-inline my-2 my-lg-0 inline-list" action="/Capstone/SearchAdmin" method="post">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="pname">
-            <!--            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-->
-
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            <button class="btn dark-bg-color white-color my-2 my-sm-0" type="submit">Search</button>
         </form>
     </div>
-    <nav class="navbar navbar-light bg-light">
-        <form class="form-inline" >
-            <a href="add_item.jsp" class="btn btn-success">ADD ITEM</a>
-            <a href="/Capstone/Logout" class="btn btn-warning">LOG OUT</a>
-        </form>
-    </nav>
+
+    <ul class=" navbar-nav mr-auto inline-list-padding">
+        <li class="nav-item">
+            <a href="views/admin/add_item.jsp" class="white-color nav-link">ADD ITEM</a>
+        </li>
+        <li class="nav-item">
+            <a href="/Capstone/Logout" class="white-color nav-link">Logout</a>
+        </li>
+    </ul>
 
 </nav>
 </body>

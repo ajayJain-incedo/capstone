@@ -13,9 +13,16 @@
 <title>UPDATE ITEM DETAILS</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <link rel="stylesheet" href="resources/css/header.css">
+<link rel="stylesheet" href="../../resources/css/color.css">
+<link rel="stylesheet" href="../../resources/css/product.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <style>
-
+    .container
+    {
+    width: 30%;
+    margin:auto;
+    padding: 20px;
+    }
     </style>
 <%
         String id = request.getParameter("id");
@@ -23,12 +30,17 @@
         {
         Connection connection = ConnectionProvider.getConnection();
         Statement statement=connection.createStatement();
-        String sql ="Select pid, pname, pdesc, price, category, discount_percent, available_quantity from product where pid="+id;
+        String sql ="Select pid, pname, pdesc, price, category, discount_percent, available_quantity, pimage from product where pid="+id;
         ResultSet rs = statement.executeQuery(sql);
         while(rs.next())
         {
 %>
-<body>
+<body class="light-bg-color">
+<%
+if(VerifySession.verifySessionForAdmin(request, response)){
+return;
+}
+%>
 <div class = "container">
 <div class="card" style = "text-align: center">
     <div class="card-body">
@@ -50,6 +62,7 @@
 
             Available Quantity:
             <p><input type="number" name="available_quantity" value="<%=rs.getString(7) %>"></p>
+            <input type="hidden" name="pimage" value="<%=rs.getString(8) %>">
 
             <button type="submit" value="DETAILS" class = "btn btn-primary">SUBMIT</button>
         </form>

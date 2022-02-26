@@ -20,13 +20,15 @@ public class ProductDao
         {
             String query = "insert into product( pname, pdesc, price, category, discount_percent, available_quantity, pimage) values (?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement st = this.con.prepareStatement(query);
+            System.out.println("Pimage i got is " + product.getPimage());
             st.setString(1, product.getPname());
             st.setString(2, product.getPdesc());
             st.setDouble(3, product.getPrice());
             st.setString(4, product.getCategory());
             st.setDouble(5, product.getDiscount_percent());
             st.setDouble(6, product.getAvailable_quantity());
-            st.setString(7, product.getId()+".jpg");
+            st.setString(7, product.getPimage());
+
             st.executeUpdate();
             isQueryExecuted=true;
         }catch (Exception e){
@@ -64,7 +66,7 @@ public class ProductDao
         boolean isQuery = false;
         try
         {
-            String query = "Update product set pname=?,pdesc=?,price=?,category=?,discount_percent=?,available_quantity=?,pimage=? where pid="+ product.getId();
+            String query = "Update product set pname=?,pdesc=?,price=?,category=?,discount_percent=?,available_quantity=? where pid="+ product.getId();
             PreparedStatement st = this.con.prepareStatement(query);
             st.setString(1, product.getPname());
             st.setString(2, product.getPdesc());
@@ -72,7 +74,7 @@ public class ProductDao
             st.setString(4, product.getCategory());
             st.setDouble(5, product.getDiscount_percent());
             st.setDouble(6, product.getAvailable_quantity());
-            st.setString(7, product.getId()+".jpg");
+            //st.setString(7, product.getPimage());
 
             st.executeUpdate();
             isQuery=true;
