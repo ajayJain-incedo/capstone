@@ -1,0 +1,53 @@
+.card-size{
+    height: 437px;
+    width: 24%;
+    margin: 2px !important;
+}
+
+.card-body{
+     display: flex;
+     justify-content: flex-end;
+     align-items: stretch;
+     align-content: stretch;
+     width: 100%;
+     height: 50%;
+     flex-direction: column;
+}
+
+.card-image{
+        display: flex;
+            width: 100%;
+            height: 52%;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-around;
+}
+
+.card-image-size{
+    width: 50%;
+}
+
+.product-display-size{
+    width: 96.5%;
+    height: 90%;
+}
+
+.pagination-bar{
+            width: 611%;
+}
+
+.page-bar{
+        display: flex;
+            align-content: center;
+            justify-content: space-evenly;
+            align-items: stretch;
+            flex-direction: row;
+            flex-wrap: wrap;
+}
+
+.admin-display-margin{
+    margin-inline-start: 2%;
+}
+
+
+

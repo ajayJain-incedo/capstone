@@ -1,8 +1,11 @@
 body{
 background-color: #34515e;
+
 }
 .my-background{
     background-color: #78909C;
+
+
 }
 
 .clip{
@@ -11,7 +14,9 @@ background-color: #34515e;
 }
 
 .card-head{
-    background-color: #80CBC4;
+    //background-color: #80CBC4;
+
+
 }
 
 .forget-password{
@@ -57,4 +62,6 @@ margin-left: 10%;
     background-color:#34515e;
     font-size: 1.1rem;
     color: white;
+
+
 }

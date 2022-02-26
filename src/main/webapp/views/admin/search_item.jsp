@@ -2,6 +2,7 @@
 <%@ page import="com.dao.ProductDao, com.model.Product, com.service.SearchProducts" %>
 <%@ page import="java.util.HashSet" %>
 <%@ page import="java.sql.*, com.service.VerifySession" %>
+<%@page import = "com.service.ConnectionProvider"%>
 <%@ page errorPage="../error_pages/error_page1.jsp" %>
 <html lang="en">
 <head>
@@ -9,23 +10,40 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../resources/css/header.css">
+    <link rel="stylesheet" href="../../resources/css/color.css">
+    <link rel="stylesheet" href="../../resources/css/product.css">
     <title>Search Page</title>
 </head>
-<body>
-<nav>
 
-    <form class="form-inline my-2 my-lg-0 inline-list" action="SearchAdmin" method="post">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="pname">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
-</nav>
+<style>
+    .container
+    {
+    width: 30%;
+    margin:auto;
+    padding: 20px;
+    }
+    body
+    {
+    background-color: #34515e !important;
+    }
+    </style>
+<body class="light-bg-color">
+<%
+if(VerifySession.verifySessionForAdmin(request, response)){
+return;
+}
+%>
+<%@ include file= "SearchHeader.jsp" %>
+
 
 <h1 style = "text-align: center" ><u><b>ALL THE ITEMS IN THE DATABASE</b></u></h1>
 
 <h5 id = "msg" class ="center-align"> </h5>
-
-<table align="center" cellpadding="15" style="background-color: white; text-align: center; border-radius: 15px; border:none;
-  border-collapse: collapse;"  >
+    <div class="product-display-size white-bg-color white-border admin-display-margin">
+<table  align="center" cellpadding="15" style="text-align: center;" class=" table table-striped ">
+    <thead>
     <tr>
         <th>
             Product ID
@@ -49,15 +67,21 @@
             Available Quantity
         </th>
         <th>
+            Image
+        </th>
+        <th>
             UPDATE
         </th>
         <th>
             REMOVE
         </th>
     </tr>
+    </thead>
     <%
     HashSet<Product> products = (HashSet<Product>)request.getAttribute("list");
+
     for(Product p : products){
+    String path = "resources/static/product_images/" +p.getPimage();
     %>
     <TR>
 
@@ -68,14 +92,16 @@
         <TD><%=p.getCategory()%></TD>
         <TD><%=p.getDiscount_percent()%></TD>
         <TD><%=p.getAvailable_quantity()%></TD>
-
-        <td><a href="update.jsp?id=<%=p.getId()%>" class="btn btn-dark">UPDATE</a></td>
+        <td><img src=<%=path%> alt = "<%=p.getPimage()%>" style="width:40px;height:40px;object-fit:contain;"></td>
+        <td><a href="views/admin/update.jsp?id=<%=p.getId()%>" class="btn btn-dark">UPDATE</a></td>
+        <% System.out.println("image in search_item i got is " + p.getPimage()); %>
         <td><button type="button" id ="<%=p.getId()%>"  class="delete btn btn-danger"  >REMOVE</button></td>
     </TR>
     <% } %>
 
 
 </table>
+</div>
 &nbsp;&nbsp;
 
 <%--Javascripts--%>
@@ -94,7 +120,7 @@ $(document).ready(function() {
 
     var id = +this.id;
     $.ajax({
-    url: "delete_ajax.jsp",
+    url: "views/admin/delete_ajax.jsp",
     type: "post",
     data: {
     id : id,
@@ -107,5 +133,6 @@ $(document).ready(function() {
     });
     });
 </script>
+
 </body>
 </html>

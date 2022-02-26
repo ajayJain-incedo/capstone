@@ -21,12 +21,12 @@ if(VerifySession.verifySessionForAdmin(request, response)){
 return;
 }
 %>
-<a href="admin_welcome_page.jsp">
+<a href="update_item.jsp">
     <img style="height: 40px; width: 40px" border="0" alt="HomePage Icon" src="../../resources/static/images/admin_home_page.jpg" width="100" height="100">
 </a>
 <h2 style = "text-align: center"> <b><u> ADD ITEM PAGE </u></b></h2>
 <div class = "container d-flex inline-padding">
-    <form action = "../../AddItemServlet" method = "post">
+    <form action = "../../AddItemServlet" method = "post" name = "form" id = "form" enctype = "multipart/form-data" onsubmit = "return checkforblank()">
         <div class="card">
         <div class="card text-center">
             <div class="card-header">DETAILS
@@ -35,15 +35,15 @@ return;
                 <table>
                     <tr>
                         <td>Enter Product Name:</td>
-                        <td><Input type = "text" name ="pname" placeholder ="Enter here" required/></td>
+                        <td><Input type = "text" name ="pname" placeholder ="Enter here" id = "pname" required ></td>
                     </tr>
                     <tr>
                         <td>Enter Description:</td>
-                        <td><Input type = "text" name ="pdesc" placeholder ="Enter here" /></td>
+                        <td><textarea type = "text" name ="pdesc" placeholder ="Enter here" rows="2" id = "pdesc" required ></textarea></td>
                     </tr>
                     <tr>
                         <td>Enter Price:</td>
-                        <td><Input type = "number" name ="price" placeholder ="Enter here"/></td>
+                        <td><Input type = "number" name ="price" placeholder ="Enter here" id = "price"  required></td>
                     </tr>
 
                     <tr>
@@ -64,17 +64,18 @@ return;
                     </tr>
                     <tr>
                         <td>Enter Discount Percent:</td>
-                        <td><Input type = "number" name ="discount_percent" placeholder ="Enter here" min="0" max="100" /></td>
+                        <td><Input type = "number" name ="discount_percent" placeholder ="Enter here" min="0" max="100"   id = "discount_percent" required  ></td>
                     </tr>
 
                     <tr>
                         <td>Enter Quantity:</td>
-                        <td><Input type = "number" name ="available_quantity" placeholder ="Enter here"/></td>
+                        <td><Input type = "number" name ="available_quantity" placeholder ="Enter here"  id = "available_quantity" required  ></td>
                     </tr>
-                    <!--<tr>
-                        <td>Enter Image:</td>
-                        <td><Input type = "image" name ="pimage" /></td>
-                    </tr>-->
+                    <tr>
+                        <td>Enter Image of the Product:</td>
+                        <td><input class="form-control form-control-sm" type="file" name = "pimage"  required ></td>
+                    </tr>
+
                     <tr>
                         <td>
                         </td>
@@ -91,7 +92,7 @@ return;
                     <tr>
                         <td>
                             <div class="d-flex">
-                            <button type = "submit" class="btn btn-success " style="margin-right: 10px">SUBMIT</button>
+                            <button   type = "submit" class="btn btn-success " style="margin-right: 10px">SUBMIT</button>
                             <button type = "reset" class = "btn btn-warning"> Reset </button>
                             </div>
                         </td>
@@ -103,5 +104,42 @@ return;
         </div>
     </form>
 </div>
+
+<script>
+
+    function checkforblank()
+    {
+        if (document.getElementById('pname').value == "")
+        {
+            alert('please enter the name of the product');
+            return false;
+        }
+        if (document.getElementById('pdesc').value == "")
+        {
+            alert('please enter the description of the product');
+            return false;
+        }
+        if (document.getElementById('price').value == 0)
+        {
+            alert('please enter the price of the product');
+            return false;
+        }
+        if (document.getElementById('discount_percent').value == 0)
+        {
+            alert('please enter the discount on the product');
+            return false;
+        }
+        if (document.getElementById('available_quantity').value == 0)
+        {
+            alert('please enter the available quantity of the product');
+            return false;
+        }
+        else
+        {
+            alert('ITEM ADDED TO THE DATABASE!!');
+        }
+    }
+
+</script>
 </body>
 </html>

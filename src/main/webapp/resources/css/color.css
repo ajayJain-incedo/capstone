@@ -1,0 +1,40 @@
+.white-color{
+    color: #fff !important;
+}
+
+.blue-bg-color{
+    background-color: #0d6efd !important;
+}
+
+.dark-bg-color{
+    background-color: #34515e !important;
+}
+
+.grey-bg-color{
+    background-color: #78909C !important;
+}
+
+.light-bg-color{
+    background-color: rgb(252 238 238) !important;
+}
+
+.white-bg-color{
+    background-color: #fff !important;
+
+}
+
+.blue-border{
+    border-color: #0d6efd !important;
+}
+
+.white-border{
+    border: 1px solid;
+    border-radius: 0.25rem;
+    border-color: #fff !important;
+}
+
+
+
+
+
+
