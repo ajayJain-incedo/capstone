@@ -2,6 +2,7 @@ package com.servlets;
 
 import com.dao.CartDao;
 import com.dao.ProductDao;
+import com.dao.UserDao;
 import com.model.Cart;
 import com.model.User;
 import com.service.ConnectionProvider;
@@ -23,6 +24,7 @@ public class AddToCartServlet extends HttpServlet {
 
     Connection con = ConnectionProvider.getConnection();
     public final CartDao dao = new CartDao(con);
+    public final UserDao userDao = new UserDao(con);
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -34,8 +36,7 @@ public class AddToCartServlet extends HttpServlet {
         int pid = Integer.parseInt(req.getParameter("pid"));
         Double price = Double.valueOf(req.getParameter("price"));
 
-        StoreUser store= new StoreUser();
-        User user = store.getUser();
+        User user = userDao.getUserByEmail(StoreUser.getUser().getEmail());
 //        out.println(user.getId());
         Cart cart=new Cart(user.getId(), pid, price);
         try {
@@ -46,22 +47,11 @@ public class AddToCartServlet extends HttpServlet {
             else {
                 dao.AddItem(cart);
             }
-            System.out.println("yahanke: " +user.getCartItem());
-            user.setCartItem(user.getCartItem()+1);
-            System.out.println("after change: "+user.getCartItem());
+            userDao.updateCartItem(user.getCartItem()+1);
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-
-
-
-
-//        System.out.println("yahan ke"+cartItem);
-//        req.setAttribute("cartItem", cartItem);
         resp.sendRedirect(req.getHeader("referer"));
-//        req.setAttribute("list", products);
-//        req.getRequestDispatcher("/DisplayProduct").forward(req, resp);
-
     }
 }

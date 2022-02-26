@@ -20,19 +20,6 @@ public class User {
         this.cartItem=0;
     }
 
-
-
-    public User(String firstName, String last_name, String email, String password, String mobile, String address, char userType, Timestamp created_at) {
-        this.firstName = firstName;
-        this.lastName = last_name;
-        this.email = email;
-        this.password = password;
-        this.mobile = mobile;
-        this.address = address;
-        this.userType = userType;
-        this.createdAt = created_at;
-    }
-
     public User(int id, String firstName, String last_name, String email, String password, String mobile, String address, char userType, Timestamp createdAt) {
         this.id = id;
         this.firstName = firstName;

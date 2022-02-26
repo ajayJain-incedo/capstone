@@ -1,4 +1,4 @@
-<%@page import="com.service.ConnectionProvider"%>
+<%@ page import="com.dao.ProductDao, com.dao.UserDao, com.model.User, com.model.Product, com.service.*" %>
 <%@page import="java.sql.*,com.service.VerifySession"%>
 <%
 if(VerifySession.verifySession(request, response)){
@@ -9,13 +9,16 @@ String incdec = request.getParameter("quantity");
 double price=0;
 String pidd = request.getParameter("pid");
 int pid = Integer.parseInt(pidd);
-double total=0;
-int quantity=0;
-int final_total=0;
 
 try
 {
     Connection con = ConnectionProvider.getConnection();
+    UserDao userDao = new UserDao(con);
+    int cartItem=Integer.parseInt(request.getParameter("cartItem"));
+    User user = userDao.getUserByEmail(StoreUser.getUser().getEmail());
+    cartItem=user.getCartItem()-cartItem;
+    userDao.updateCartItem(cartItem);
+
     String query="delete from cart_item where user_id=? and product_id=?";
     PreparedStatement st = con.prepareStatement(query);
     st.setString(1,id);

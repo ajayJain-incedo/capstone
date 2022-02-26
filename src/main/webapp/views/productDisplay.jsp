@@ -1,5 +1,5 @@
 <!doctype html>
-<%@ page import="com.dao.ProductDao, com.model.Product, com.service.SearchProducts" %>
+<%@ page import="com.dao.ProductDao, com.dao.UserDao, com.model.User, com.model.Product, com.service.SearchProducts, com.service.ConnectionProvider" %>
 <%@ page import="java.util.HashSet" %>
 <%@ page import="java.sql.*, com.service.VerifySession" %>
 <%@ page errorPage="../error_pages/error_page1.jsp" %>
@@ -36,9 +36,11 @@
                 <h5 class='card-title' > <%= p.getCategory() %> </h5 >
                 <h5 class='card-title' > &#8377;<%= p.getPrice() %> </h5 >
                 <p class='card-text' > <%= p.getPdesc() %> </p >
-                <a class="btn btn-primary" id="AddToCart" href="AddToCart?pid=<%= p.getId() %>&price=<%= p.getPrice() %>"  >Add to Cart</a >
-                <%  StoreUser store= new StoreUser();
-                    User user = store.getUser();
+                <a class="btn btn-primary" id="AddToCart" href="AddToCart?pid=<%= p.getId() %>&price=<%= p.getPrice() %>" >Add to Cart</a >
+                <%
+                    Connection con = ConnectionProvider.getConnection();
+                    UserDao userDao = new UserDao(con);
+                    User user = userDao.getUserByEmail(StoreUser.getUser().getEmail());
                 %>
                 <div class="sticky-cart"> <%=user.getCartItem()%>  </div>
             </div >
