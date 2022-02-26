@@ -27,7 +27,6 @@ public class DisplayProductsServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
             if(VerifySession.verifySession(req, resp)){
-
                 return;
             }
             UserDao dao = new UserDao(ConnectionProvider.getConnection());

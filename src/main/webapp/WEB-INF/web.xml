@@ -76,11 +76,14 @@
     <servlet-class>com.servlets.ResetPassword</servlet-class>
   </servlet>
 
-
-
   <servlet>
     <servlet-name>SearchAdmin</servlet-name>
     <servlet-class>com.servlets.SearchAdminServlet</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>RemoveFromCart</servlet-name>
+    <servlet-class>com.servlets.RemoveFromCartServlet</servlet-class>
   </servlet>
 
 <!--Servlet Mapping-->
@@ -153,6 +156,12 @@
     <servlet-name>SearchAdmin</servlet-name>
     <url-pattern>/SearchAdmin</url-pattern>
   </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>RemoveFromCart</servlet-name>
+    <url-pattern>/RemoveFromCart</url-pattern>
+  </servlet-mapping>
+
 
 
 </web-app>

@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="resources/css/header.css">
     <link rel="stylesheet" href="resources/css/product.css">
     <link rel="stylesheet" href="resources/css/color.css">
+    <link rel="stylesheet" href="resources/css/stickyCart.css">
+
     <title>Document</title>
 </head>
 <body class="light-bg-color" style="background-color: rgb(252 238 238) !important">
@@ -21,6 +23,7 @@
     return;
     }
         HashSet<Product> products = (HashSet<Product>)request.getAttribute("list");
+
         for(Product p : products){
             String path = "resources/static/product_images/" +p.getPimage();
         %>
@@ -33,7 +36,11 @@
                 <h5 class='card-title' > <%= p.getCategory() %> </h5 >
                 <h5 class='card-title' > &#8377;<%= p.getPrice() %> </h5 >
                 <p class='card-text' > <%= p.getPdesc() %> </p >
-                <a class="btn btn-primary" href="AddToCart?pid=<%= p.getId() %>&price=<%= p.getPrice() %>" >Add to Cart</a >
+                <a class="btn btn-primary" id="AddToCart" href="AddToCart?pid=<%= p.getId() %>&price=<%= p.getPrice() %>"  >Add to Cart</a >
+                <%  StoreUser store= new StoreUser();
+                    User user = store.getUser();
+                %>
+                <div class="sticky-cart"> <%=user.getCartItem()%>  </div>
             </div >
         </div >
         <% } %>

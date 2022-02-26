@@ -68,6 +68,7 @@ public class UserDao {
                 user.setUserType(result.getString("usertype").charAt(0));
                 user.setAddress(result.getString("address"));
                 user.setCreatedAt(result.getTimestamp("created_at"));
+                user.setCartItem(result.getInt("cart_item"));
             }
         }catch (Exception e){
             e.printStackTrace();
@@ -94,6 +95,8 @@ public class UserDao {
                 user.setUserType(result.getString("usertype").charAt(0));
                 user.setAddress(result.getString("address"));
                 user.setCreatedAt(result.getTimestamp("created_at"));
+                user.setCartItem(result.getInt("cart_item"));
+
             }
         }catch (Exception e){
             e.printStackTrace();
@@ -115,8 +118,20 @@ public class UserDao {
         }catch (Exception e){
             e.printStackTrace();
         }
+        return test;
+    }
 
-
+    public boolean updateCartItem(int cartItem){
+        boolean test = false;
+        try{
+            String query="update users set cart_item=?";
+            PreparedStatement ps = this.con.prepareStatement(query);
+            ps.setInt(1, cartItem);
+            ps.executeUpdate();
+            test=true;
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         return test;
     }
 

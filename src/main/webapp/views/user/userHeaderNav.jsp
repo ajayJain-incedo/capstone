@@ -1,5 +1,4 @@
 <!doctype html>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -17,7 +16,12 @@
         <a class="white-color nav-link" href="#">My Profile</a>
     </li>
     <li class="nav-item">
-        <a class="white-color nav-link" href="views/my_cart/myCart.jsp">Go to Cart</a>
+        <span class="glyphicon glyphicon-search">
+
+        <a class="white-color nav-link" href="views/my_cart/myCart.jsp">
+            <img src="../../resources/static/images/cartLogo.ai" alt="">
+        </a>
+            </span>
     </li>
     <li class="nav-item">
         <a class="white-color nav-link" href="/Capstone/Logout">Logout</a>

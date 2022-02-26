@@ -14,6 +14,7 @@ create table users
  address varchar(200),
  usertype char(1) default 'C' check((usertype= 'A') or (usertype='C')),
  created_at timestamp default current_timestamp,
+ cart_item int(3) default 0,
  constraint users_uid_pk primary key(uid),
  constraint users_email_uk unique (email)
 );

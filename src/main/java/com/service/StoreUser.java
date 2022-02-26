@@ -13,6 +13,7 @@ public class StoreUser {
         user.setFirstName(userr.getFirstName());
         user.setId(userr.getId());
         user.setCreatedAt(userr.getCreatedAt());
+        user.setCartItem(userr.getCartItem());
     }
     public User getUser(){
         return this.user;
