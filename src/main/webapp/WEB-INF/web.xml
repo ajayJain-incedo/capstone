@@ -86,6 +86,15 @@
     <servlet-class>com.servlets.RemoveFromCartServlet</servlet-class>
   </servlet>
 
+  <servlet>
+  <servlet-name>UpdateUserInfo</servlet-name>
+    <servlet-class>com.servlets.UpdateUserInfo</servlet-class>
+  </servlet>
+<servlet>
+  <servlet-name>DeleteUser</servlet-name>
+    <servlet-class>com.servlets.DeleteUser</servlet-class>
+  </servlet>
+
 <!--Servlet Mapping-->
 
   <servlet-mapping>
@@ -162,6 +171,16 @@
     <url-pattern>/RemoveFromCart</url-pattern>
   </servlet-mapping>
 
+
+  <servlet-mapping>
+    <servlet-name>UpdateUserInfo</servlet-name>
+    <url-pattern>/UpdateUserInfo</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>DeleteUser</servlet-name>
+    <url-pattern>/DeleteUser</url-pattern>
+  </servlet-mapping>
 
 
 </web-app>

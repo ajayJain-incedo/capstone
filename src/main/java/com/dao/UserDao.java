@@ -135,5 +135,42 @@ public class UserDao {
         return test;
     }
 
+    public String updateUserDetails(User user){
+        try{
+            String query= "update users set first_name =?, last_name =?, email =?, mobile =?, address =? where uid =?";
+            PreparedStatement ps = this.con.prepareStatement(query);
+            ps.setString(1, user.getFirstName());
+            ps.setString(2, user.getLastName());
+            ps.setString(3, user.getEmail());
+            ps.setString(4, user.getMobile());
+            ps.setString(5, user.getAddress());
+            ps.setInt(6, user.getId());
+            ps.executeUpdate();
+            return "success";
+        }
+        catch (SQLIntegrityConstraintViolationException e){
+            System.out.println(e);
+           return "emailAlreadyExist";
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+
+        return "error";
+    }
+
+    public boolean deleteUserById(String id){
+        boolean isExecuted = false;
+        try{
+            String query ="delete from users where uid =?";
+            PreparedStatement ps = this.con.prepareStatement(query);
+            ps.setString(1, id);
+            ps.executeUpdate();
+            isExecuted=true;
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return isExecuted;
+    }
 
 }

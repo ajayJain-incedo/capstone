@@ -23,71 +23,74 @@ return;
 
 <%@ include file= "AdminHeader.jsp" %>
 
+
+
 <h1 style = "text-align: center" ><u><b>ALL THE ITEMS IN THE DATABASE</b></u></h1>
 
 <h5 id = "msg" class ="center-align"> </h5>
 <%
-int start =0, recordCount = 3;
+int start =0, recordCount = 7;
 int total = 0;
 try{
     int pgno = request.getParameter("pgno")==null ?0: Integer.parseInt(request.getParameter("pgno"));
     start = pgno * recordCount;
     Connection con = ConnectionProvider.getConnection();
-    String QueryString = "Select pid, pname, pdesc, price, category, discount_percent, available_quantity, pid, pid from product limit ?,?";
+    String QueryString = "Select pid, pname, pdesc, price, category, discount_percent, available_quantity, pid, pid, pimage from product limit ?,?";
     PreparedStatement statement = con.prepareStatement(QueryString);
     statement.setInt(1, start);
     statement.setInt(2,recordCount);
     ResultSet rs = statement.executeQuery();
 %>
+
 <div class="product-display-size white-bg-color white-border admin-display-margin">
 
-<table align="center" cellpadding="15" style="text-align: center;">
+<table  align = "center" cellpadding="15"  style="text-align: center;  " class=" table table-striped" >
+    <thead >
     <tr>
-        <th>
+        <th scope = "col" >
             Product ID
         </th>
-        <th>
+        <th scope = "col" >
             Product Name
         </th>
-        <th>
+        <th scope = "col" >
             Description
         </th>
-        <th>
+        <th scope = "col" >
             Price
         </th>
-        <th>
+        <th scope = "col" >
             Category
         </th>
-        <th>
+        <th  scope = "col" >
             Discount %
         </th>
-        <th>
+        <th  scope = "col">
             Available Quantity
         </th>
-        <th>
+        <th >
             Image
         </th>
-        <th>
+        <th  scope = "col">
             UPDATE
         </th>
-        <th>
+        <th scope = "col" >
             REMOVE
         </th>
-
-
     </tr>
+    </thead>
     <%
     while (rs.next()) {
     %>
     <TR>
-        <TD><%=rs.getInt(1)%></TD>
+        <TD scope="row" ><%=rs.getInt(1)%></TD>
         <TD><%=rs.getString(2)%></TD>
         <TD><%=rs.getString(3)%></TD>
         <TD><%=rs.getDouble(4)%></TD>
         <TD><%=rs.getString(5)%></TD>
         <TD><%=rs.getDouble(6)%></TD>
         <TD><%=rs.getInt(7)%></TD>
-        <td><img src="../../resources/static/product_images/<%=rs.getInt(1)%>.jpg" style="width:40px;height:40px;object-fit:contain;"></td>
+        <td><img src='../../resources/static/product_images/<%=rs.getString("pimage")%>' style="width:40px;height:40px;object-fit:contain;"></td>
 <!--        <td><button type="button"  class=" btn btn-dark"  >-->
 <!--            <a href="update.jsp?id=<%=rs.getString(8)%>" style= "text-decoration:none" >UPDATE</a></button></td>-->
         <td><a href="update.jsp?id=<%=rs.getInt(8)%>" class="btn btn-primary">UPDATE</a></td>
@@ -109,22 +112,18 @@ try{
         out.println("Unable to connect to database.(update_item.jsp)");
         }
         %>
-    <tr class="page-bar pagination-bar">
-        <th colspan = "9">
-            <div class="white-border blue-bg-color">
-            <table>
-                <tr class="page-bar" >
-            total records: <%= total%>
+    </table>
+    <div class = "text-center">
+            <table width = "30%" align = "center" >
+                <tr>
+            <div style = "border:1px solid "> total records: <%= total%>
+            </div>
             <% for (int i =0; i<=total/recordCount; i++) {%>
-            <td><a href= "update_item.jsp?pgno=<%=i%>" class = "btn dark-bg-color white-color my-2 my-sm-0 "> Page<%=i+1%> </a></td>
+            <td><a href= "update_item.jsp?pgno=<%=i%>" class = "btn btn-dark "> Page<%=i+1%> </a></td>
             <%}%>
                 </tr>
             </table>
-            </div>
-        </th>
-    </tr>
-
-</table>
+    </div>
 </div>
 
 &nbsp;&nbsp;

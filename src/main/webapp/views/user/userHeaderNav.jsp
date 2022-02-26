@@ -1,4 +1,5 @@
 <!doctype html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -8,23 +9,22 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="resources/css/header.css">
     <link rel="stylesheet" href="/resources/css/color.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Document</title>
 </head>
 <body>
 <ul class=" navbar-nav mr-auto inline-list-padding">
-    <li class="nav-item">
-        <a class="white-color nav-link" href="#">My Profile</a>
+    <li class="nav-item d-flex align-items-center text-white mr-16">
+        <a class="white-color nav-link hover-oscillate" href="views/user/my_profile.jsp">Profile</a>
+        <i class="fa fa-user-circle-o icon"></i>
     </li>
-    <li class="nav-item">
-        <span class="glyphicon glyphicon-search">
-
-        <a class="white-color nav-link" href="views/my_cart/myCart.jsp">
-            <img src="../../resources/static/images/cartLogo.ai" alt="">
-        </a>
-            </span>
+    <li class="nav-item d-flex align-items-center text-white mr-16">
+        <a class="white-color nav-link hover-oscillate" href="views/my_cart/myCart.jsp">Cart</a>
+        <i class=" fa fa-shopping-cart icon"></i>
     </li>
-    <li class="nav-item">
-        <a class="white-color nav-link" href="/Capstone/Logout">Logout</a>
+    <li class="nav-item d-flex align-items-center text-white mr-16">
+        <a class="white-color nav-link hover-oscillate" href="/Capstone/Logout">Logout</a>
+        <i class="fa fa-sign-out icon"></i>
     </li>
 </ul>
 </body>

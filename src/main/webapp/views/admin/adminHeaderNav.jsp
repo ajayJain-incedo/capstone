@@ -1,5 +1,5 @@
 <!doctype html>
-
+<%@ page import="com.service.VerifySession" %>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -12,6 +12,11 @@
     <title>Document</title>
 </head>
 <body>
+<%
+if(VerifySession.verifySessionForAdmin(request, response)){
+return;
+}
+%>
 <ul class=" navbar-nav mr-auto inline-list-padding">
     <li class="nav-item">
         <a href="add_item.jsp" class="white-color nav-link">ADD ITEM</a>
