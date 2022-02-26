@@ -34,7 +34,7 @@ public class LoginServlet extends HttpServlet {
             // login success
             if(user.getUserType() == 'C'){
                 StoreUser.storeUser(user);
-            out.println("customer");
+                out.println("customer");
             }else{
                 StoreUser.storeUser(user);
                 out.println("admin");

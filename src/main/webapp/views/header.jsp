@@ -13,7 +13,6 @@
     <link rel="stylesheet" href="resources/css/header.css">
     <link rel="stylesheet" href="resources/css/color.css">
     <title>CapStone</title>
-
 </head>
 <body>
 <%

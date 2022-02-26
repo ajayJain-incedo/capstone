@@ -1,4 +1,4 @@
-<%@page import="com.service.ConnectionProvider"%>
+<%@ page import="com.dao.ProductDao, com.dao.UserDao, com.model.User, com.model.Product, com.service.*" %>
 <%@page import="java.sql.*, com.service.VerifySession"%>
 <%--<%@ page errorPage="../error_pages/error_page1.jsp" %>--%>
 <%
@@ -17,6 +17,16 @@ int quantity=0;
 int final_total=0;
 try{
     Connection con = ConnectionProvider.getConnection();
+    UserDao userDao = new UserDao(con);
+    User user = userDao.getUserByEmail(StoreUser.getUser().getEmail());
+    int cartItem=user.getCartItem();
+    if(incdec.equals("inc")){
+        cartItem++;
+    }else{
+        cartItem--;
+    }
+    userDao.updateCartItem(cartItem);
+
     String query="select user_id, category, round(amount/quantity, 1) as price, quantity, amount from cart_item, product where user_id ="+id+" and cart_item.product_id ="+pid;
     PreparedStatement st = con.prepareStatement(query);
     ResultSet rs = st.executeQuery();

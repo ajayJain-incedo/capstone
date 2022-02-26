@@ -15,11 +15,11 @@
 <body>
 <ul class=" navbar-nav mr-auto inline-list-padding">
     <li class="nav-item d-flex align-items-center text-white mr-16">
-        <a class="white-color nav-link hover-oscillate" href="views/user/my_profile.jsp">My Profile</a>
+        <a class="white-color nav-link hover-oscillate" href="views/user/my_profile.jsp">Profile</a>
         <i class="fa fa-user-circle-o icon"></i>
     </li>
     <li class="nav-item d-flex align-items-center text-white mr-16">
-        <a class="white-color nav-link hover-oscillate" href="views/my_cart/myCart.jsp">Go to Cart</a>
+        <a class="white-color nav-link hover-oscillate" href="views/my_cart/myCart.jsp">Cart</a>
         <i class=" fa fa-shopping-cart icon"></i>
     </li>
     <li class="nav-item d-flex align-items-center text-white mr-16">

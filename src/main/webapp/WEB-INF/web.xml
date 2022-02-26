@@ -82,6 +82,11 @@
   </servlet>
 
   <servlet>
+    <servlet-name>RemoveFromCart</servlet-name>
+    <servlet-class>com.servlets.RemoveFromCartServlet</servlet-class>
+  </servlet>
+
+  <servlet>
   <servlet-name>UpdateUserInfo</servlet-name>
     <servlet-class>com.servlets.UpdateUserInfo</servlet-class>
   </servlet>
@@ -160,6 +165,12 @@
     <servlet-name>SearchAdmin</servlet-name>
     <url-pattern>/SearchAdmin</url-pattern>
   </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>RemoveFromCart</servlet-name>
+    <url-pattern>/RemoveFromCart</url-pattern>
+  </servlet-mapping>
+
 
   <servlet-mapping>
     <servlet-name>UpdateUserInfo</servlet-name>

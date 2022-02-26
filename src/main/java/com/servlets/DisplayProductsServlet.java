@@ -26,7 +26,6 @@ public class DisplayProductsServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
             if(VerifySession.verifySession(req, resp)){
-
                 return;
             }
             UserDao dao = new UserDao(ConnectionProvider.getConnection());
@@ -43,7 +42,6 @@ public class DisplayProductsServlet extends HttpServlet {
 
             req.setAttribute("list", products);
             req.getRequestDispatcher("views/user/userHome.jsp").forward(req, resp);
-//            resp.sendRedirect("views/user/userHome.jsp");
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
