@@ -25,7 +25,7 @@ try{
     }else{
         cartItem--;
     }
-    userDao.updateCartItem(cartItem);
+    userDao.updateCartItem(cartItem, Integer.parseInt(id));
 
     String query="select user_id, category, round(amount/quantity, 1) as price, quantity, amount from cart_item, product where user_id ="+id+" and cart_item.product_id ="+pid;
     PreparedStatement st = con.prepareStatement(query);

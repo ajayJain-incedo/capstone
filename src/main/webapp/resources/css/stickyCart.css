@@ -1,12 +1,14 @@
-.sticky-cart{
+.sticky-cart {
+    display: flex;
     position: fixed;
     bottom: 20px;
-    background-color: black;
     color: white;
-    width: 100px;
+    width: 4%;
     right: 0px;
     border-radius: 100px 0px 0px 100px;
-    padding: 5px;
-    padding-left: 20px;
+    padding: 3px;
+    padding-left: 14px;
     font-size: 20px;
+    flex-direction: row;
+    justify-content: flex-start;
 }

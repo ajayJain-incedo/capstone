@@ -19,9 +19,6 @@ public class Logout extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
-        User user = StoreUser.getUser();
-        UserDao dao = new UserDao(ConnectionProvider.getConnection());
-        dao.updateCartItem(user.getCartItem());
         //PrintWriter out = response.getWriter();
         Cookie[] cookies = request.getCookies();
         response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.

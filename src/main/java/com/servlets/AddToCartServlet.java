@@ -47,7 +47,7 @@ public class AddToCartServlet extends HttpServlet {
             else {
                 dao.AddItem(cart);
             }
-            userDao.updateCartItem(user.getCartItem()+1);
+            userDao.updateCartItem(user.getCartItem()+1, user.getId());
         } catch (SQLException e) {
             e.printStackTrace();
         }
