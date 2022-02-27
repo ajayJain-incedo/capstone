@@ -21,7 +21,7 @@ if(VerifySession.verifySession(request, response)){
 return;
 }%>
 <nav class="navbar navbar-expand-lg navbar-light blue-bg-color">
-    <a href="update_item.jsp" style = "text-decoration: none; cursor:pointer; width:6.25rem; height:5rem;"> <img src = "../../resources/static/images/iconhead.png" alt = "icon.png" style="width:6.25rem; height:5rem; object-fit:contain;" class="navbar-brand inline-margin-start" ></a>
+    <a href="update_item.jsp" style = "text-decoration: none; cursor:pointer; width:6.25rem; height:5rem;"> <img src = "../../resources/static/images/icon.png" alt = "icon.png" style="width:6.25rem; height:5rem; object-fit:contain;" class="navbar-brand inline-margin-start" ></a>
 
 <!--    <a class="navbar-brand inline-margin-start white-color" href="update_item.jsp">ICON</a>-->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

@@ -20,7 +20,7 @@ if(VerifySession.verifySession(request, response)){
 return;
 }%>
 <nav class="navbar navbar-expand-lg navbar-light blue-bg-color">
-    <a class="navbar-brand inline-margin-start white-color" href="DisplayProduct">CapStone</a>
+    <a class="navbar-brand inline-margin-start white-color" href="DisplayProduct"><img style="width:5.5rem" src="resources/static/images/icon.png" alt="Incedo Shop"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
