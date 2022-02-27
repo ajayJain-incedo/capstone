@@ -11,8 +11,8 @@ Connection con = ConnectionProvider.getConnection();
 
 User user =StoreUser.getUser();
 UserDao dao = new UserDao(con);
-dao.updateCartItem(0);
 int uid = user.getId();
+dao.updateCartItem(0, uid);
 String queryToGetOrderId="select oid from orders where user_id =? and payment_status ='Pending'";
 PreparedStatement pstmt = con.prepareStatement(queryToGetOrderId);
 pstmt.setInt(1, uid);

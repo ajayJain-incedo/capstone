@@ -30,4 +30,10 @@ public class SearchProductServlet extends HttpServlet
         }
 
     }
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setAttribute("list", products);
+        req.getRequestDispatcher("views/user/userHome.jsp").forward(req, resp);
+    }
 }
