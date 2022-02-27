@@ -18,8 +18,8 @@
     </button>
     <div class="collapse navbar-collapse justify-content-center" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-            <a class=" hvr nav-item nav-link  white-color" href="#">Top Deals </a>
-            <a class="hvr  nav-link  white-color" href="CategoryProduct?category=Mobiles">Mobiles</a>
+            <a class=" hvr nav-item nav-link  white-color" href="DisplayProduct">Top Deals </a>
+            <a class="hvr nav-item nav-link  white-color" href="CategoryProduct?category=Mobiles">Mobiles</a>
             <a class="hvr nav-item nav-link  white-color" href="CategoryProduct?category=Electronics">Electronics</a>
             <a class="hvr nav-item nav-link  white-color" href="CategoryProduct?category=Appliances">Appliances</a>
             <a class="hvr nav-item nav-link  white-color" href="CategoryProduct?category=Home">Home</a>
@@ -28,7 +28,7 @@
             <a class="hvr nav-item nav-link  white-color" href="CategoryProduct?category=Health&Beauty">Health & Beauty</a>
             <a class="hvr nav-item nav-link  white-color" href="CategoryProduct?category=Books">Books</a>
             <a class="hvr nav-item nav-link  white-color" href="CategoryProduct?category=Sports">Sports</a>
-            <a class="hvr nav-item nav-link  white-color" href="CategoryProduct?category=More">More</a>
+<!--            <a class="hvr nav-item nav-link  white-color" href="DisplayProduct">More</a>-->
         </div>
     </div>
 </nav>

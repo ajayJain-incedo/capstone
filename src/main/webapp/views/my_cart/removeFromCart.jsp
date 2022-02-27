@@ -19,6 +19,7 @@ try
     cartItem=user.getCartItem()-cartItem;
     userDao.updateCartItem(cartItem, Integer.parseInt(id));
 
+
     String query="delete from cart_item where user_id=? and product_id=?";
     PreparedStatement st = con.prepareStatement(query);
     st.setString(1,id);
