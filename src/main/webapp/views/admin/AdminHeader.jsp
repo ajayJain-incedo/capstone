@@ -41,7 +41,7 @@ return;
         </li>
         &nbsp;&nbsp;
         <li class="nav-item">
-            <a href="/Capstone/Logout" class=" btn btn-info white-color nav-link">Logout</a>
+            <a href="/Capstone/Logout" class=" btn btn-info white-color nav-link">LOG OUT</a>
         </li>
     </ul>
 
