@@ -22,7 +22,7 @@ return;
         <a href="add_item.jsp" class="white-color nav-link">ADD ITEM</a>
     </li>
     <li class="nav-item">
-        <a href="/Capstone/Logout" class="white-color nav-link">Logout</a>
+        <a href="/Capstone/Logout" class="white-color nav-link">LOG OUT</a>
     </li>
 </ul>
 
