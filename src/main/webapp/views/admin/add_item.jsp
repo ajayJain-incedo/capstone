@@ -65,7 +65,7 @@ return;
                     </tr>
                     <tr>
                         <td>Enter Discount Percent:</td>
-                        <td><Input type = "number" name ="discount_percent" placeholder ="Enter here" min="0" max="100"   id = "discount_percent" required  ></td>
+                        <td><Input type = "number" step = ".01"  name ="discount_percent" placeholder ="Enter here" min="0" max="100"  id = "discount_percent" value ="0.0" required  ></td>
                     </tr>
 
                     <tr>
@@ -123,11 +123,6 @@ return;
         if (document.getElementById('price').value == 0)
         {
             alert('please enter the price of the product');
-            return false;
-        }
-        if (document.getElementById('discount_percent').value == 0)
-        {
-            alert('please enter the discount on the product');
             return false;
         }
         if (document.getElementById('available_quantity').value == 0)

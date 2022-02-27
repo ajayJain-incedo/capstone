@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ page import = "java.sql.*" %>
+<%@ page import = "java.lang.*" %>
 <%@ page import = "java.io.*" %>
 <%@page import = "com.service.ConnectionProvider"%>
 <%@ page import="com.service.VerifySession" %>
@@ -29,16 +30,17 @@ return;
 
 <h5 id = "msg" class ="center-align"> </h5>
 <%
-int start =0, recordCount = 7;
-int total = 0;
+double start =0;
+double recordCount = 7;
+double total = 0;
 try{
-    int pgno = request.getParameter("pgno")==null ?0: Integer.parseInt(request.getParameter("pgno"));
+    double pgno = request.getParameter("pgno")==null ?0: Double.parseDouble(request.getParameter("pgno"));
     start = pgno * recordCount;
     Connection con = ConnectionProvider.getConnection();
     String QueryString = "Select pid, pname, pdesc, price, category, discount_percent, available_quantity, pid, pid, pimage from product limit ?,?";
     PreparedStatement statement = con.prepareStatement(QueryString);
-    statement.setInt(1, start);
-    statement.setInt(2,recordCount);
+    statement.setInt(1, (int)start);
+    statement.setInt(2, (int)recordCount);
     ResultSet rs = statement.executeQuery();
 %>
 
@@ -116,9 +118,9 @@ try{
     <div class = "text-center">
             <table width = "30%" align = "center" >
                 <tr>
-            <div class="btn btn-dark" style = " margin: auto; border:1px solid; height: 40px;"> total records: <%= total%>
+            <div class="btn btn-dark" style = " margin: auto; border:1px solid; height: 40px;"> total records: <%= (int)total%>
             </div>
-            <% for (int i =0; i<=total/recordCount; i++) {%>
+            <% for (int i =0; i < Math.ceil(total/recordCount) ; i++) {%>
             <td><a href= "update_item.jsp?pgno=<%=i%>" class = "btn btn-dark "> Page<%=i+1%> </a></td>
             <%}%>
                 </tr>

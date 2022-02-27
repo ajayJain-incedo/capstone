@@ -94,7 +94,6 @@ return;
         <TD><%=p.getAvailable_quantity()%></TD>
         <td><img src=<%=path%> alt = "<%=p.getPimage()%>" style="width:2.94rem;height:2.94rem;object-fit:contain;"></td>
         <td><a href="views/admin/update.jsp?id=<%=p.getId()%>" class="btn btn-dark">UPDATE</a></td>
-        <% System.out.println("image in search_item i got is " + p.getPimage()); %>
         <td><button type="button" id ="<%=p.getId()%>"  class="delete btn btn-danger"  >REMOVE</button></td>
     </TR>
     <% } %>
