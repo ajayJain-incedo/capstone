@@ -5,7 +5,7 @@
 <%@page import="java.sql.*"%>
 <%@ page import="com.service.StoreUser,com.dao.CartDao" %>
 <%@page import = "com.model.User" %>
-<%@include file ="header.jsp" %>
+<%--<%@include file ="header.jsp" %>--%>
 <%@include file="footer.jsp" %>
 <%@ page errorPage="../error_pages/error_page1.jsp" %>
 <html >
@@ -14,15 +14,50 @@
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
     <title>My Cart</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../resources/css/header.css">
+    <link rel="stylesheet" href="../../resources/css/color.css">
+    <link rel="stylesheet" href="../../resources/css/my_profile.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/home-style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <link rel="stylesheet" href="resources/css/header.css">
+    <link rel="stylesheet" href="../../resources/css/product.css">
+    <link rel="stylesheet" href="../../resources/css/color.css">
+    <link rel="stylesheet" href="../../resources/css/stickyCart.css">
+
     <style>
-h3
+.alert
 {
-	color: #E74C3C;
+	color: blue;
 	text-align: center;
 }
 </style>
 </head>
-<body>
+<body style="background-color: rgb(252 238 238) !important;">
+<nav class="navbar navbar-expand-lg navbar-light blue-bg-color">
+    <a class="navbar-brand inline-margin-start white-color" href="/Capstone/DisplayProduct"><img style="width:5.5rem;" src="../../resources/static/images/icon.png"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div style="margin-left: 59%;">
+    <ul class=" navbar-nav mr-auto inline-list-padding" >
+        <li class="nav-item d-flex align-items-center text-white mr-16">
+            <a class="white-color nav-link hover-oscillate" href="../my_cart/myOrders.jsp">My Orders</a>
+            <i class="fa fa-file icon"></i>
+        </li>
+        <li class="nav-item d-flex align-items-center text-white mr-16">
+            <a class="white-color nav-link hover-oscillate" href="../user/my_profile.jsp">Profile</a>
+            <i class=" far fa-user-circle icon"></i>
+        </li>
+        <li class="nav-item d-flex align-items-center text-white mr-16">
+            <a class="white-color nav-link hover-oscillate" href="/Capstone/Logout">Logout</a>
+            <i class="fas fa-sign-out-alt icon" style="font-size:1.1rem"></i>
+        </li>
+    </ul>
+    </div>
+</nav>
     <%
     if(VerifySession.verifySession(request, response)){
         return;
@@ -56,24 +91,24 @@ h3
     }
     String msg=request.getParameter("msg");
 %>
-<div style="color: white; text-align: center; font-size: 30px;">My Cart <i class='fas fa-cart-arrow-down'></i></div>
+<div style="color: black; text-align: center; font-size: 30px;margin-top:11px;">My Cart <i class='fas fa-cart-arrow-down'></i></div>
 <%
 if("inc".equals(msg))
 {
 %>
-<h3 class="alert">Quantity  Increased Successfully!</h3>
+<h5 class="alert">Quantity  Increased Successfully!</h5>
 <%} %>
 <%
 if("dec".equals(msg))
 {
 %>
-<h3 class="alert">Quantity  Decreased Successfully!</h3>
+<h5 class="alert" style="color:red !important;">Quantity  Decreased Successfully!</h5>
 <%} %>
 <%
 if("removed".equals(msg))
 {
 %>
-<h3 class="alert">Product Successfully Removed!</h3>
+<h5 class="alert" style="color:red !important;">Product Successfully Removed!</h5>
 <%} %>
 <table>
     <thead>
@@ -129,7 +164,7 @@ if("removed".equals(msg))
         <td><i class="fa fa-inr"></i> <%=rs.getString(3) %></td>
         <td><a href='incDecQuantityAction.jsp?id=<%=user.getId()%>&quantity=inc&pid=<%=rs.getInt(4) %>'><i class='fas fa-plus-circle'></i></a> <%=rs.getInt(5) %> <a href='incDecQuantityAction.jsp?id=<%=user.getId()%>&quantity=dec&pid=<%=rs.getInt(6) %>'><i class='fas fa-minus-circle'></i></a></td>
         <td><i class="fa fa-inr"></i> <%=rs.getInt(7) %> </td>
-        <td><a href="removeFromCart.jsp?id=<%=user.getId()%>&pid=<%=rs.getInt(4)%>&cartItem=<%=rs.getInt(5) %>">Remove <i class='fas fa-trash-alt'></i></a></td>
+        <td><a style="color:red;" href="removeFromCart.jsp?id=<%=user.getId()%>&pid=<%=rs.getInt(4)%>&cartItem=<%=rs.getInt(5) %>">Remove <i class='fas fa-trash-alt'></i></a></td>
     </tr>
     <%
     }
@@ -139,11 +174,12 @@ if("removed".equals(msg))
     %>
 
     <%if(total>0){ %>
-    <div style="text-align: right; width:100%; padding:0;">
-    <th scope="col"><a class="btn text-right" href="addressPaymentForOrderNew.jsp">Proceed to order</a></th><%} %>
-    </div>
+
     </tbody>
 </table>
+<div style="text-align: right; width:100%; padding:0;">
+    <a class="btn btn-primary text-right" href="addressPaymentForOrderNew.jsp">Proceed to order</a><%} %>
+</div>
 <br>
 <br>
 <br>

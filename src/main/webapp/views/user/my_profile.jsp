@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="../../resources/css/color.css">
     <link rel="stylesheet" href="../../resources/css/my_profile.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 </head>
 <style>
 
@@ -21,11 +23,11 @@
 <body class="light-bg-color">
 
 <nav class="navbar navbar-expand-lg navbar-light blue-bg-color">
-    <a class="navbar-brand inline-margin-start white-color" href="/Capstone/DisplayProduct"><img style="width:60px;" src="../../resources/static/images/iconhead.png"></a>
+    <a class="navbar-brand inline-margin-start white-color" href="/Capstone/DisplayProduct"><img style="width:5.5rem;" src="../../resources/static/images/icon.png"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <ul class=" navbar-nav mr-auto inline-list-padding">
+    <ul class=" navbar-nav mr-auto inline-list-padding"style="margin-left: 61%;">
         <li class="nav-item d-flex align-items-center text-white mr-16">
             <a class="white-color nav-link hover-oscillate" href="../my_cart/myOrders.jsp">My Orders</a>
             <i class="fa fa-file icon"></i>
@@ -63,7 +65,7 @@ if(msg.equals("errorDeleteUser")){
         <div class="col-md-4 offset-md-4 ">
             <div class="card br-21 bs">
                 <div class="card-header text-white card-header-color text-center br-t-21" >
-                    <i class="fa fa-user-circle-o fa-2x "></i>
+                    <i class="far fa-user-circle fa-2x "></i>
                     <p>My details</p>
                     <div class="loader" style="justify-content:center;display:none;">
                         <div class="d-flex align-items-center">
@@ -114,7 +116,7 @@ if(msg.equals("errorDeleteUser")){
                         <p>Joined on: &nbsp;</p><p class="bold"><%=formattedDate %></p>
                     </div>
                     <div class="edit-icon">
-                       <button class="btn-edit"><i class="fa fa-edit fa-2x"></i></button>
+                       <button class="btn-edit"><i class="fa fa-edit " style="font-size:1.5rem;"></i></button>
                     </div>
                     </div>
                     <form method="post" id="user-details-form">

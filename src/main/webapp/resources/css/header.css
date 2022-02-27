@@ -46,4 +46,11 @@
     margin-right:16px;
 }
 
+nav div .navbar-nav a{
+     transition: all .3s ease;
+}
+.hvr:hover{
+
+    transform: translateY(1px);
+}
 
