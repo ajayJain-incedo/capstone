@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="resources/css/header.css">
     <title>CapStone</title>
 </head>
+
 <body>
 <nav class="navbar navbar-expand-lg navbar-light blue-bg-color white-border">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -17,17 +18,17 @@
     </button>
     <div class="collapse navbar-collapse justify-content-center" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-            <a class="nav-item nav-link  white-color" href="#">Top Deals </a>
-            <a class="nav-item nav-link  white-color" href="CategoryProduct?category=Mobiles">Mobiles</a>
-            <a class="nav-item nav-link  white-color" href="CategoryProduct?category=Electronics">Electronics</a>
-            <a class="nav-item nav-link  white-color" href="CategoryProduct?category=Appliances">Appliances</a>
-            <a class="nav-item nav-link  white-color" href="CategoryProduct?category=Home">Home</a>
-            <a class="nav-item nav-link  white-color" href="CategoryProduct?category=Fashion">Fashion</a>
-            <a class="nav-item nav-link  white-color" href="CategoryProduct?category=Kids">Kids</a>
-            <a class="nav-item nav-link  white-color" href="CategoryProduct?category=Health&Beauty">Health & Beauty</a>
-            <a class="nav-item nav-link  white-color" href="CategoryProduct?category=Books">Books</a>
-            <a class="nav-item nav-link  white-color" href="CategoryProduct?category=Sports">Sports</a>
-            <a class="nav-item nav-link  white-color" href="CategoryProduct?category=More">More</a>
+            <a class=" hvr nav-item nav-link  white-color" href="#">Top Deals </a>
+            <a class="hvr  nav-link  white-color" href="CategoryProduct?category=Mobiles">Mobiles</a>
+            <a class="hvr nav-item nav-link  white-color" href="CategoryProduct?category=Electronics">Electronics</a>
+            <a class="hvr nav-item nav-link  white-color" href="CategoryProduct?category=Appliances">Appliances</a>
+            <a class="hvr nav-item nav-link  white-color" href="CategoryProduct?category=Home">Home</a>
+            <a class="hvr nav-item nav-link  white-color" href="CategoryProduct?category=Fashion">Fashion</a>
+            <a class="hvr nav-item nav-link  white-color" href="CategoryProduct?category=Kids">Kids</a>
+            <a class="hvr nav-item nav-link  white-color" href="CategoryProduct?category=Health&Beauty">Health & Beauty</a>
+            <a class="hvr nav-item nav-link  white-color" href="CategoryProduct?category=Books">Books</a>
+            <a class="hvr nav-item nav-link  white-color" href="CategoryProduct?category=Sports">Sports</a>
+            <a class="hvr nav-item nav-link  white-color" href="CategoryProduct?category=More">More</a>
         </div>
     </div>
 </nav>

@@ -10,6 +10,8 @@ try{
 Connection con = ConnectionProvider.getConnection();
 
 User user =StoreUser.getUser();
+UserDao dao = new UserDao(con);
+dao.updateCartItem(0);
 int uid = user.getId();
 String queryToGetOrderId="select oid from orders where user_id =? and payment_status ='Pending'";
 PreparedStatement pstmt = con.prepareStatement(queryToGetOrderId);
@@ -19,6 +21,7 @@ int oid = 0;
 while(rsOrderId.next()){
 oid=rsOrderId.getInt("oid");
 }
+
 String callQuery = "call insert_history(?)";
 CallableStatement cstmt = con.prepareCall(callQuery);
 cstmt.setInt(1,oid);

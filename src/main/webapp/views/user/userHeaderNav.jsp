@@ -11,20 +11,22 @@
     <link rel="stylesheet" href="/resources/css/color.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Incedo Dukaan</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 </head>
 <body>
 <ul class=" navbar-nav mr-auto inline-list-padding">
     <li class="nav-item d-flex align-items-center text-white mr-16">
         <a class="white-color nav-link hover-oscillate" href="views/user/my_profile.jsp">Profile</a>
-        <i class="fa fa-user-circle-o icon"></i>
+        <i class="far fa-user-circle icon" style="font-size:1.2rem"></i>
     </li>
     <li class="nav-item d-flex align-items-center text-white mr-16">
         <a class="white-color nav-link hover-oscillate" href="views/my_cart/myCart.jsp">Cart</a>
-        <i class=" fa fa-shopping-cart icon"></i>
+        <i class=" fa fa-shopping-cart icon" style="font-size:1.1rem"></i>
     </li>
     <li class="nav-item d-flex align-items-center text-white mr-16">
         <a class="white-color nav-link hover-oscillate" href="/Capstone/Logout">Logout</a>
-        <i class="fa fa-sign-out icon"></i>
+        <i class="fas fa-sign-out-alt icon"style="font-size:1.1rem"> </i>
     </li>
 </ul>
 </body>

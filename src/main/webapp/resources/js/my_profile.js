@@ -5,6 +5,10 @@ function isNumberKey(evt) {
 
         return true;
     }
+    function refresh() {
+    console.log("refreshed");
+            window .location.reload();
+        }
     $(".btn-submit").click(function(){
           $("#msg").html("");
     })
@@ -63,6 +67,7 @@ function isNumberKey(evt) {
                     if(data.trim() === "updated successfully"){
                         $("#msg").css("color", "green");
                         $("#msg").html("Details updated successfully");
+                            window.setInterval('refresh()', 1000);
                     }
                     else if(data.trim() === "error"){
                     $("#msg").css("color", "red");
