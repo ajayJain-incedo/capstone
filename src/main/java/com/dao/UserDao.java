@@ -121,12 +121,13 @@ public class UserDao {
         return test;
     }
 
-    public boolean updateCartItem(int cartItem){
+    public boolean updateCartItem(int cartItem, int uid){
         boolean test = false;
         try{
-            String query="update users set cart_item=?";
+            String query="update users set cart_item=? where uid=?";
             PreparedStatement ps = this.con.prepareStatement(query);
             ps.setInt(1, cartItem);
+            ps.setInt(2, uid);
             ps.executeUpdate();
             test=true;
         }catch (Exception e){

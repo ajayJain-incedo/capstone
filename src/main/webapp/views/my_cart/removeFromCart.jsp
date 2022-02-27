@@ -17,7 +17,7 @@ try
     int cartItem=Integer.parseInt(request.getParameter("cartItem"));
     User user = userDao.getUserByEmail(StoreUser.getUser().getEmail());
     cartItem=user.getCartItem()-cartItem;
-    userDao.updateCartItem(cartItem);
+    userDao.updateCartItem(cartItem, Integer.parseInt(id));
 
     String query="delete from cart_item where user_id=? and product_id=?";
     PreparedStatement st = con.prepareStatement(query);

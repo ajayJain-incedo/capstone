@@ -42,7 +42,17 @@
                     UserDao userDao = new UserDao(con);
                     User user = userDao.getUserByEmail(StoreUser.getUser().getEmail());
                 %>
-                <div class="sticky-cart"> <%=user.getCartItem()%>  </div>
+                    <a class="white-color" href="views/my_cart/myCart.jsp">
+                        <div class="sticky-cart blue-bg-color">
+                            <div>
+                                <%=user.getCartItem()%>
+                            </div>
+                            <div>
+                                <i class=" fa fa-shopping-cart icon"></i>
+                            </div>
+                        </div>
+                    </a>
+
             </div >
         </div >
         <% } %>
