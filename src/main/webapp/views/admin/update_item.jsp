@@ -118,10 +118,10 @@ try{
     <div class = "text-center">
             <table width = "30%" align = "center" >
                 <tr>
-            <div class="btn btn-dark" style = " margin: auto; border:1px solid; height: 40px;"> total records: <%= (int)total%>
+            <div class="btn btn-primary" style = " margin: auto; border:1px solid; height: 40px;"> total records: <%= (int)total%>
             </div>
             <% for (int i =0; i < Math.ceil(total/recordCount) ; i++) {%>
-            <td><a href= "update_item.jsp?pgno=<%=i%>" class = "btn btn-dark "> Page<%=i+1%> </a></td>
+            <td><a href= "update_item.jsp?pgno=<%=i%>" class = "btn btn-primary "> Page<%=i+1%> </a></td>
             <%}%>
                 </tr>
             </table>

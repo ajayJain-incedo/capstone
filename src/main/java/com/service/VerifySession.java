@@ -27,11 +27,7 @@ public class VerifySession {
                 resp.sendRedirect("/Capstone");
                 return true;
             }
-            else
-            {
-                return false;
 
-            }
 
         }
         }else {
