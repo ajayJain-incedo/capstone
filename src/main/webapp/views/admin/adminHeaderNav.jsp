@@ -18,11 +18,19 @@ return;
 }
 %>
 <ul class=" navbar-nav mr-auto inline-list-padding">
-    <li class="nav-item">
-        <a href="add_item.jsp" class="white-color nav-link">ADD ITEM</a>
+<!--    <li class="nav-item">-->
+<!--        <a href="add_item.jsp" class="white-color nav-link">ADD ITEM</a>-->
+<!--    </li>-->
+<!--    <li class="nav-item">-->
+<!--        <a href="/Capstone/Logout" class="white-color nav-link">LOG OUT</a>-->
+<!--    </li>-->
+    <li class="nav-item d-flex align-items-center text-white mr-16">
+        <a class="white-color nav-link hover-oscillate" href="../my_cart/myOrders.jsp">My Orders</a>
+        <i class="fa fa-file icon"></i>
     </li>
-    <li class="nav-item">
-        <a href="/Capstone/Logout" class="white-color nav-link">LOG OUT</a>
+    <li class="nav-item d-flex align-items-center text-white mr-16">
+        <a class="white-color nav-link hover-oscillate" href="../my_cart/myCart.jsp">Cart</a>
+        <i class=" fa fa-shopping-cart icon"></i>
     </li>
 </ul>
 

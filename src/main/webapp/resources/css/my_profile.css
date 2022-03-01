@@ -2,6 +2,15 @@
 .card-head{
     background-color: #80CBC4;
 }
+body{
+background-color: rgb(252 238 238) !important;
+}
+
+.user-info{
+    display: flex;
+    flex-direction:column;
+
+}
 
 .login-card{
     display: flex;
@@ -28,7 +37,8 @@ color:white!important;
     background-color: #035adc !important;
     }
     .edit-icon{
-        float:right;
+        display:flex;
+        justify-content:flex-end;
     }
     .btn-edit{
         border:none;
