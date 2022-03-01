@@ -1,8 +1,6 @@
 <!doctype html>
 <%@page import="java.sql.DriverManager"%>
-<%@page import="java.sql.ResultSet"%>
-<%@page import="java.sql.Statement"%>
-<%@page import="java.sql.Connection"%>
+<%@page import="java.sql.*"%>
 <%@page import = "com.dao.ProductDao"%>
 <%@page import = "com.model.Product "%>
 <%@page import = "com.service.ConnectionProvider"%>
@@ -23,15 +21,26 @@
     margin:auto;
     padding: 20px;
     }
+    .br-21{
+    border-radius:19px !important;
+    }
+    .bs{
+    box-shadow: 1px 1px 10px;
+    }
+    .back:hover
+    {
+        transform:scale(1.9, 1.9);
+    }
+
     </style>
 <%
         String id = request.getParameter("id");
         try
         {
         Connection connection = ConnectionProvider.getConnection();
-        Statement statement=connection.createStatement();
         String sql ="Select pid, pname, pdesc, price, category, discount_percent, available_quantity, pimage from product where pid="+id;
-        ResultSet rs = statement.executeQuery(sql);
+        PreparedStatement statement=connection.prepareStatement(sql);
+        ResultSet rs = statement.executeQuery();
         while(rs.next())
         {
 %>
@@ -41,16 +50,16 @@ if(VerifySession.verifySessionForAdmin(request, response)){
 return;
 }
 %>
-<a href="update_item.jsp">
-    <img style="height: 3rem; width: 3rem" border="0" alt="HomePage Icon" src="../../resources/static/images/admin_home_page.jpg" width="100" height="100">
+<a class = "back" href="update_item.jsp">
+    <img style="height: 3.5rem; width: 3.5rem" border="0" alt="HomePage Icon" src="../../resources/static/images/backicon.png" width="100" height="100">
 </a>
 
 <!--<main class="d-flex align-items-center my-background clip" style="height: 85vh; ">-->
 
-    <div class="container" style="width: 100%;">
+    <div class="container " style="width: 100%;">
 
-        <div class="col-md-4 offset-md-4 lc">
-            <div class="card" style="border: 2px solid black; ">
+        <div class="col-md-4 offset-md-4 lc ">
+            <div class="card bs br-21"  >
                 <div class="card-header text-center card-header-background{" style ="height: 50px; ">
                     <i class="	fa fa-user-circle-o fa-2x "></i>
                     <p><strong>Update Item Details</strong></p>
@@ -69,8 +78,8 @@ return;
                         Category:
                         <p><input  readonly type="text" name="category" value="<%=rs.getString(5) %>"></p>
 
-                        Discount Percentage:
-                        <p><input type="number" name="discount_percent" value="<%=rs.getString(6) %>" min="0" max="100"></p>
+<!--                        Discount Percentage:-->
+<!--                        <p><input type="number" name="discount_percent" value="<%=rs.getString(6) %>" min="0" max="100"></p>-->
 
                         Available Quantity:
                         <p><input type="number" name="available_quantity" value="<%=rs.getString(7) %>"></p>

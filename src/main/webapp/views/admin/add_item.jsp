@@ -63,10 +63,10 @@ return;
                             </select>
                         </td>
                     </tr>
-                    <tr>
-                        <td>Enter Discount Percent:</td>
-                        <td><Input type = "number" step = ".01"  name ="discount_percent" placeholder ="Enter here" min="0" max="100"  id = "discount_percent" value ="0.0" required  ></td>
-                    </tr>
+<!--                    <tr>-->
+<!--                        <td>Enter Discount Percent:</td>-->
+<!--                        <td><Input type = "number" step = ".01"  name ="discount_percent" placeholder ="Enter here" min="0" max="100"  id = "discount_percent" value ="0.0" required  ></td>-->
+<!--                    </tr>-->
 
                     <tr>
                         <td>Enter Quantity:</td>

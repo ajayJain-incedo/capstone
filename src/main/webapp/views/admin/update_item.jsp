@@ -64,9 +64,9 @@ try{
         <th scope = "col" >
             Category
         </th>
-        <th  scope = "col" >
-            Discount %
-        </th>
+<!--        <th  scope = "col" >-->
+<!--            Discount %-->
+<!--        </th>-->
         <th  scope = "col">
             Available Quantity
         </th>
@@ -90,7 +90,7 @@ try{
         <TD><%=rs.getString(3)%></TD>
         <TD><%=rs.getDouble(4)%></TD>
         <TD><%=rs.getString(5)%></TD>
-        <TD><%=rs.getDouble(6)%></TD>
+<!--        <TD><%=rs.getDouble(6)%></TD>-->
         <TD><%=rs.getInt(7)%></TD>
         <td><img src='../../resources/static/product_images/<%=rs.getString("pimage")%>' style="width:2.94rem;height:2.94rem;object-fit:contain;"></td>
 <!--        <td><button type="button"  class=" btn btn-dark"  >-->

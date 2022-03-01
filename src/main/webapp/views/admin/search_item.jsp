@@ -60,9 +60,9 @@ return;
         <th>
             Category
         </th>
-        <th>
-            Discount %
-        </th>
+<!--        <th>-->
+<!--            Discount %-->
+<!--        </th>-->
         <th>
             Available Quantity
         </th>
@@ -90,7 +90,7 @@ return;
         <TD><%=p.getPdesc()%></TD>
         <TD><%=p.getPrice()%></TD>
         <TD><%=p.getCategory()%></TD>
-        <TD><%=p.getDiscount_percent()%></TD>
+<!--        <TD><%=p.getDiscount_percent()%></TD>-->
         <TD><%=p.getAvailable_quantity()%></TD>
         <td><img src=<%=path%> alt = "<%=p.getPimage()%>" style="width:2.94rem;height:2.94rem;object-fit:contain;"></td>
         <td><a href="views/admin/update.jsp?id=<%=p.getId()%>" class="btn btn-dark">UPDATE</a></td>
