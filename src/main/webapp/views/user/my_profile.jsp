@@ -38,7 +38,7 @@
         </li>
         <li class="nav-item d-flex align-items-center text-white mr-16">
             <a class="white-color nav-link hover-oscillate" href="/Capstone/Logout">Logout</a>
-            <i class="fa fa-sign-out icon"></i>
+            <i class="fa fa-sign-out-alt icon"></i>
         </li>
     </ul>
 

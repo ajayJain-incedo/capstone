@@ -14,6 +14,9 @@
     <link rel="stylesheet" href="resources/css/header.css">
     <link rel="stylesheet" href="resources/css/color.css">
     <title>Capstone</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 </head>
 <body>
 <%
@@ -36,13 +39,17 @@ return;
     </div>
 
     <ul class=" navbar-nav mr-auto inline-list-padding">
-        <li class="nav-item">
-            <a href="add_item.jsp" class=" btn btn-success white-color nav-link">ADD ITEM</a>
+        <li class="nav-item d-flex align-items-center text-white mr-16">
+            <a href="add_item.jsp" class=" white-color nav-link hover-oscillate">ADD ITEM</a>
+        <i class="fa fa-plus icon"></i>
         </li>
         &nbsp;&nbsp;
-        <li class="nav-item">
-            <a href="/Capstone/Logout" class=" btn btn-info white-color nav-link">LOG OUT</a>
+        <li class="nav-item d-flex align-items-center text-white mr-16">
+            <a href="/Capstone/Logout" class=" white-color nav-link hover-oscillate">LOG OUT</a>
+        <i class=" fas fa-sign-out-alt icon"></i>
+
         </li>
+
     </ul>
 
 </nav>
