@@ -30,7 +30,7 @@
     <ul class=" navbar-nav mr-auto inline-list-padding"style="margin-left: 61%;">
         <li class="nav-item d-flex align-items-center text-white mr-16">
             <a class="white-color nav-link hover-oscillate" href="../my_cart/myOrders.jsp">My Orders</a>
-            <i class="fa fa-file icon"></i>
+            <i class="icon fa fa-archive "></i>
         </li>
         <li class="nav-item d-flex align-items-center text-white mr-16">
             <a class="white-color nav-link hover-oscillate" href="../my_cart/myCart.jsp">Cart</a>

@@ -1,7 +1,6 @@
 package com.servlets;
 import com.dao.UserDao;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -41,18 +40,17 @@ public class RegisterServlet extends HttpServlet {
 
         // creating a user dao object
         UserDao dao = new UserDao(ConnectionProvider.getConnection());
-        if(dao.insertUser(user, password2).equals("allFine")){
+        if (dao.insertUser(user, password2).equals("allFine")) {
             out.println("done");
-        }else if(dao.insertUser(user, password2).equals("wrongMobile")){
+        } else if (dao.insertUser(user, password2).equals("wrongMobile")) {
             out.println("mobileError");
-        }else if(dao.insertUser(user, password2).equals("emailDuplicate")){
+        } else if (dao.insertUser(user, password2).equals("emailDuplicate")) {
             out.println("emailDuplicate");
-        }else if(dao.insertUser(user, password2).equals("passwordNotMatching")){
+        } else if (dao.insertUser(user, password2).equals("passwordNotMatching")) {
             out.println("passwordNotMatching");
-        }else if(dao.insertUser(user, password2).equals("tooLong")){
+        } else if (dao.insertUser(user, password2).equals("tooLong")) {
             out.println("tooLong");
-        }
-        else{
+        } else {
             out.println("error");
         }
     }

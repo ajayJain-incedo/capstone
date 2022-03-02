@@ -40,12 +40,12 @@ return;
 
     <ul class=" navbar-nav mr-auto inline-list-padding">
         <li class="nav-item d-flex align-items-center text-white mr-16">
-            <a href="add_item.jsp" class=" white-color nav-link hover-oscillate">ADD ITEM</a>
+            <a href="add_item.jsp" class=" white-color nav-link hover-oscillate">Add Item</a>
         <i class="fa fa-plus icon"></i>
         </li>
         &nbsp;&nbsp;
         <li class="nav-item d-flex align-items-center text-white mr-16">
-            <a href="/Capstone/Logout" class=" white-color nav-link hover-oscillate">LOG OUT</a>
+            <a href="/Capstone/Logout" class=" white-color nav-link hover-oscillate">Logout</a>
         <i class=" fas fa-sign-out-alt icon"></i>
 
         </li>

@@ -38,11 +38,11 @@ return;
 <%@ include file= "SearchHeader.jsp" %>
 
 
-<h1 style = "text-align: center" ><u><b>ALL THE ITEMS IN THE DATABASE</b></u></h1>
+<!--<h1 style = "text-align: center" ><u>Result</u></h1>-->
 
 <h5 id = "msg" class ="center-align"> </h5>
     <div class="product-display-size white-bg-color white-border admin-display-margin">
-<table  align="center" cellpadding="15" style="text-align: center;" class=" table table-striped ">
+<table  align="center" cellpadding="5" style="text-align: center;" class=" table table-striped " >
     <thead style = "position: sticky; top: 0; background-color: white">
     <tr>
         <th>
@@ -60,9 +60,9 @@ return;
         <th>
             Category
         </th>
-        <th>
-            Discount %
-        </th>
+<!--        <th>-->
+<!--            Discount %-->
+<!--        </th>-->
         <th>
             Available Quantity
         </th>
@@ -70,10 +70,10 @@ return;
             Image
         </th>
         <th>
-            UPDATE
+            Update
         </th>
-        <th>
-            REMOVE
+        <th >
+            Remove
         </th>
     </tr>
     </thead>
@@ -90,11 +90,11 @@ return;
         <TD><%=p.getPdesc()%></TD>
         <TD><%=p.getPrice()%></TD>
         <TD><%=p.getCategory()%></TD>
-        <TD><%=p.getDiscount_percent()%></TD>
+<!--        <TD><%=p.getDiscount_percent()%></TD>-->
         <TD><%=p.getAvailable_quantity()%></TD>
         <td><img src=<%=path%> alt = "<%=p.getPimage()%>" style="width:2.94rem;height:2.94rem;object-fit:contain;"></td>
-        <td><a href="views/admin/update.jsp?id=<%=p.getId()%>" class="btn btn-dark">UPDATE</a></td>
-        <td><button type="button" id ="<%=p.getId()%>"  class="delete btn btn-danger"  >REMOVE</button></td>
+        <td><a style="text-decoration:none; display:inline-flex" href="views/admin/update.jsp?id=<%=p.getId()%>" class="align-items-center">Edit &zwnj;<i class='far fa-edit'></i></a></td>
+        <td ><a style="color:red; cursor:pointer;text-decoration:none; display:inline-flex"  id ="<%=p.getId()%>"  class="delete align-items-center"  >Remove <i class='fas fa-trash-alt'></i></a></td>
     </TR>
     <% } %>
 
