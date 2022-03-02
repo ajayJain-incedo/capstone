@@ -2,7 +2,7 @@
 <%@page import="com.service.*, com.dao.*, java.sql.*, com.model.*, java.util.HashSet"%>
 <%--<%@ page errorPage="../error_pages/error_page1.jsp" %>--%>
 <html>
-<body style = "background-color: #78909C;">
+<body style = "background-color: rgb(252 238 238);">
 <%if(VerifySession.verifySession(request, response)){
 return;
 }
@@ -68,7 +68,7 @@ background:#fff;
 }
 .payment_header
 {
-background:rgba(255,102,0,1);
+background-color: #0d6efd !important;
 padding:20px;
 border-radius:20px 20px 0px 0px;
 
@@ -115,7 +115,7 @@ height:35px;
 color:#fff;
 border-radius:30px;
 padding:5px 10px;
-background:rgba(255,102,0,1);
+background-color: #0d6efd !important;
 transition:all ease-in-out 0.3s;
 }
 

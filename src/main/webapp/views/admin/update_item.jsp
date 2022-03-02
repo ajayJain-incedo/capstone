@@ -26,7 +26,7 @@ return;
 
 
 
-<h1 style = "text-align: center" ><u><b>ALL THE ITEMS IN THE DATABASE</b></u></h1>
+<h1 style = "text-align: center" ><u>All Items</u></h1>
 
 <h5 id = "msg" class ="center-align"> </h5>
 <%
@@ -44,7 +44,7 @@ try{
     ResultSet rs = statement.executeQuery();
 %>
 
-<div class="product-display-size white-bg-color white-border admin-display-margin" style = "height: 36.8rem;">
+<div class="product-display-size white-bg-color white-border admin-display-margin" style = "height: 30.5rem;">
 
 <table  align = "center" cellpadding="15"  style="text-align: center; height: 300px  " class=" table table-striped"  >
     <thead >
@@ -74,10 +74,10 @@ try{
             Image
         </th>
         <th  scope = "col">
-            UPDATE
+            Update
         </th>
         <th scope = "col" >
-            REMOVE
+            Remove
         </th>
     </tr>
     </thead>
@@ -95,8 +95,10 @@ try{
         <td><img src='../../resources/static/product_images/<%=rs.getString("pimage")%>' style="width:2.94rem;height:2.94rem;object-fit:contain;"></td>
 <!--        <td><button type="button"  class=" btn btn-dark"  >-->
 <!--            <a href="update.jsp?id=<%=rs.getString(8)%>" style= "text-decoration:none" >UPDATE</a></button></td>-->
-        <td><a href="update.jsp?id=<%=rs.getInt(8)%>" class="btn btn-primary">UPDATE</a></td>
-        <td><button type="button" id ="<%=rs.getInt(9)%>"  class="delete btn btn-danger"  >REMOVE</button></td>
+        <td><a style="text-decoration:none; display:inline-flex" href="update.jsp?id=<%=rs.getInt(8)%>" class="align-items-center">Edit &zwnj;<i class='far fa-edit'></i></a></td>
+        <td ><a style="color:red; cursor:pointer;text-decoration:none; display:inline-flex"  id ="<%=rs.getInt(9)%>"  class="delete align-items-center"  >Remove <i class='fas fa-trash-alt'></i></a></td>
+<!--        <td><a href="update.jsp?id=<%=rs.getInt(8)%>" class="btn btn-primary">Update</a></td>-->
+<!--        <td><button type="button" id ="<%=rs.getInt(9)%>"  class="delete btn btn-danger"  >Remove</button></td>-->
     </TR>
     <% }
         String sql1 = " select count(*) from product";
@@ -115,6 +117,7 @@ try{
         }
         %>
     </table>
+</div>
     <div class = "text-center">
             <table width = "30%" align = "center" >
                 <tr>
@@ -126,7 +129,6 @@ try{
                 </tr>
             </table>
     </div>
-</div>
 
 &nbsp;&nbsp;
 
