@@ -1,18 +1,28 @@
- function isNumberKey(evt) {
+function isNumberKey(evt) {
         var charCode = (evt.which) ? evt.which : event.keyCode;
         if ((charCode < 48 || charCode > 57))
             return false;
-
         return true;
     }
+    function validateEmail(e) {
+        var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+        return String(e).search (filter) != -1;
+    }
     $(document).ready(function(){
-
        $("#register-form").on("submit", function(e){
-             $("#failuremessage").html("")
-             $("#failuremessage-mobile").html("");
-             $("#failuremessage-email").html("");
-             $("#failuremessage-password").html("");
-            e.preventDefault();
+        $("#failuremessage").html("")
+        $("#failuremessage-mobile").html("");
+        $("#failuremessage-email").html("");
+        $("#failuremessage-password").html("");
+
+       e.preventDefault();
+       console.log($("#exampleInputEmail1").val());
+       console.log(validateEmail($("#exampleInputEmail1").val()));
+                if(!validateEmail($("#exampleInputEmail1").val())){
+                    $("#failuremessage-email").html("Please input a valid email address");
+                    console.log("Invalid email")
+
+                }else{
             var f=$(this).serialize();
             $(".loader").css("display", "flex");
             $.ajax({
@@ -32,7 +42,6 @@
                             $("#failuremessage").html("Successfully Registered, Redirecting to login page in "+seconds);
                             seconds-=1;
                         }, 1000);
-
                         setTimeout(function(){
                             window.location.href = '../../index.jsp';
                         }, 5000);
@@ -56,5 +65,6 @@
 
                 }
             })
+            }
        })
     })

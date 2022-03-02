@@ -21,9 +21,21 @@ if(window.history.forward(1) !=null)
     User user = StoreUser.getUser();
     int total=0;
     int sno=0;
+
+    Connection con = ConnectionProvider.getConnection();
+
+
+    int uid = user.getId();
+    String callQuery = "call insert_order(?)";
+    try{
+    CallableStatement cstmt = con.prepareCall(callQuery);
+    cstmt.setInt(1,uid);
+    cstmt.execute();
+    }catch(Exception e){e.printStackTrace();}
+
     try
     {
-    Connection con = ConnectionProvider.getConnection();
+
     java.sql.PreparedStatement st = con.prepareStatement("select * from cart_item where user_id=? ");
     st.setInt(1, user.getId());
 
@@ -52,10 +64,10 @@ if(window.history.forward(1) !=null)
     </thead>
     <tbody>
     <%
-    int uid=0;
+
     try
     {
-    Connection con = ConnectionProvider.getConnection();
+
 
     PreparedStatement st = con.prepareStatement("select  p.pname, p.category, c.product_price,  c.product_id, c.quantity, c.user_id, c.amount from cart_item c, product p where user_id = ? and c.product_id = p.pid");
 

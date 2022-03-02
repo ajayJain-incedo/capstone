@@ -45,7 +45,7 @@
     <ul class=" navbar-nav mr-auto inline-list-padding" >
         <li class="nav-item d-flex align-items-center text-white mr-16">
             <a class="white-color nav-link hover-oscillate" href="../my_cart/myOrders.jsp">My Orders</a>
-            <i class="fa fa-file icon"></i>
+            <i class="fa fa-archive icon"></i>
         </li>
         <li class="nav-item d-flex align-items-center text-white mr-16">
             <a class="white-color nav-link hover-oscillate" href="../user/my_profile.jsp">Profile</a>
