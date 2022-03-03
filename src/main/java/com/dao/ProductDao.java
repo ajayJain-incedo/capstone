@@ -20,7 +20,7 @@ public class ProductDao
         {
             String query = "insert into product( pname, pdesc, price, category, discount_percent, available_quantity, pimage) values (?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement st = this.con.prepareStatement(query);
-            System.out.println("Pimage i got is " + product.getPimage());
+//            System.out.println("Pimage i got is " + product.getPimage());
             st.setString(1, product.getPname());
             st.setString(2, product.getPdesc());
             st.setDouble(3, product.getPrice());
@@ -46,7 +46,6 @@ public class ProductDao
 
             String query = "delete from product where pname = ?";
             PreparedStatement st = this.con.prepareStatement(query);
-            System.out.println(product.getPname());
             st.setString(1,product.getPname());
 
             st.executeUpdate();
