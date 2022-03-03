@@ -22,9 +22,11 @@ if(VerifySession.verifySessionForAdmin(request, response)){
 return;
 }
 %>
+<div class="ml-2">
 <a href="update_item.jsp">
     <img style="height: 3rem; width: 3rem" border="0" alt="HomePage Icon" src="../../resources/static/images/admin_home_page.jpg" width="100" height="100">
 </a>
+</div>
 <h2 style = "text-align: center"> <b><u> ADD ITEM PAGE </u></b></h2>
 <div class = "container d-flex inline-padding">
     <form action = "../../AddItemServlet" method = "post" name = "form" id = "form" enctype = "multipart/form-data" onsubmit = "return checkforblank()">
@@ -63,10 +65,10 @@ return;
                             </select>
                         </td>
                     </tr>
-                    <tr>
-                        <td>Enter Discount Percent:</td>
-                        <td><Input type = "number" step = ".01"  name ="discount_percent" placeholder ="Enter here" min="0" max="100"  id = "discount_percent" value ="0.0" required  ></td>
-                    </tr>
+<!--                    <tr>-->
+<!--                        <td>Enter Discount Percent:</td>-->
+<!--                        <td><Input type = "number" step = ".01"  name ="discount_percent" placeholder ="Enter here" min="0" max="100"  id = "discount_percent" value ="0.0" required  ></td>-->
+<!--                    </tr>-->
 
                     <tr>
                         <td>Enter Quantity:</td>
@@ -93,8 +95,8 @@ return;
                     <tr>
                         <td>
                             <div class="d-flex">
-                            <button   type = "submit" class="btn btn-success " style="margin-right: 10px">SUBMIT</button>
-                            <button type = "reset" class = "btn btn-warning"> Reset </button>
+                            <button   type = "submit" class="btn btn-primary " style="margin-right: 10px">SUBMIT</button>
+                            <button type = "reset" class = "btn btn-danger"> Reset </button>
                             </div>
                         </td>
 

@@ -69,8 +69,8 @@ return;
                         Category:
                         <p><input  readonly type="text" name="category" value="<%=rs.getString(5) %>"></p>
 
-                        Discount Percentage:
-                        <p><input type="number" name="discount_percent" value="<%=rs.getString(6) %>" min="0" max="100"></p>
+<!--                        Discount Percentage:-->
+<!--                        <p><input type="number" name="discount_percent" value="<%=rs.getString(6) %>" min="0" max="100"></p>-->
 
                         Available Quantity:
                         <p><input type="number" name="available_quantity" value="<%=rs.getString(7) %>"></p>

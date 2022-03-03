@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="resources/css/color.css">
     <link rel="stylesheet" href="resources/css/stickyCart.css">
 
-    <title>Document</title>
+    <title>InKart</title>
 </head>
 <body class="light-bg-color" style="background-color: rgb(252 238 238) !important">
     <%
