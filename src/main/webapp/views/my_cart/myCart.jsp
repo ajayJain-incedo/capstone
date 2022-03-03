@@ -147,7 +147,7 @@ if("removed".equals(msg))
     <tbody>
     <%
     //System.out.println(user.getId());
-    String query ="select pname, category, round(amount/quantity, 1) as price,  product_id, quantity, product_id ,amount,  product_id from cart_item, product where user_id = ? and cart_item.product_id = product.pid";
+    String query ="select pname, category, product_price,  product_id, quantity, product_id ,amount,  product_id from cart_item, product where user_id = ? and cart_item.product_id = product.pid";
 
     PreparedStatement pstmt =con.prepareStatement(query);
     pstmt.setInt(1, user.getId());

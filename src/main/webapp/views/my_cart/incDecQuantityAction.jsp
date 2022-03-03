@@ -27,7 +27,7 @@ try{
     }
     userDao.updateCartItem(cartItem, Integer.parseInt(id));
 
-    String query="select user_id, category, round(amount/quantity, 1) as price, quantity, amount from cart_item, product where user_id ="+id+" and cart_item.product_id ="+pid;
+    String query="select user_id, category, product_price as price, quantity, amount from cart_item, product where user_id ="+id+" and cart_item.product_id ="+pid;
     PreparedStatement st = con.prepareStatement(query);
     ResultSet rs = st.executeQuery();
 
@@ -57,6 +57,7 @@ else
 {
 
 total=total+price;
+System.out.println(total);
 quantity=quantity+1;
 st.executeUpdate("update cart_item set amount="+total+",quantity="+quantity+" where user_id="+id +" and product_id="+pid);
 response.sendRedirect("myCart.jsp?msg=inc");
