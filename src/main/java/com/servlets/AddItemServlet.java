@@ -37,7 +37,7 @@ public class AddItemServlet extends HttpServlet {
         String category = req.getParameter("category");
         product.setCategory(category);
 
-        double discount_percent = Double.parseDouble(req.getParameter("discount_percent"));
+        double discount_percent = 0.0;//Double.parseDouble(req.getParameter("discount_percent"));
         product.setDiscount_percent(discount_percent);
 
         double available_quantity = Double.parseDouble(req.getParameter("available_quantity"));
