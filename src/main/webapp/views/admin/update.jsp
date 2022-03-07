@@ -8,7 +8,7 @@
 <%@ page errorPage="../error_pages/error_page1.jsp" %>
 
 <html lang="en">
-<title>UPDATE ITEM DETAILS</title>
+<title>Edit Item</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <link rel="stylesheet" href="resources/css/header.css">
 <link rel="stylesheet" href="../../resources/css/color.css">
@@ -51,7 +51,7 @@ return;
 }
 %>
 <a class = "back" href="update_item.jsp">
-    <img style="height: 3.5rem; width: 3.5rem" border="0" alt="HomePage Icon" src="../../resources/static/images/backicon.png" width="100" height="100">
+    <img style="height: 3.5rem; width: 3.5rem" border="0" alt="HomePage Icon" src="../../resources/static/images/admin_home_page.jpg" width="100" height="100">
 </a>
 
 <!--<main class="d-flex align-items-center my-background clip" style="height: 85vh; ">-->
