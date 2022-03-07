@@ -38,11 +38,12 @@ public class CartDao {
     public boolean UpdateItemQuantity(Cart cart, int change) throws SQLException {
         boolean isQueryExecuted = false;
         try {
-            String query = "update cart_item set quantity=? where user_id=? and product_id=?";
+            String query = "update cart_item set quantity=?, amount=? where user_id=? and product_id=?";
             PreparedStatement st = this.con.prepareStatement(query);
             st.setInt(1, cart.getQuantity()+change);
-            st.setInt(2, cart.getUid());
-            st.setInt(3, cart.getPid());
+            st.setDouble(2, (cart.getQuantity()+change)*cart.getPrice());
+            st.setInt(3, cart.getUid());
+            st.setInt(4, cart.getPid());
             st.executeUpdate();
             isQueryExecuted = true;
         } catch (Exception e) {
