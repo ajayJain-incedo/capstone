@@ -33,7 +33,9 @@ return;
 
     <div class="collapse navbar-collapse justify-content-around inline-margin" id="navbarSupportedContent">
         <form class="form-inline my-2 my-lg-0 inline-list" action="/Capstone/SearchAdmin" method="post">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="pname">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="pname" required
+            oninvalid="this.setCustomValidity('Please enter text to search item')"
+            oninput="this.setCustomValidity('')">
             <button class="btn dark-bg-color white-color my-2 my-sm-0" type="submit">Search</button>
         </form>
     </div>

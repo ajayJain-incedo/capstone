@@ -1,14 +1,10 @@
 package com.service;
 import com.mysql.jdbc.Driver;
-import org.apache.log4j.BasicConfigurator;
-import org.apache.log4j.Logger;
 
 import java.sql.*;
 public class ConnectionProvider {
-    static Logger log = Logger.getLogger(ConnectionProvider.class.getName());
     private static Connection con;
     public static Connection getConnection(){
-        BasicConfigurator.configure();
         try{
             if(con == null){
                 // loading driver class
@@ -16,9 +12,9 @@ public class ConnectionProvider {
 
                 // Creating a connection
 
-                con = DriverManager.getConnection("jdbc:mysql://localhost:3306/shopping", "root", "root");
 
-                log.info("Getting connection..");
+                con = DriverManager.getConnection("jdbc:mysql://localhost:3306/shopping", "root", "admin@1234");
+
 
             }
         }catch (Exception e){
