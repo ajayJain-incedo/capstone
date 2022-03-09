@@ -1,10 +1,3 @@
-## AFTER USER ADDS SOMETHING TO CART
-## Query for view cart [On the view cart page]
-
-select pname, product_id,product_price,quantity,amount
-from cart_item, product
-where user_id = uid and cart_item.product_id = product.pid ;
-
 
 
 ## WHEN USER CLICKS ON BUY NOW BUTTON [On the view cart page]
@@ -66,13 +59,6 @@ call insert_history(oid);
 select * from order_history;
 
 
-
-## IF USER WANTS TO CHECK ORDER HISTORY
-## Query for viewing order history
-
-select product_name, order_id, product_id, product_quantity,pay_amount
-from order_history
-where user_id = uid;
 
 
 
