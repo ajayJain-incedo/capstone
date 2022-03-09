@@ -10,7 +10,7 @@ call remove_item(pid,uid);
 
 
 
-## Procedure for remove from cart and order table [If user cancels/navigates back after clicking on Buy Now]
+## Procedure for remove from cart and order table [If user cancels/navigates back after choosing a payment option]
 delimiter //
 create procedure remove_order(in orderid int(5), in userid int(5))
 begin
